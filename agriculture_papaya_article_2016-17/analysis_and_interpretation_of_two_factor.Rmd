@@ -1,0 +1,767 @@
+---
+title: "Effect of fruit thinning and defoliation on yield and quality traits of Papaya (*Carica papaya* cv. Red Lady) in Chitwan, 2016"
+author: "Ramesh Upreti, Deependra Dhakal"
+date: "February 1, 2018"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 3
+    keep_tex: yes
+header-includes:
+  - \usepackage{dcolumn}
+  - \usepackage{tabularx}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage[table]{xcolor}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{xcolor}
+  - \usepackage{rotating}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+  - \usepackage{subcaption}
+  - \newcommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(tidy = TRUE, cache = FALSE, 
+                      echo = FALSE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, warning = FALSE, message = FALSE,
+                      # fig.show = "hold", 
+                      fig.align = "center", fig.width = 6,
+                      fig.asp = 0.9, out.width = "0.8\\linewidth")
+options(knitr.kable.NA = "", digits = 3, knitr.table.format = "latex")
+
+require(agricolae)
+require(tidyverse)
+require(desplot)
+theme_set(theme_bw())
+```
+
+# Abstract
+
+The effect of fruit thinning and defoliation on papaya, cultivar Red Lady, was studied at commercial papaya orchard of Abloom Flora Farm, Chanauli, Chitwan from January to December, 2016. This experiment was laid out in factorial RCBD with nine treatment combinations (control i.e. no thinning + no defoliation, no thinning + 33% defoliation, no thinning + 66% defoliation, hand thinning + no defoliation, hand thinning + 33% defoliation, hand thinning + 66% defoliation, chemical thinning by NAA 100 ppm + no defoliation, chemical thinning by NAA 100 ppm + 33% defoliation, chemical thinning by NAA 100 ppm + 66% defoliation) replicating 3 times to know the effect of these treatments on quality and yield. Fruit set, fruit size, fruit weight, yield,  physiological loss in weight percentage and firmness were found significantly higher with hand thinning. Chemical thinning resulted in significantly higher TSS, TSS/TA ratio along with slightly higher ascorbic acid content and lower TA. However, chemical thinning showed over thinning effect with higher abscission percentage and the lowest yield. Defoliation treatments did not result in significant improvement on yield and quality. The highest stem girth, leaf number, fruit diameter, yield and firmness were recorded with 33% defoliation. The 66% defoliation treatment showed higher fruit drop/lower retention and lower yield. These results suggest that hand thinning and 33% defoliation practice improves the fruit yield and quality of papaya.
+
+**Key words**: *Carica papaya*, fruit thinning, defoliation, quality traits
+
+# Introduction
+
+Papaya (*Carica papaya* L.) is one of most important fruit crop, cultivated throughout the tropical and subtropical regions of the world, belonging to the Caricaceae family (Da Silva et al., 2007). It is believed to be originated from the lowlands of eastern Central America from Mexico to Panama (Office of the Gene Technology Regulator [OGTR], 2008) perhaps in southern Mexico and Tropical America (Shrestha, 2016). In western countries papaya is known as 'wonder fruit of tropics'. In Nepal and India it is regarded as 'Kalpa Brikshya' due to its nutrients enriched fruit and multipurpose plant. Christopher Columbus even considered it as the 'fruit of Angels' after discovering it in tropical America. It was brought to India in the 16th century (OGTR, 2008) thereafter it is believed to be introduced in Nepal before four hundred years ago (Paudyal, Pandey & Bhattarai, 2013) from India. Out of 48 species known in Caricaceae, Carica papaya is only species grown for edible fruits (Chadha, 1992). There are 6 genus in this family and 35 species out of which 32 species are dioecious. Papaya is a single hollow stemmed herbaceous, latex producing, short lived, plant (Jimenez, Mora-Newcomer & Gutierrez-Soto, 2014). Its stem reaches the height of 2-10 m, which is cylindrical spongy fibrous, loose, gray or gray-brown color, 10-30 cm diameter and toughened by large and protuberant scars of fallen leaves and flowers, terminating with a crown of large palmately lobed leaves (Zhou, Christopher & Paull, 2000; Medina, Gutierrez & Garcia, 2003). 
+
+Papaya is one among the fruits which has attained a great popularity in recent years, because of gynodioecious nature, easy cultivation, quick returns, adaptability to diverse soil and climatic conditions and attractive delicious wholesome fruits having multifarious uses (Tandel, Ahir & Patel, 2017). Major papaya cultivated districts are Siraha, Bara, Parsa, Dhanusha, Mahottari, Sarlahi, Rupandehi, Chitwan, Kailali, Dang, Nawalparasi and Dhading. The productive area covered by papaya in Nepal is 1,083 ha where production is 14,137 mt with the productivity of 13.05 mt/ha (Statistical information on Nepalese Agriculture, 2015/16). Papaya is regarded as a good source of vitamin A, ascorbic acid, beta-carotene, riboflavin, iron, calcium, thiamin, niacin, pantothenic acid, vitamin B-6 and vitamin K (Saran & Choudhary, 2013) which may prevent cancer, diabetes, jaundice and heart disease. It is also utilized in the pharmaceutical and cosmetic industries (Shrestha, 2016). Production and quality of papaya are affected by climate, cultivar type and cultural practices (Workneh, Azene & Tesfay, 2012). Quality is the state of well accepted external features (such as colour, shape, size and freedom from defects) and internal attributes (like texture, sweetness, acidity, aroma, flavour, shelf life and nutritional value) of a product. Researches of papaya are found to be concentrated on the varietal trials and production aspects, but quality improvement practices are not much studied. Productivity and quality of papaya fruit production is not satisfactory in Nepalese context. Little is known about the influence of fruit thinning and defoliation in papaya. 
+
+Fruit thinning and defoliation practices could ensure better quality and yield of papaya. The effect of defoliation and fruit thinning on plant growth and development depends on the time and intensity of defoliation and fruit thinning. (Pavel & DeJong, 1993; Mulas, 1996). Fruit thinning is the removal of fruitlets in heavy fruit set situations in plant aiming to increase fruit sizes, avoid branch breakdown, reduce harvesting costs, and promote a balance between the vegetative and reproductive growth of plants (Peres, Martins, Barreto & Pimentel, 2017). It is hundreds of year old practice for manipulating the cropping and blooming of fruit plants like apple, pear and peach (Dennis, 2000). Defoliation is simply the removal of leaves for easing cultural practices and maintaining the physiological balance of plant. The availability of carbohydrate or assimilates exported from leaves to fruit determines papaya fruit production and sweetness. Partial defoliation (33% and 66%) of grape cv. Cabernet Sauvignon, is an endeavour to reduce vegetative growth and the source:sink ratio, to stimulate metabolic activity and to improve canopy microclimate, induced higher photosynthetic effectiveness of the remaining leaves as well as an increase in assimilate supply to the bunches (Hunter & Visser, 1988). According to Awada (1967), it was found that defoliation increases papaya staminate flower number and decreases trunk growth and leaf dry weight (DW), whereas deflowering decreases staminate flower number and increases trunk growth and leaf DW (Zhou et al., 2000). Photosynthetic organs in the plant (mature leaves) are known as sources, while non-photosynthetic organs (fruits, roots and tubers) and immature leaves are known as sinks (Taiz & Zeiger, 2006). Source-sink balance was found critical for papaya fruit set, development, and sugar accumulation (Zhou et al., 2000). Therefore, this study was carried out to study the effect of fruit thinning and defoliation on yield and yield attributing characters of papaya and to assess the improvement in fruit quality due to fruit thinning and defoliation.
+
+# Materials and methods
+
+## Site of study 
+
+This study was conducted at commercial Papaya farm (Abloom flora farm) of Chanauli, Chitwan, Nepal during January to December 2016. It is situated at 27° 37' 3" North latitude and 84° 17' 43" East longitudes and at an elevation of 175 meters from the sea level. The climate of the site can be characterized as tropical with minimum and maximum temperatures ranging from 9-370 C with the average rainfall of 2520 mm. The soil of the experimental site was sandy loam with slightly acidic (5.6) pH. The postharvest quality analysis of fruit was done in the post-harvest laboratory of Agriculture and Forestry University (AFU) in the month October to December, 2016. 
+
+## Selection of the cultivar
+
+Experiment was conducted using a high yielding, gynodioecious and early maturing variety 'Red Lady' of Taiwanese origin. It was propagated through seed which was planted in plastic tray using cocopit in the nursery. Healthy, disease free and uniform seedlings of 45 days age were transplanted in a rectangular system of 2 meter row to row distance and 1.8 m plant to plant distance and subjected to uniform cultural practices before and during the field trial.
+
+## Experimental design
+
+A two factorial randomized complete block design (RCBD) was used with three replications and nine treatments combinations. The first factor is fruit thinning, which include control (not treated), hand thinning (retaining one fruit per node), and chemical thinning (using 100 ppm of NAA). The second factor is defoliation, which include control (not treated), thirty three percent defoliation (33% leaves are removed using secateurs), and sixty six percent defoliation (66% leaves are removed with secateurs). Two plants were selected for each treatment and altogether there were 54 plants.
+
+### Treatment combinations
+
+Two groups of treatment factors were employed in the study, each with 3 levels. Table \@ref(tab:treat-comb) shows various combinations that comprised total number of treatments.
+
+```{r treat-comb, cache=TRUE}
+set.seed(9845333)
+factorA_thinning <- c("No thinning", "Hand thinning", "Chemical thinning")
+factorB_defoliation <- c("33% defoliation", "66% defoliation", "No defoliation")
+factorA_thinning <- map(1:3, as.character) %>% 
+  set_names(factorA_thinning) # make a list for argument unpacking later on
+factorB_defoliation <- map(1:3, as.character) %>% 
+  set_names(factorB_defoliation)
+
+# expand.grid(factorA_thinning, factorB_defoliation)
+# treatment_grps <- crossing(factorA_thinning, factorB_defoliation) # for atomic vector
+treatment_combn <- cross_df(list(Fruit_thinning = names(factorA_thinning), 
+                                 Defoliation = names(factorB_defoliation))) %>% 
+  tidyr::unite("Treatment combination", sep = "+", remove = TRUE)
+
+knitr::kable(treatment_combn, 
+             format = "latex",
+             booktabs = TRUE,
+             caption = "Treatment combination of the RCBD experiment with two factors", 
+             digits = 3, 
+             align = 'l') %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "hold_position"), 
+                            full_width = FALSE, font_size = 10, position = "center")
+```
+
+
+### Layout of field experiment
+
+A layout of the experimental design, with 9 treatment combinations each replicated thrice, is shown below in Figure \@ref(fig:design-layout).
+
+```{r design-layout, results='asis', fig.cap="Layout of experimental design", fig.width=10, fig.height=8, out.width="0.95\\linewidth", fig.align='center', cache=TRUE}
+require(gridExtra)
+fb_2factorial <- agricolae::design.ab(c(3, 3), 
+                                      r = 3, 
+                                      serie = 2, 
+                                      design = "rcbd", 
+                                      first = TRUE, 
+                                      randomization = TRUE)
+
+fb_2factorial_book <- fb_2factorial$book %>%
+  mutate(row = table(block) %>% map(seq_len) %>% reduce(c)) %>% 
+  mutate(Fruit_thinning = fct_recode(A, !!!factorA_thinning)) %>% # argument unpacking/dot dot dots
+  mutate(Defoliation = fct_recode(B, !!!factorB_defoliation)) %>%
+  select(-c(A, B)) %>% 
+  mutate("Treatment combination" = paste0(Fruit_thinning, "+", Defoliation), 
+         Rep = block)
+  # mutate(yield_sim = rnorm(nrow(.), mean = 100, sd = 12)) %>% 
+  # mutate(yield_sim = if_else(Fruit_thinning == "Chemical thinning", true = yield_sim+8, false = yield_sim))
+
+# suppressWarnings(desplot(`Treatment combination` ~ block+row|Rep, 
+#         data = fb_2factorial_book,
+#         text = `Treatment combination`, out1 = block, 
+#         midpoint = "midrange",
+#         out2 = row, show.key = FALSE, 
+#         main = "RCBD of two factors comprising 9 treatments replicated in 3 blocks", 
+#         cex = 0.8, shorten = FALSE))
+
+
+myplots <- lapply(split(fb_2factorial_book, fb_2factorial_book$Rep), function(x){
+  p1 <- ggplot(x, aes(block, row, fill = `Treatment combination`)) + 
+    geom_tile(colour="white", size=1.5, stat="identity") + 
+    scale_fill_discrete() +
+    scale_y_continuous(breaks = seq(1, 9, by = 1)) +
+    geom_text(aes(block, row, label = `Treatment combination`), 
+              color="black", size=rel(4.5)) +
+    labs(title=unique(x$Rep)) +
+    theme_bw() +
+    theme(legend.position="none", axis.title = element_blank()) # removes all legend
+}
+)
+
+do.call(grid.arrange,c(myplots, ncol=3))
+```
+
+<!-- ### Field book -->
+
+<!-- An overview of the field book of the design in shown in Table \@ref(tab:field-book). -->
+
+<!-- ```{r field-book} -->
+<!-- knitr::kable(select(head(fb_2factorial_book, n = 12), -c("Rep", "row")),  -->
+<!--              format = "latex",  -->
+<!--              caption = "Design field book of a two factorial RCBD experiment",  -->
+<!--              digits = 3, booktabs = TRUE, longtable = TRUE,  -->
+<!--              col.names = c("Plot", "Block", "Fruit thinning",  -->
+<!--                            "Defoliation", "Treatment combination"),  -->
+<!--              align = 'l') %>%  -->
+<!--   kableExtra::kable_styling(latex_options = c("striped", "hold_position"),  -->
+<!--                             full_width = TRUE, font_size = 10, position = "center") %>%  -->
+<!--   kableExtra::column_spec(c(1, 2), width = "3em") %>%  -->
+<!--   kableExtra::column_spec(c(3, 4), width = "8em") %>%  -->
+<!--   kableExtra::column_spec(5, width = "14em") -->
+<!-- ``` -->
+
+## Treatment formulation
+
+### Timing
+
+Treatments were applied on 20th of May, 130 days after transplanting (DAT). Chemical thinning was done two times by spraying 100 ppm NAA to a state where run-off could be observed with an electric sprayer on May 20 and June 5, 2016.  Hand thinning was applied weekly after May 20 (130 DAT) for two months. Defoliation was practiced only once (in which 33% and 66% leaves were removed out of total leaves) on May 20, 2016.
+
+### Preparation and application
+
+**Control (No thinning + no defoliation)**
+
+In this treatment, plants are not treated, and retained to natural growth condition providing all essential cultural practices.
+
+**Hand thinning**
+
+It was done by twisting and plucking fruits of 3-5 cm size, retaining one fruit per node (Zhou et al., 2000), at weekly interval for two months. After removing small fruits by hand thinning, paper towel was used to prevent the latex exudation from leaking on to the low laying fruits. 
+
+**Chemical thinning by NAA (100 ppm)**
+
+One gram of NAA (Alpha-Naphthalene acetic acid, HIMEDIA Lot no. 0000132888, GRM575-25G) was dissolved in 5 ml ethanol + one liter distilled water (Aghaei, Bahramnejad, & Mozafari, 2013), and stock solution of 1000 ppm was prepared at post-harvest laboratory of Agriculture and Forestry University (AFU). In the field, it was diluted to 100 ppm working solution by adding 9 liter of distilled water in the stock solution of 1 liter. Then, it was sprayed over the whole plant with the help of hand sprayer (electric) until all the leaves were completely wet to runoff (Subhadrabandhu, Thongplew, & Wasee, 1997), initially after first fruit set and then for second time after fifteen days of first application. 
+
+**Defoliation**
+
+Total numbers of leaves were counted on individual plant and 33% and 66% of total leaves was calculated in accordance with treatments. Then defoliation was done from lower part of plant, i.e oldest to new leaves were removed (Zhou et al., 2000), retaining petiole on the plants by secateurs.
+
+## Physical and physiological properties associated with flowering and fruiting
+
+**Flower and fruit drop (%)**
+
+Total number of abscised flower buds and fruits of size less than 3 cm were counted. Thus, the percentage of fruit retained was calculated as:
+
+$$
+Fruit~retention \% = \left [ 1-\frac{Total~number~of~abscised~fruitlets/flowers}{Total~number~of~flowers~set}\right ] \times 100
+$$
+
+
+**Yield per plant ($kg$)**
+
+Yield of total fruits harvested in different intervals from the sample plants in each treatment was recorded and average was worked out. It was calculated by total number of fruit set multiplied by average weight of fruit for each treatment and expressed in kilogram per plant.
+
+$$Yield = Total~fruit~set~\times~average~weight~of~fruit$$
+
+**Fruit weight ($g$)**
+
+Five fruits obtained from each plant of same treatment were individually measured with the help of electronic balance and finally average weight of five fruits was taken at the time of laboratory analysis.
+
+**Seed weight ($g$)**
+
+Seed weight was measured by electronic balance after peeling and cutting the fruit at the time of laboratory analysis.  
+
+**Fruit length ($cm$)**
+
+Average length of five fruits obtained from two plants of each treatment was measured using measuring tape between base and apex of the fruit and expressed in centimeters.
+
+**Fruit breadth ($cm$)**
+
+Average breadth of five fruits obtained from two plants of each treatment was measured at the equatorial region using measuring tape and expressed in centimeters.
+
+**Fruit Firmness ($kg~cm^2$)**
+
+Firmness was measured with Effigi Penetrometer (FT - 327, Italy). A slice of about one inch thickness was cut out on blush and non-blush sides of the fruit and 11 mm tip plunger was inserted into a depth of 7.9 mm until the reading was taken (n=10).
+
+**Physiological loss in weight (%)**
+
+It was done by taking initial weight on the day of harvest followed by taking weight on each alternate day during the storage period.
+
+$$Physiological~weight~loss~\% =\frac{Initial~weight-Final~weight}{Initial~weight}\times 100$$
+
+## Chemical properties associated with fruiting
+
+**Total soluble solids ($Brix~value$)**
+
+The TSS content of the fruits was analyzed at the post harvest laboratory of AFU, Rampur. For TSS, the fruit pulp (without peel and seed) was homogenized in a blender and measured with a hand Refractometer (ERMA Inc., Tokyo, Japan) using juice extracted directly from the pulp and expressed as °Brix. Correction on the TSS was made according to temperature of the laboratory as mentioned by Saini, Sharma, Dhankhar and Kaushik (2001).  
+
+**Titratable Acidity (%)**
+
+The Titratable Acidity (TA) content of the fruit was analyzed at the post harvest laboratory of AFU, Rampur. It was determined from 10 ml fruit juice diluted in 50 ml distilled water, titrated with 0.1 N NaOH using phenolpthalein indicator (2-3 drops), and calculated as percent citric acid. Percent titrable acidity was calculated by using the following formula as suggested by Saini et al. (2001).
+
+$$TA \% = \frac{Volume~of~NaOH~\times~Normality~of~NaOH~\times~0.0064}{volume~of~juice~titrated}\times 100$$
+
+* Acid milliequivalents (mEq) factor for citric acid
+
+**TSS/TA ratio**
+
+The ratio of TSS and TA was computed and recorded.
+
+**Vitamin C (Ascorbic acid) content (mg/100 g sample)**
+
+The ascorbic acid content of ripe fruits was determined by volumetric analysis with dye 2-6 dichloro-phenolindophenol. Initially, following solutions of titrant, titrand and dyes were prepared:
+
+  1. *Oxalic acid solution*: 4 % Oxalic acid solution was prepared with 4 g Oxalic acid in 100 ml distilled water.
+  2. *Dye solution*: It was prepared by mixing 21 mg sodium bi-carbonate with the small volume of water and dissolving 26 mg 2, 6-dichlorophenol indophenols in it making 100 ml with distilled water. 
+  3. *Standard solution*: It was prepared by dissolving 100 mg (0.1 g) ascorbic acid in 100 ml of 4 % oxalic acid solution in a standard flask. 
+  4. *Working solution*: 10 ml of stock standard solution was diluted to 100 ml of 4 % oxalic acid to prepare working standard solution. The concentration of working standard solution was maintained at 100 $\mu g$ per ml.
+
+After preparing the working solution, 5 ml of working solution was pipette out in a 100 ml of conical flask and 10 ml of 4 % Oxalic acid was added to titrate against the dye (V1). End point (appearance of the pink color which persists for a few minutes) was noticed. The amount of dye consumed was expressed in equivalence of amount of ascorbic acid. 2 ml papaya juice was extracted from sample in a centrifugal tube and 10 ml of 4 % Oxalic acid solution was added to it to make known volume of solution. This solution was centrifuged for 5 minutes. Then, 5 ml of centrifuged supernatant solution was pipette out without any residue and 10 ml of 4 % Oxalic acid solution was added to it. Finally, it was titrated against the dye solution (V2).
+
+The ascorbic acid was calculated using following known relation:
+$$Ascorbic~acid~(mg/100~g~sample) = \frac{0.5~mg~\times~V2~\times~12~ml}{V1\times 5ml\times~Weight~of~sample~(ml)}$$
+Where, V1 and V2 are the volume of dye consumed during titration.
+
+## Statistical method
+
+For each response variable, fixed effects linear terms were fitted with both "Fruit thinning" and "Defoliation" factors. Apart from that, Replication effects were also contrasted for each level of the design factor. The representation of model in vector space is shown in Equation \@ref(eq:linear-model-form) 
+
+\begin{equation}
+Y_{hijt} = \mu + \theta_{h} + \tau_{ij} + \sigma_{hijt}
+(\#eq:linear-model-form)
+\end{equation}
+
+Where, $\mu$ is the sample mean across treatments, $\tau_{ij}$ is the treatment combination main effects and interaction effects. $\tau_{ij}$ can also be expressed in terms of $\gamma_i$ (the effect of factor A at level $i$), $\delta_j$ (the effect of factor B at level $j$), and $(\gamma\delta)_{ij}$ (the effect of interaction of factor A at $i^{th}$ level and factor B at $j^{th}$ level.)
+
+Experimental data were analyzed using R-stat software, and therein, treatment means were separated using Duncan's Multiple Range Test (DMRT) at 5% level of significance. Analysis of variance (ANOVA) was used to test differences among the factors and the overall effectiveness of blocking. Only when a significant treatments' effects could verified (through F-statistic), multiple range test was employed. 
+
+Similarly, traits were checked for their associatedness using correlation coefficients as the measure. High degree of linear association among variables (recorded independently) would warrant a thorough inspection for usefulness in later analysis.
+
+<!-- ## Study variables -->
+
+<!-- A summary of all the recorded variables, along with their description in the context of study, is provided in Table \@ref(tab:trait-description). -->
+
+<!-- ```{r trait-description} -->
+<!-- two_fac_papaya_des <- readxl::read_xlsx("./data/data.xlsx", sheet = "metadata") -->
+<!-- knitr::kable(two_fac_papaya_des,  -->
+<!--              caption = "Summary of variables used in study", -->
+<!--              format = "latex", booktabs = TRUE, -->
+<!--              digits = 3, longtable = TRUE, -->
+<!--              align = 'l') %>%  -->
+<!--   kableExtra::kable_styling(latex_options = c("striped", "hold_position"),  -->
+<!--                             full_width = FALSE, font_size = 8,  -->
+<!--                             position = "center") %>%  -->
+<!--   kableExtra::column_spec(2, bold = TRUE, width = "14em") %>%  -->
+<!--   kableExtra::column_spec(3, width = "25em") -->
+<!-- ``` -->
+
+
+# Results and discussion
+
+```{r data-import}
+# import and variable renaming
+two_fac_papaya <- readxl::read_xlsx("./data/data.xlsx", sheet = "papaya_traits") %>% 
+  mutate_at(vars(Replication, `Fruit thinning`, Defoliation), factor) %>% 
+  rename_all(function(x)stringr::str_squish(x)) %>% 
+  rename_all(function(x)stringi::stri_replace_all_fixed(x, 
+                                                        c(" ", "/", "%",  "(", ")"), 
+                                                        c("_", "_per_", "_percent_", "_", "_"), 
+                                                        vectorize_all = FALSE)) %>% 
+  rename_all(function(x)stringr::str_replace_all(x, "__", "_")) %>% 
+  rename_all(function(x)stringr::str_replace_all(x, "_$", ""))
+
+# recodeing factor levels
+factorA_thinning <- c("No thinning", "Hand thinning", "Chemical thinning")
+factorB_defoliation <- c("33% defoliation", "66% defoliation", "No defoliation")
+factorA_thinning <- map(1:3, as.character) %>% 
+  set_names(factorA_thinning) # make a list for argument unpacking later on
+factorB_defoliation <- map(1:3, as.character) %>% 
+  set_names(factorB_defoliation)
+
+two_fac_papaya <- two_fac_papaya %>% 
+  mutate(Fruit_thinning = fct_recode(Fruit_thinning, !!!factorA_thinning)) %>% # argument unpacking/dot dot dots
+  mutate(Defoliation = fct_recode(Defoliation, !!!factorB_defoliation))
+```
+
+
+```{r response_variables}
+# save name of numeric only variables
+numeric_trait_names <- two_fac_papaya %>%
+  map_lgl(is.numeric) %>% 
+  which() %>% names()
+```
+
+
+<!-- ```{r rcbd-model-general, results='asis'} -->
+<!-- # rcbd model for all variables -->
+<!-- two_fac_model <- map(numeric_trait_names, -->
+<!--                      .f = ~ lm(get(.x) ~ Defoliation*Fruit_thinning + -->
+<!--                                  Replication, -->
+<!--                                data = two_fac_papaya)) -->
+<!-- two_fac_model <- two_fac_model %>% set_names(numeric_trait_names) -->
+<!-- # mean separation -->
+<!-- # could be done using LSD.test, duncan.test, SNK.test or HSD.test -->
+<!-- # LSD.test allows for p-value adjustment -->
+<!-- map_inner2 <- function(y)map_dfr(list("Fruit_thinning", "Defoliation", -->
+<!--                                       c("Fruit_thinning", "Defoliation")), -->
+<!--                                  function(x)agricolae::duncan.test(y, trt = x) %>% -->
+<!--                                    keep(names(.) == "means" | names(.) == "groups") %>% -->
+<!--                                    map(~ .x %>% rownames_to_column("Treatment")) %>% -->
+<!--                                    reduce(left_join, by = "Treatment") %>% -->
+<!--                                    select(Treatment, mean = `get(.x).x`, `groups`, `std`:`Q75`)) -->
+<!-- two_fac_fitnmean <- map(two_fac_model, map_inner2) -->
+
+<!-- # ensure that column to join by does not contain duplicates -->
+<!-- two_fac_fitnmean <- two_fac_fitnmean %>% -->
+<!--   reduce(left_join, by = "Treatment") %>% -->
+<!--   magrittr::set_colnames(c("Treatment", -->
+<!--                            paste(rep(numeric_trait_names, each = 9), -->
+<!--                                  c("mean", "group", "std", "r", "Min", "Max", "Q25", "Q50", "Q75")))) -->
+
+<!--   # rename_all(funs(str_replace_all(., "_", "\\ "))) -->
+
+<!-- # cvs of all traits -->
+<!-- two_fac_cvs <- data.frame(trait = numeric_trait_names, -->
+<!--                           cv = two_fac_model %>% -->
+<!--                             map_dbl(agricolae::cv.model)) -->
+
+<!-- # # save the image to external file -->
+<!-- # save(list = c("two_fac_cvs", "two_fac_fitnmean", "map_inner2", "two_fac_model"), -->
+<!-- #      file = "./data/data_model.RData") -->
+<!-- ``` -->
+
+```{r load-rcbd-model-general}
+load("./data/data_model.RData")
+```
+
+## Model summary of fruit retention and fruit yield traits
+
+Treatment coefficients of fruit yield and fruit retention traits as obtained from the model described in Equation \@ref(eq:linear-model-form) is presented in Table \@ref(tab:model-summary1).
+
+```{r model-summary1, results='asis', eval=TRUE, cache=TRUE}
+# # must use this function with float=FALSE in stargazer
+long_stargazer <- function(..., lab_caption_custom = NULL){
+  output <- capture.output(stargazer::stargazer(...))
+  # The lines 4 and second last lines are the ones we want to remove...
+  output[c(4, length(output)-1)] <- output[c(4, length(output)-1)] %>% 
+    stringr::str_replace("tabular", "longtable")
+  output <- c(output[1:4], lab_caption_custom, output[5:length(output)])
+  # cat out the results - this is essentially just what stargazer does too
+  cat(paste(output, collapse = "\n"), "\n")
+}
+
+# set column labels
+column_labels <- c("\\parbox[t]{2.50cm}{Fruit retention}", 
+                   "\\parbox[t]{2.50cm}{Fruit yield}")
+long_stargazer(two_fac_model[c("Fruit_retention_percent2", "Fruit_yield_per_plant_kg")],
+               # title = "Mean comparison of traits",
+               lab_caption_custom = "\\caption{\\label{tab:model-summary1}Model summary of fruit retention and fruit yield}\\\\",
+               style = "all", digits = 2, 
+               header = FALSE, font.size = "small", 
+               column.labels = column_labels, 
+               model.names = TRUE, dep.var.labels.include = FALSE,
+               covariate.labels = c("66% defoliation", "No defoliation", "Hand thinning",
+                                    "Chemical thinning", "Replication1", "Replication 2", 
+                                    "66% Defoliation + Hand thinning", "No defoliation + Hand thinning", 
+                                    "66% defoliation + Chemical thinning", "No defoliation + Chemical thinning", "Constant"),
+               digits.extra = 3, align = TRUE, single.row = TRUE, 
+               # float.env = "table*",
+               df = FALSE, omit.stat = c("adj.rsq"), report = "vc*sp",
+               column.sep.width = "-10pt", float = FALSE, # float=TRUE enables title and labels  
+               no.space = TRUE)
+
+```
+
+<!-- Treatment coefficients of first five other trait variables as obtained from the model described in Equation \@ref(eq:linear-model-form) is presented in Table \@ref(tab:model-summary) -->
+
+<!-- ```{r model-summary, results='asis', eval=TRUE} -->
+<!-- # # must use this function with float=FALSE in stargazer -->
+<!-- long_stargazer <- function(...){ -->
+<!--   output <- capture.output(stargazer::stargazer(...)) -->
+<!--   # The lines 4 and second last lines are the ones we want to remove... -->
+<!--   output[c(4, length(output)-1)] <- output[c(4, length(output)-1)] %>% -->
+<!--     stringr::str_replace("tabular", "longtable") -->
+<!--   # cat out the results - this is essentially just what stargazer does too -->
+<!--   cat(paste(output, collapse = "\n"), "\n") -->
+<!-- } -->
+
+<!-- # set column labels -->
+<!-- column_labels <- c("\\parbox[t]{2.00cm}{Days to first flowering}", -->
+<!--                    "\\parbox[t]{2.00cm}{Days to fruit setting}", -->
+<!--                    "\\parbox[t]{2.00cm}{Days from fruit set to harvest}", -->
+<!--                    "\\parbox[t]{2.00cm}{Percentage abortion}", -->
+<!--                    "\\parbox[t]{2.00cm}{Total number of flowers}") -->
+
+<!-- long_stargazer(two_fac_model[1:5], -->
+<!--                title = "Mean comparison of traits", -->
+<!--                style = "all", digits = 2, -->
+<!--                header = FALSE, font.size = "small", -->
+<!--                column.labels = column_labels, -->
+<!--                model.names = TRUE, dep.var.labels.include = FALSE, -->
+<!--                covariate.labels = c("66% defoliation", "No defoliation", "Hand thinning", -->
+<!--                                     "Chemical thinning", "Replication1", "Replication 2", -->
+<!--                                     "66% Defoliation + Hand thinning", "No defoliation + Hand thinning", -->
+<!--                                     "66% defoliation + Chemical thinning", "No defoliation + Chemical thinning", "Constant"), -->
+<!--                digits.extra = 3, align = TRUE, single.row = TRUE, -->
+<!--                # float.env = "table*", -->
+<!--                df = FALSE, omit.stat = c("adj.rsq"), report = "vc*sp", -->
+<!--                column.sep.width = "-10pt", float = FALSE, no.space = TRUE) -->
+<!-- ``` -->
+
+## ANOVA of fruit retention and fruit yield traits
+
+ANOVA of the trait variables -- fruit retention and fruit yield -- described by the model, in Equation \@ref(eq:linear-model-form), are presented in Table \@ref(tab:model-anova1) and Table \@ref(tab:model-anova2), respectively.
+
+```{r model-anova, results="asis"}
+# model anova
+two_fac_tanova <- map(two_fac_model[c("Fruit_retention_percent2", "Fruit_yield_per_plant_kg")], 
+                      ~ anova(.x) %>% broom::tidy())
+# problem: the backslash is treated as special character and interpreted to latex character
+# walk2(.x = two_fac_model[c("Fruit_retention_percent2", "Fruit_yield_per_plant_kg")], 
+#       .y = c("\\caption{\\label{tab:model-anova1} ANOVA of Fruit retention percent ", 
+#              "\\caption{\\label{tab:model-anova2} ANOVA of Fruit yield per plant kg "),
+#      ~ long_stargazer(anova(.x), header = FALSE,
+#                       lab_caption_custom = .y,
+#                       float = FALSE,
+#                       # float.env = "table*",
+#                       font.size = "small", digits.extra = 3,
+#                       align = TRUE))
+```
+
+
+```{r model-anova1, results="asis", cache=TRUE}
+knitr::kable(two_fac_tanova$Fruit_retention_percent2,
+             caption = paste("ANOVA of Fruit retention percent"),
+             format = "latex", longtable = TRUE,
+             digits = 2, booktabs = TRUE, 
+             align = 'l', escape = TRUE) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "repeat_header"), 
+                            font_size = 10, position = "center") %>% 
+  kableExtra::column_spec(1, width = "10em")
+```
+
+
+```{r model-anova2, results="asis", cache=TRUE}
+knitr::kable(two_fac_tanova$Fruit_yield_per_plant_kg,
+             caption = paste("ANOVA of Fruit yield per plant"),
+             format = "latex", longtable = TRUE,
+             digits = 2, booktabs = TRUE, 
+             align = 'l', escape = TRUE) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "repeat_header"), 
+                            font_size = 10, position = "center") %>% 
+  kableExtra::column_spec(1, width = "10em")
+```
+
+<!-- ANOVA of the other five trait variables described by the model (in Equation \@ref(eq:linear-model-form)) is presented in Table \@ref(tab:model-anova). -->
+
+<!-- ```{r model-anova, results="asis", eval=FALSE} -->
+<!-- # model anova -->
+<!-- two_fac_tanova <- map(two_fac_model[seq_along(column_labels)],  -->
+<!--                       ~ anova(.x) %>% broom::tidy()) -->
+
+<!-- walk(two_fac_model[seq_along(column_labels)],  -->
+<!--      ~ stargazer::stargazer(anova(.x), header = FALSE, -->
+<!--                             # float = TRUE, float.env = "table*", -->
+<!--                             font.size = "small", digits.extra = 3, -->
+<!--                             align = TRUE)) -->
+<!-- ``` -->
+\blandscape
+
+## Treatment mean comparison
+
+```{r two-fac-groups-tab, results='asis', cache=TRUE}
+two_fac_two_traits <- two_fac_fitnmean %>% 
+               rename_all(funs(str_replace_all(., "_", "\\ "))) %>% 
+               select(Treatment, matches("Fruit yield per plant kg"), 
+                      matches("Fruit retention percent2")) %>% 
+               rename_all(funs(str_replace_all(., ".*(?=\\ \\S*$)", "") %>% str_trim()))
+             
+knitr::kable(two_fac_two_traits,
+             caption = paste("Treatment means with groups"),
+             format = "latex", longtable = TRUE,
+             digits = 2, booktabs = TRUE, 
+             align = 'l', escape = TRUE) %>% 
+  kableExtra::add_header_above(c(" " = 1, "Fruit yield per plant kg" = 9, 
+                                 "Fruit retention percent" = 9)) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "repeat_header",
+                                              "hold_position"), 
+                            font_size = 10, position = "center") %>% 
+  kableExtra::column_spec(1, width = "14em") %>% 
+  kableExtra::column_spec(2:ncol(two_fac_two_traits), width = "1.8em")
+```
+\elandscape
+
+## Effect of fruit thinning and defoliation on fruit retention
+
+It was observed from the findings that, among the thinning treatments, chemical thinning practice significantly decreased the percentage fruit retention (Figure \@ref(fig:treatments-fruit-retention)). Hand thinning treatment exhibited higher fruit retention which was statistically at par with no thinning treatment. With respect to defoliation practices, there was no significant difference among treatments. But, the lowest fruit retention was associated with 66 % defoliation practice. These results are in accordance with Zhou et al. (2000), Sharma, Singh and Singh (2003) and Nartvaranant (2016), all of which report a higher number of fruit set due to hand thinning treatment in papaya, peach and pummelo, respectively. Zhou et al. (2000) reported that flower abortion increased nine fold in 'Sunset' papaya subjected to 75% defoliation which might be due to the lesser amount of photoassimilates being available in the absence of source. (??Similarly, Jemric, Pavicic, Blaskovic, Krapac, and Pavicic (2003) found that chemical thinning with NAA caused lower crop density than hand thinned trees due to the strong thinning property, epinasty effect on papaya (Subhadrabandhu, Thongplew, & Wasee, 1997) and toxic effects (Bhattarai, 2009) of NAA.??) Results of flower and fruit drop are in contrast to that reported by Sharma (2011) from the study on plum cv. Satluj Purple. He reported having lowest fruit retention in control and the highest in NAA 60 ppm treated plants followed by hand thinning, which might be due to a different physiology of woody tree species and even, as reported by (??? cite), due to an abberant behavior of higher plants/trees of having enhanced fruit retaining tendency at lower concentration of NAA use.
+
+```{r treatments-fruit-retention, fig.cap="Effect of fruit thinning and defoliation on fruit retention of papaya (\\textit{Carica papaya}) cv. Red Lady at Chitwan, Nepal, 2016", fig.subcap=c("Fruit thinning", "Defoliation", "Fruit thinning x Defoliation"), fig.keep='all', fig.asp=0.8, fig.width=4, out.width='.48\\linewidth', cache=TRUE, fig.ncol = 2, fig.show="hold"}
+walk(.x = list("Fruit_thinning", "Defoliation", c("Fruit_thinning", "Defoliation")), 
+     ~(emmeans::lsmeans(two_fac_model$Fruit_retention_percent2, .x) %>% 
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Mean Yield (kg)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>% 
+       print())
+```
+
+
+## Effect of fruit thinning and defoliation on fruit yield
+
+Significant difference was found in fruit yield due to fruit thinning (Figure \@ref(fig:treatments-fruit-yield)). The highest fruit yield (56.4 kg) was observed with hand thinning which is at par with control (51.1 kg). The lowest yield (33.2 kg) was found with chemical thinning. The results obtained on yield are in harmony with the findings of Fischer et al. (2011), who found highest increase in fruit yield due to hand thinning over control treatment in apple which, might be due to availability of photo-assimilates. Sharma et al. (2003) reported that fruit yield was significantly higher in control as compared to chemical thinning (NAA treated plants) might be due to the toxic effect of over dose (Tahir & Hamid, 2002; Bhattarai, 2009; Abbas, Ahmad & Javaid, 2014). With regard to defoliation practices, there was no significant difference in the yield between treatments. However, the highest yield (50.7 kg) was recorded in 33% defoliated plants (\@ref(tab:treatments-fruit-yield)). These results are supported by Almanza-Merchan et al. (2011) who noticed higher exposure of the fruit clusters to solar radiation stimulates the translocation of photoassimilates towards the fruits and creates favorable micro-environmental conditions.
+
+```{r treatments-fruit-yield, fig.cap="Effect of fruit thinning and defoliation on fruit yield of papaya (\\textit{Carica papaya}) cv. Red Lady at Chitwan, Nepal, 2016", fig.subcap=c("Fruit thinning", "Defoliation", "Fruit thinning x Defoliation"), fig.keep='all', fig.asp=0.8, fig.width=4, out.width='.48\\linewidth', cache=TRUE, fig.ncol = 2, fig.show="hold"}
+walk(.x = list("Fruit_thinning", "Defoliation", c("Fruit_thinning", "Defoliation")), 
+     ~(emmeans::lsmeans(two_fac_model$Fruit_yield_per_plant_kg, .x) %>% 
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Mean Yield (kg)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = 0.6))
+     ) %>% 
+       print())
+```
+
+## Effect of fruit thinning and defoliation on physical characteristics of papaya
+
+Highly significant differences on fruit weight and fruit length of papaya due to fruit thinning were noticed (\@ref(tab:two-fac-groups-tab)). The highest fruit weight (1631 g) and fruit length (28.61 cm) was found with hand thinning. Lowest fruit weight (999 g) and fruit length (24.01 cm) was with chemical thinning, which was statistically at par with control thinning. Regarding the defoliation treatments there was no significant difference between fruit weight and fruit length. Fruit breadth was also found significantly different among fruit thinning practices with highest (39.38 cm) in hand thinning treatment. Among defoliation there was no significant difference in fruit breadth.
+
+The results of present study were consistent with Clingeleffer and Petrie (2006) in grapes, Link (2000) in apple and Park et al. (2000) in persimmon, who reported from the study on fruit thinning that higher fruit weight was found at harvest. Similarly, Burge et al. (1987), Sharma et al. (2003), and Nartvaranant (2016), reported that fruit thinning increased size of fruit due to the more availability of assimilates and higher leaf to fruit ratio.
+
+Significant difference was observed in seed weight for different thinning practices (\@ref(tab:two-fac-groups-tab)); highest seed weight (83.6 g) was observed with hand thinning and lowest seed weight was found with chemical thinning (39.8 g) practice. Pathirana et al. (2015) found in tomato that seed vigour and seed weight was higher due to fruit thinning and canopy management than when left unattended. Lower seed weight in fruit subjected to chemical thinning by NAA is probably due to the parthenocarpic effect, which is supported by Nawaz et al. (2011), albeit in mandarin. While, no significant difference was observed among the defoliation treatment which might be due to the single defoliation and recovery of vegetative growth by indeterminate growth habit of papaya.
+
+## Growth phenology of papaya
+
+### Plant height (Ht)
+
+```{r ht-summary}
+ht_summary <- two_fac_papaya %>% select(Replication, Fruit_thinning, Defoliation, starts_with("Ht"))
+
+```
+
+### Number of leaves (NoL)
+
+### Stem diameter (SD)
+
+### ??? (PL)
+
+### Number of flowers ()
+
+### Number of fruits set ()
+
+### Other features ...
+
+# Conclusion
+
+Chemical thinning increased flower and fruitlet abscission by 22 and 20 percent, respectively, than by hand thinning and without thinning practices. While in 66% defoliation abscission increased by 20 percent than control treatment, fruit weight and seed weight were increased by 39 percent and 52 percent respectively, with hand thinning compared to chemical thinning practice. While in no defoliation fruit weight increased by 9 percent than 66% defoliation practice. Hand thinning practice increased 41 percent yield than chemical thinning while 33% defoliation increased 18 percent yield than 66% defoliation. Chemical thinning improved TSS and vitamin C content and hand thinning improved shelf life of papaya. Hence, among the fruit thinning practices, hand thinning was found as the most promising cultural practice and among defoliation practices, 33% defoliation showed the best yield and quality of papaya.
+
+# Acknowledgement
+
+Author are thankful to the Department of Horticulture and Directorate of Research and Extension of Agriculture and Forestry University (AFU), Rampur, Chitwan. We praise the experimental facility, including trial plantation and the management, provided by Abloom Flora Farm, Chanauli, Chitwan. Also highly acknowledged are: 'Participatory Biodiversity and Climate Change Assessment for Integrated Pest Management in the Chitwan-Annapurna Landscape' project (USAID funded), who provided the grant in cash and kind for this study.
+
+
+<!-- ## Correlation analysis of traits -->
+
+<!-- ```{r correlation-annotate, cache=TRUE} -->
+<!-- # This function annotates the correlation coefficients -->
+<!-- # with the stars corresponding to the level of significance -->
+<!-- # x is a matrix containing the data -->
+<!-- # method : correlation method. "pearson"" or "spearman"" is supported -->
+<!-- # removeTriangle : remove upper or lower triangle -->
+<!-- # results : "html" or "latex" (default) -->
+<!-- # align: a vector of alignment values as is specified in xtable(x, align) -->
+
+<!-- large <- function(x){ -->
+<!--   paste0('{\\footnotesize{\\bfseries ', x, '}}') -->
+<!-- } -->
+
+<!-- corstars <-function(x, align, caption, method=c("pearson", "spearman"), removeTriangle=c("upper", "lower"), -->
+<!--                     result=c("none", "html", "latex")){ -->
+<!--   #Compute correlation matrix -->
+<!--   require(Hmisc) -->
+<!--   x <- as.matrix(x) -->
+<!--   correlation_matrix<-rcorr(x, type=method[1]) -->
+<!--   R <- correlation_matrix$r # Matrix of correlation coeficients -->
+<!--   p <- correlation_matrix$P # Matrix of p-value -->
+
+<!--   ## Define notions for significance levels; spacing is important. -->
+<!--   mystars <- ifelse(p < .0001, "****", ifelse(p < .001, "*** ", ifelse(p < .01, "**  ", ifelse(p < .05, "*   ", "    ")))) -->
+
+<!--   ## trunctuate the correlation matrix to two decimal -->
+<!--   R <- format(round(cbind(rep(-1.11, ncol(x)), R), 2))[,-1] -->
+
+<!--   ## build a new matrix that includes the correlations with their apropriate stars -->
+<!--   Rnew <- matrix(paste(R, mystars, sep=""), ncol=ncol(x)) -->
+<!--   diag(Rnew) <- paste(diag(R), " ", sep="") -->
+<!--   rownames(Rnew) <- colnames(x) -->
+<!--   colnames(Rnew) <- paste(colnames(x), "", sep="") -->
+
+<!--   ## remove upper triangle of correlation matrix -->
+<!--   if(removeTriangle[1]=="upper"){ -->
+<!--     Rnew <- as.matrix(Rnew) -->
+<!--     Rnew[upper.tri(Rnew, diag = TRUE)] <- "" -->
+<!--     Rnew <- as.data.frame(Rnew) -->
+<!--   } -->
+
+<!--   ## remove lower triangle of correlation matrix -->
+<!--   else if(removeTriangle[1]=="lower"){ -->
+<!--     Rnew <- as.matrix(Rnew) -->
+<!--     Rnew[lower.tri(Rnew, diag = TRUE)] <- "" -->
+<!--     Rnew <- as.data.frame(Rnew) -->
+<!--   } -->
+
+<!--   ## remove last column and return the correlation matrix -->
+<!--   Rnew <- cbind(Rnew[1:length(Rnew)-1]) -->
+<!--   if (result[1]=="none") return(Rnew) -->
+<!--   else{ -->
+<!--     if(result[1]=="html") print(xtable(Rnew), type="html", comment = FALSE) -->
+<!--     else print(xtable(Rnew, auto = TRUE,  align = align, caption = caption), type="latex", -->
+<!--                comment = FALSE, size = "\\footnotesize", -->
+<!--                sanitize.colnames.function = large, -->
+<!--                booktabs = TRUE, tabular.environment="longtable", -->
+<!--                floating=FALSE) -->
+<!--   } -->
+<!-- } -->
+<!-- ``` -->
+
+<!-- \blandscape -->
+
+<!-- ```{r correlation-postharvest, results='asis'} -->
+<!-- # crop yield and agro-morphology -->
+<!-- cortable <- corstars(two_fac_papaya %>% -->
+<!--                        select_at(which(map_lgl(., is.numeric))) %>% -->
+<!--                        select(-contains("Replication"))) -->
+<!-- # # write to csv -->
+<!-- # cortable %>% rownames_to_column(var = "traits") %>% write_csv("correlation_papaya_ramesh.csv") -->
+
+<!-- # # html -->
+<!-- # cortable %>% -->
+<!-- #   knitr::kable(format = "html", -->
+<!-- #                caption = "Pearson correlation coefficients of Post harvest traits", -->
+<!-- #                booktabs = TRUE, align = "l" -->
+<!-- #                # longtable = TRUE -->
+<!-- #                ) %>% -->
+<!-- #   kableExtra::kable_styling(font_size = 14, bootstrap_options = c("striped", "responsive")) %>% -->
+<!-- #   # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>% -->
+<!-- #   kableExtra::row_spec(0, bold = TRUE) %>% -->
+<!-- #   kableExtra::column_spec(1, bold = TRUE) %>% -->
+<!-- #   kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *", -->
+<!-- #                        threeparttable = TRUE, escape = FALSE) -->
+<!-- cortable <- cortable %>% -->
+<!--   rename_all(function(x)stringr::str_trunc(x, width = 4, -->
+<!--                                            side = "c", ellipsis = "")) %>% -->
+<!--   rownames_to_column("Trait") %>% -->
+<!--   mutate(Trait = str_replace_all(Trait, "_", "\\ ")) -->
+
+<!-- walk(list(cortable[, 1:15], -->
+<!--           cortable[, c(1, 16:29)], -->
+<!--           cortable[, c(1, 30:44)], -->
+<!--           cortable[, c(1, 45:59)], -->
+<!--           cortable[, c(1, 60:74)], -->
+<!--           cortable[, c(1, 75:ncol(cortable))]), -->
+<!--      ~ knitr::kable(.x, format = "latex", -->
+<!--                     caption = "Pearson correlation coefficients of observed traits", -->
+<!--                     booktabs = TRUE, align = "l", -->
+<!--                     longtable = TRUE -->
+<!--      ) %>% -->
+<!--        kableExtra::kable_styling(font_size = 8, latex_options = c("striped")) %>% -->
+<!--        # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>% -->
+<!--        kableExtra::row_spec(0, bold = TRUE) %>% -->
+<!--        kableExtra::column_spec(1, bold = TRUE, width = "9em") %>% -->
+<!--        kableExtra::column_spec(2:ncol(.x), width = "3.1em") %>% -->
+<!--        kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *", threeparttable = TRUE, escape = FALSE) %>% -->
+<!--        print()) -->
+<!-- ``` -->
+<!-- \elandscape -->
+
+<!-- ```{r} -->
+<!-- # # Write analysis summary outputs -->
+
+<!-- # # write a single file to csv -->
+<!-- # two_fac_gmeans_df %>% write_csv(path = "./output/papaya_dmrt.csv") -->
+
+<!-- # # write to csv -->
+<!-- # dmrt_files <- two_fac_papaya %>% -->
+<!-- #   map_lgl(is.numeric) %>% -->
+<!-- #   which() %>% -->
+<!-- #   names() %>% -->
+<!-- #   stringr::str_replace_all("/", "_") # filename contains "\", to fix the error -->
+<!-- # ifelse(dir.exists("./dmrt_results/"), -->
+<!-- #        "The directory already exists", -->
+<!-- #        dir.create("./dmrt_results/")) -->
+<!-- # -->
+<!-- # walk2(two_fac_gmeans, paste("./dmrt_results/", dmrt_files, ".csv", sep = ""), -->
+<!-- #       .f = ~ write_csv(.x, .y)) -->
+
+<!-- # zip all files -->
+<!-- # dmrt_dir_file_paths <- dir("./dmrt_results/", full.names = TRUE) -->
+<!-- # zip(zipfile = "dmrt_all_traits.zip", files = dmrt_dir_file_paths) -->
+
+<!-- # for other tests -->
+<!-- # agricolae::SNK.test(ramesh_rcbd_2fac, "Fruit_thinning", console = TRUE) -->
+<!-- # agricolae::HSD.test(ramesh_rcbd_2fac, "Fruit_thinning", console = TRUE) -->
+<!-- # save.image("papaya_88_responses") -->
+
+<!-- # # write to csv -->
+<!-- # ifelse(dir.exists("./anova_results/"), -->
+<!-- #        "The directory already exists", -->
+<!-- #        dir.create("./anova_results/")) -->
+<!-- # -->
+<!-- # walk2(two_fac_tanova, paste("./anova_results/", dmrt_files, ".csv", sep = ""), # "dmrt_files" is just filenames -->
+<!-- #       .f = ~ write_csv(.x, .y, na = "")) -->
+
+<!-- # zip all files -->
+<!-- # anova_dir_file_paths <- dir("./anova_results/", full.names = TRUE) -->
+<!-- # zip(zipfile = "anova_all_traits.zip", files = anova_dir_file_paths) -->
+<!-- ``` -->

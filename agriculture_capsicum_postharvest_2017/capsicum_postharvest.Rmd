@@ -1,0 +1,342 @@
+---
+title: "Comparison of treatments and correlation analysis"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 3
+    keep_tex: yes
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage[table]{xcolor}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \usepackage{rotating}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \usepackage{subcaption}
+- \newcommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
+- \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(tidy = TRUE, cache = TRUE, 
+                      echo = FALSE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, 
+                      fig.show = "hold", fig.pos = "H",
+                      fig.align = "center", 
+                      fig.asp = 0.7, message = FALSE, warning = FALSE)
+options(knitr.kable.NA = "", digits = 3)
+```
+
+
+```{r load-data}
+# Fetch data
+caps_sk <- readxl::read_xlsx("./data.xlsx", sheet = "data_sheet") %>% 
+  mutate_at(c("EC", "SANi", "Rep"), as.factor)
+
+# # if changing colnames is a need
+# var_nitrogen <- var_nitrogen %>% 
+#   magrittr::set_colnames()
+```
+
+
+# PAM clustering with PCA
+
+```{r pam-pca-clust}
+# pam: partitioning around medoids
+suppressPackageStartupMessages(require(ggfortify))
+ggplot2::autoplot(cluster::pam(var_nitrogen %>% 
+                                 rename_all(function(x)stringr::str_replace_all(x, " ", "_")) %>% 
+                                 select_at(which(map_lgl(., is.numeric))) %>% 
+                                 scale(), k = 3),
+                  frame = TRUE,
+                  frame.type = 'norm', # plots ellipse
+                  loadings = TRUE, loadings.label = TRUE,
+                  loadings.label.size = 5)
+```
+
+
+# PCA biplot 
+
+```{r pca-biplot}
+# custom created ggplot2 function
+PCbiplot <- function(PC, x="PC1", y="PC2") {
+  # PC being a prcomp object
+  data <- data.frame(PC$x)
+  plot <- ggplot(data, aes(x=get(x), y=get(y))) +
+    geom_point() +
+    xlab("PC1") +
+    ylab("PC2")
+  plot <- plot + geom_hline(yintercept = 0, size=.2) + geom_vline(xintercept = 0, size=.2)
+  datapc <- data.frame(varnames=rownames(PC$rotation), PC$rotation)
+  mult <- min(
+    (max(data[,y]) - min(data[,y])/(max(datapc[,y])-min(datapc[,y]))),
+    (max(data[,x]) - min(data[,x])/(max(datapc[,x])-min(datapc[,x])))
+  )
+  datapc <- transform(datapc,
+                      v1 = .7 * mult * (get(x)),
+                      v2 = .7 * mult * (get(y))
+  )
+  plot <- plot + coord_equal() +
+    geom_text(data=datapc, aes(x=v1, y=v2, label=varnames), size = 5, vjust=1, color="red")
+  plot <- plot +
+    geom_segment(data=datapc, aes(x=0, y=0, xend=v1, yend=v2),
+                 arrow=arrow(length=unit(0.2,"cm")), alpha=0.75, color="red")
+  plot
+}
+
+PCbiplot(prcomp(plant_traits %>% 
+                  group_by(gen) %>% 
+                  summarise_if(is.numeric, mean) %>% 
+                  select_at(which(map_lgl(., is.numeric))) %>% 
+                  select(-contains("rep")) %>% 
+                  scale())) + 
+  theme_bw() +
+  theme(text = element_text(size = 15))
+```
+
+# Cluster dendrogram
+
+A cluster dendrogram using average linkage (Unweighted Pair Group Method with Arithmetic Mean; UPGMA) method for proximity calculation showing three discrete clusters (cluster number determined using GAM) is presented in Figure \@ref(fig:dendrogram-viz).
+
+```{r dendrogram-viz, fig.cap="Dendrogram clustering using UPGMA method", fig.subcap=c("Crop yield and agro-morphological traits", "Seed fatty acid content traits"),  fig.keep='all', fig.width=6, out.width='.80\\linewidth', cache=TRUE, eval=TRUE, echo=FALSE, fig.ncol=1, fig.show="hold", warning=FALSE, message=FALSE}
+
+# crop yield and agro-morphology
+hierarchial_clusters <- var_nitrogen %>% 
+  group_by(treatment) %>% 
+  summarise_if(is.numeric, mean) %>% 
+  select_at(which(map_lgl(., is.numeric))) %>% 
+  scale() %>%
+  dist(method = "euclidean") %>% 
+  hclust("ave")
+
+ggdendro_plants <- hierarchial_clusters %>% 
+  as.dendrogram() %>% 
+  dendextend::set("labels_cex", 1.2) %>% 
+  dendextend::set("labels_col", value = c(3,4), 
+                  k=2) %>% 
+  dendextend::set("branches_k_color", k = 2) %>% 
+  dendextend::set("branches_lwd", 0.8) %>% 
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=2)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants), 
+                   enframe(clust, value = "cluster"), 
+                   by.x = "label", by.y = "name") %>% 
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(x){c(min(x), (min(x)+max(x))/2, max(x))}
+
+ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), aes(x=x, y=y, label=paste(" ", (var_nitrogen %>% 
+                                                                                 group_by(treatment) %>% 
+                                                                                 summarise_if(is.numeric, mean) %>%                                                                                 pull(treatment) %>% levels())[hierarchial_clusters$order], sep = ""), 
+                                              colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax), 
+            color="red", fill=1:2, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"), 
+                     values = seq_along(1:2)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        text = element_text(size = 14))
+```
+
+
+# Correlation matrix of numeric variables
+
+```{r correlation-annotate}
+# This function annotates the correlation coefficients 
+# with the stars corresponding to the level of significance
+# x is a matrix containing the data
+# method : correlation method. "pearson"" or "spearman"" is supported
+# removeTriangle : remove upper or lower triangle
+# results : "html" or "latex" (default)
+# align: a vector of alignment values as is specified in xtable(x, align)
+
+large <- function(x){
+  paste0('{\\footnotesize{\\bfseries ', x, '}}')
+}
+
+corstars <-function(x, align, caption, method=c("pearson", "spearman"), removeTriangle=c("upper", "lower"),
+                    result=c("none", "html", "latex")){
+  #Compute correlation matrix
+  require(Hmisc)
+  x <- as.matrix(x)
+  correlation_matrix<-rcorr(x, type=method[1])
+  R <- correlation_matrix$r # Matrix of correlation coeficients
+  p <- correlation_matrix$P # Matrix of p-value 
+  
+  ## Define notions for significance levels; spacing is important.
+  mystars <- ifelse(p < .0001, "****", ifelse(p < .001, "*** ", ifelse(p < .01, "**  ", ifelse(p < .05, "*   ", "    "))))
+  
+  ## trunctuate the correlation matrix to two decimal
+  R <- format(round(cbind(rep(-1.11, ncol(x)), R), 2))[,-1]
+  
+  ## build a new matrix that includes the correlations with their apropriate stars
+  Rnew <- matrix(paste(R, mystars, sep=""), ncol=ncol(x))
+  diag(Rnew) <- paste(diag(R), " ", sep="")
+  rownames(Rnew) <- colnames(x)
+  colnames(Rnew) <- paste(colnames(x), "", sep="")
+  
+  ## remove upper triangle of correlation matrix
+  if(removeTriangle[1]=="upper"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  
+  ## remove lower triangle of correlation matrix
+  else if(removeTriangle[1]=="lower"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  
+  ## remove last column and return the correlation matrix
+  Rnew <- cbind(Rnew[1:length(Rnew)-1])
+  if (result[1]=="none") return(Rnew)
+  else{
+    if(result[1]=="html") print(xtable(Rnew), type="html", comment = FALSE)
+    else print(xtable(Rnew, auto = TRUE,  align = align, caption = caption), type="latex", 
+               comment = FALSE, size = "\\footnotesize", 
+               sanitize.colnames.function = large, 
+               booktabs = TRUE, tabular.environment="longtable", 
+               floating=FALSE)
+  }
+} 
+```
+
+
+```{r correlation-postharvest, results='asis'}
+# crop yield and agro-morphology
+cortable <- corstars(caps_sk %>% 
+                       select_at(which(map_lgl(., is.numeric))))
+
+# # write to csv
+# cortable %>% 
+#   rownames_to_column(var = "traits") %>% 
+#   write_csv("correlation_santoshK.csv", na = "")
+
+# html
+cortable %>%
+  knitr::kable(format = "html",
+               caption = "Pearson correlation coefficients of traits",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, bootstrap_options = c("striped", "responsive")) %>%
+  # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE)
+
+cortable %>%
+  rename_all(function(x)stringr::str_trunc(x, width = 4, side = "c", ellipsis = "")) %>% 
+  knitr::kable(format = "latex",
+               caption = "Pearson correlation coefficients of Post harvest traits",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, latex_options = c("striped", "scale_down")) %>%
+  # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE) %>% 
+  kableExtra::landscape()
+
+```
+
+
+# Analyis
+
+```{r analysis-and-results}
+
+# rcbd model
+two_fac_model <- map(c("pht 20", "pht 40", "pht 60", "pht 80", "nol 20", "nol 40", "nol 60", 
+                       "nol 80", "leaf length 40", "leaf length 60", "leaf length 80", 
+                       "leaf breadth40", "leaf breadth 60", "leaf breadth80", "spreading 40", 
+                       "spreading 60", "spreading 80", "stalk length", "dm", 
+                       # "spreading",
+                       "root length", "curd dia", "curd wt", "veg wt", "tss", "ascorbic"),
+                     .f = ~ lm(get(.x) ~ variety*nitrogen + 
+                                 replication, 
+                               data = var_nitrogen))
+
+# mean separation
+map_inner <- function(y)map_dfr(list("variety", "nitrogen", 
+                                     c("variety", "nitrogen")), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("Treatment"))
+two_fac_gmeans <- map(two_fac_model, map_inner)
+two_fac_gmeans <- map(.x = two_fac_gmeans,
+                      .f = ~ .x %>% rename("Mean"="get(.x)"))
+
+dmrt_files <- var_nitrogen %>% map_lgl(is.numeric) %>% which() %>% names()
+walk2(two_fac_gmeans, paste("./dmrt_results/", dmrt_files, ".csv", sep = ""), 
+      .f = ~ write_csv(.x, .y))
+
+# agricolae::SNK.test(ramesh_rcbd_2fac, "Fruit_thinning", console = TRUE)
+# agricolae::HSD.test(ramesh_rcbd_2fac, "Fruit_thinning", console = TRUE)
+two_fac_gm_names <- map(c("Days_for_Flowering", "Days_for_Fruit_Set", 
+            "Days_for_fruit_set_to_Harvest", 
+            "Firmness", "pulp_weight", 
+            "PWL%_3DAH", "PWL%_5_DAH", 
+            "PWL%_7_DAH", "PWL%_9_DAH", "TSS"), ~ paste(.x, c("", "_group"), sep = "")) %>% 
+  unlist()
+
+```
+
+
+# All results summary
+
+```{r two-fac-groups-tab, results='asis'}
+
+walk2(.x = two_fac_gmeans, 
+      .y = c("Days for Flowering", "Days for Fruit Set", 
+             "Days for fruit set to Harvest", 
+             "Firmness", "pulp weight", 
+             "PWL\\% 3DAH", "PWL\\% 5 DAH", 
+             "PWL\\% 7 DAH", "PWL\\% 9 DAH", "TSS"),
+      .f = ~ knitr::kable(.x, 
+                          caption = paste("Treatment means with groups of", .y),
+                          format = "latex", longtable = TRUE,
+                          digits = 2, booktabs = TRUE, 
+                          align = 'l', escape = TRUE) %>% 
+        kableExtra::kable_styling(latex_options = c("striped", 
+                                                    "hold_position"), 
+                                  font_size = 12, position = "left") %>% 
+        print())
+```

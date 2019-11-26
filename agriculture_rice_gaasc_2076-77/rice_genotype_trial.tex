@@ -1,0 +1,446 @@
+\documentclass[12pt,]{article}
+\usepackage{lmodern}
+\usepackage{setspace}
+\setstretch{2}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\PassOptionsToPackage{usenames,dvipsnames}{color} % color is loaded by hyperref
+\hypersetup{unicode=true,
+            pdftitle={Rice genotype trial: A set-up manual},
+            pdfauthor={Deependra Dhakal},
+            colorlinks=true,
+            linkcolor=Maroon,
+            citecolor=DodgerBlue4,
+            urlcolor=Blue,
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Rice genotype trial: A set-up manual}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Deependra Dhakal}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{6/28/2019}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead[L]{Deependra Dhakal}
+\fancyhead[R]{Rice genotype trial ...}
+\usepackage{lineno}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\begin{document}
+\maketitle
+
+\hypertarget{background}{%
+\section{Background}\label{background}}
+
+Most important cereal for more than half of the world's population (Fageria et al., 2003), Muthayya et al. (\protect\hyperlink{ref-muthayya2014overview}{2014})
+
+Rainfed rice systems dominate in Africa(Seck et al. \protect\hyperlink{ref-seck2012crops}{2012})
+
+Upland rice refers to rice grown on both flat and sloping fields that are prepared and seeded under dryland conditions and depend on rainfall for moisture. This is also known as dryland, rainfed, or aerobic rice. This type of rice cultivation is most common on small- and medium-size farms in South America, Asia, and Africa. Brazil is the world's largest producer of upland rice (Fageria et al., 1982; IRRI, 1984; Fageria, 2001a).
+
+Flooded rice is grown on flat land with controlled irrigation. It is also known as irrigated, lowland, or waterlogged rice. Lowland rice may be planted by drilling the seed into dry soil, by broadcasting pre-germinated seed into flooded fields, or by planting seedlings into flooded fields by machine or by hand. Rice planted into dry soil is commonly flooded when seedlings are 25--30 days old.
+
+Comparison of lowland and upland rice system mentions following notable features of the two cultures:
+
+Lowland: Reduced root zone during major part of crop growth; High tillering; Thin and
+shallow root system; Stable and high yield
+Upland: Oxidized root zone during major part of crop growth; Low tillering; Relatively low tillering; Vigorous and deep root system; Unstable and low yield
+
+Semidwarf varieties are suited for lowland conditions because they lend themselves to improved cultural practices.
+
+Oryza sativa L. and Oryza glaberrima Steud. are cultivated species of rice. Oryza sativa is widely cultivated, but O. glaberrima is mainly grown in Africa where it is rapidly being replaced by O. sativa. The two species show small morphological differences, but hybrids between them are always sterile (Chang, 1976).
+
+Paddy, on milling, gives approximately 20\% husk, 50\% whole rice, 16\% broken rice, and 14\% bran and meal (Purseglove, 1985).
+
+The Agriculture Development Strategy (ADS) of Government of Nepal (GoN) has also given top priority to rice for ensuring food security and enhancing economic growth. In most of the rice growing areas fertilizer use is lower than the recommended rate by the government which partially contributes to lower yields (3.3 t ha-1 national average) than potential yields (\textgreater{} 5 t ha-1).
+
+Ghaiya dhan (Upland rice) has on average low productivity
+
+Khus, G.S. (1984). Terminology for Rice Growing environments. International rice Research Institute. Los Banos, Philippines
+
+Importance of rice in achiving nutritional security. Major source of calorie for Nepalese. On average, samples of rice grain contain 80\% starch, 12\% percent water, 7.5\% protein, and 0.5\% ash (Chandler 1979). Rice grain is also a good source of vitamins B and E, riboflavin, thiamine and niacin but has little or no vitamin A, C or D (Grist 1986; Juliano 1993)
+
+\hypertarget{cultivation-practices}{%
+\section{Cultivation practices}\label{cultivation-practices}}
+
+\hypertarget{land-preparation}{%
+\subsection{Land preparation}\label{land-preparation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Plough the field when dry
+\item
+  Create small bunds for initial wetting of transplanting bed (\textasciitilde{}100 \(m^2\))
+\item
+  Allow water to infiltrate and form saturated layer
+\item
+  Puddle and level the field
+\item
+  If compost/FYM is applied, spread the compost/FYM one month prior to seedling transplanting and mix it thoroughly through tilling.
+\end{itemize}
+
+\hypertarget{seed-rate}{%
+\subsection{Seed rate}\label{seed-rate}}
+
+\begin{itemize}
+\tightlist
+\item
+  Seed rate: 50 kg/ha for OPV and 20 kg/ha for hybrid
+\item
+  Adjusted seed rate for young seedling transplanting in seedling limited situation: 40 kg/ha for OPV
+\end{itemize}
+
+\hypertarget{seed-bed-preparation}{%
+\subsection{Seed bed preparation}\label{seed-bed-preparation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Wet nursery beds will be used to grow the rice seedling.
+\item
+  A requirement of 700 m2 area for transplanting of one hectare is set as reference.
+\item
+  The bed will have fine tilth by 2-3 ploughing and levelled.
+\item
+  In each bed, a basal dose of 8 g P2O5/ m2 area will be applied.
+\item
+  Rice seeds will be soaked in water (room temperature) for 8 hr inside jute sacks.
+\item
+  After 8 hr, the seeds will be cleaned with fresh water and will keep in shade with spraying with water and stirring for air circulation until sprouting.
+\item
+  The sprouted seed will be broadcasted or line sowed in wet-bed.
+\item
+  First few days (5 d) keep the field saturated and then increase water level to 5 cm. - A drainage channel of 30 cm will be constructed between nursery beds (bed width= 1.25 m) if area is getting excess rainfall.
+\item
+  After 10 days of seed sowing 10 g /m2 urea will be broadcasted.
+\item
+  Within 20-25 days the seedling will be transplanted in main field.
+\end{itemize}
+
+\hypertarget{transplanting-time}{%
+\subsection{Transplanting time}\label{transplanting-time}}
+
+Transplanting time: June-July
+
+\hypertarget{planting-distance}{%
+\subsection{Planting distance}\label{planting-distance}}
+
+\begin{itemize}
+\tightlist
+\item
+  OPV 20 x 20 cm with 2-3 seedlings/ hill
+\item
+  Hybrid 25 x 20 cm with 1 seedling/hill
+\end{itemize}
+
+\hypertarget{water-management}{%
+\subsection{Water management}\label{water-management}}
+
+\begin{itemize}
+\tightlist
+\item
+  Water will be maintained at a depth of 2 cm up to panicle initiation and 5 cm thereafter up to one week before harvest.
+\end{itemize}
+
+\hypertarget{fertilizer-recommendation}{%
+\subsection{Fertilizer recommendation}\label{fertilizer-recommendation}}
+
+\begin{itemize}
+\tightlist
+\item
+  100:30:30 kg NP2O5K2O/ha (GoN)
+\item
+  20 kg ZnSO4 + Borax 5 kg/ha (As per necessity)
+\end{itemize}
+
+\hypertarget{weed-control}{%
+\subsection{Weed control}\label{weed-control}}
+
+\begin{itemize}
+\tightlist
+\item
+  Weeds were controlled by two-hand weeding at 20 and 40 d after transplanting.
+\end{itemize}
+
+\hypertarget{methodology}{%
+\section{Methodology}\label{methodology}}
+
+\hypertarget{quantity-of-rice-seed-available-for-transplanting}{%
+\subsection{Quantity of rice seed available for transplanting}\label{quantity-of-rice-seed-available-for-transplanting}}
+
+\begin{itemize}
+\tightlist
+\item
+  100 gm of each of 14 pipeline entries
+\item
+  50 gm of Ghaiya-1
+\end{itemize}
+
+\hypertarget{seedling-and-field-plot-requirement-calculation}{%
+\subsection{Seedling and field plot requirement calculation}\label{seedling-and-field-plot-requirement-calculation}}
+
+\begin{itemize}
+\tightlist
+\item
+  With the given recommendation of 40 kg/ha, 100 gm of seed suffices 25 \(m^2\) and 50 gm of seed suffices 12.5 \(m^2\).
+\item
+  Since the limitting amount of seed is that for check variety Ghaiya-1, each Replication will have to include 2.5 \(m^2\) strip of the check variety, ideally. The strip will ideally contain eight 20 cm spaced rows of rice seedlings (if there is limitation to constructing elongated rows; \emph{Case I}) or six 20 cm spaced rows of rice seedlings (if there is ample space to accomodate longer rows; \emph{Case II}). Thus for each case, there shall be following Net plot area specification:
+\end{itemize}
+
+For Ghaiya-1:
+
+\begin{itemize}
+\tightlist
+\item
+  Case I:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Length: 1.6
+  \item
+    Width: 1.6
+  \end{itemize}
+\item
+  Case II:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Length: 2.1
+  \item
+    Width: 1.2
+  \end{itemize}
+\end{itemize}
+
+For remaining 19 genotypes:
+
+\begin{itemize}
+\tightlist
+\item
+  Case I (16 rows):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Length: 1.6
+  \item
+    Width: 3.2
+  \end{itemize}
+\end{itemize}
+
+Case II (12 rows):
+- Length: 2.1
+- Width: 2.4
+
+\hypertarget{area-estimates-for-case-i}{%
+\subsubsection{Area estimates for case I}\label{area-estimates-for-case-i}}
+
+\begin{itemize}
+\tightlist
+\item
+  Thus, Net area estimates for a replication translates to 99.84 \(m^2\), using different plot sizes for Ghaiya and rest of the other 19 genotypes.
+\item
+  If 0.6 m spacing is allowed between two consecutive plots, total coverage would be (in linear placement of the plots):
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Length: 42.8 \(m\)
+  \item
+    Breadth: 3.2 \(m\)
+  \end{itemize}
+\item
+  Thus, Gross area for a single replication translates to 136.96 \(m^2\)
+\end{itemize}
+
+\hypertarget{area-estimates-for-case-ii}{%
+\subsubsection{Area estimates for case II}\label{area-estimates-for-case-ii}}
+
+\begin{itemize}
+\tightlist
+\item
+  Note that Case II requires a longer replication strip. This might be infeasible.
+\item
+  Note however, Gross area for a single replication translates to 126.72 \(m^2\) which is smaller larger than that for Case I. This could be due to rounding artifact (from earlier dimension assumption).
+\end{itemize}
+
+\hypertarget{being-stingy}{%
+\subsubsection{Being stingy}\label{being-stingy}}
+
+\begin{itemize}
+\tightlist
+\item
+  But, were we to be stingy and use only a fraction of seed (half) of the pipeline genotypes to match Ghaiya's allottment, we would require Gross area of 68.48 \(m^2\) for a single replication.
+\item
+  Note that we avoid the case II because of lengthier Gross area for single replication requirement.
+\end{itemize}
+
+\hypertarget{being-practical}{%
+\subsubsection{Being practical}\label{being-practical}}
+
+\begin{itemize}
+\tightlist
+\item
+  The proposed layout is to be only rigidly followed when enough land is available and if we were taking utmost pain in making things look pleasent (more or less square plots).
+\item
+  However, a more practically sound approach to layout would be to use 1 m wide plots accomodating 5 rows of transplants. The Gross linear length of the replicate is:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    30.8 \(m\)
+  \end{itemize}
+\item
+  Thus the Gross plot area (with plot spacing included) requirement reduces to:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    154 \(m^2\)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{being-practical-and-stingy}{%
+\subsubsection{Being practical and stingy}\label{being-practical-and-stingy}}
+
+\begin{itemize}
+\tightlist
+\item
+  If we were to be stingy and use only a fraction of seed (half) of the pipeline genotypes to match Ghaiya's allottment, we would require Gross area of 77 \(m^2\) for a single replication.
+\end{itemize}
+
+Now suit your taste!
+
+\hypertarget{total-area-requirement-e2}{%
+\subsection{Total area requirement (E2)}\label{total-area-requirement-e2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using ``Being practical'' approach, total area required for trial in experiment E2 is 464.4 (Assuming all three spacings between replications for some leeway).
+\end{itemize}
+
+\hypertarget{fertilizer-requirement}{%
+\subsection{Fertilizer requirement}\label{fertilizer-requirement}}
+
+\begin{itemize}
+\tightlist
+\item
+  Let us take Gross area (with plot spacing included but inter-replication space excluded) for fertilizer calculation;
+\item
+  One ha of field requires 30 kg P. 462 \(m^2\) area requires 3.0130435 kg of DAP.
+\item
+  3.0130435 kg DAP contains 0.5423478 kg N.
+\item
+  One ha of field requires 100 kg N. 100. 462 \(m^2\) of field requires 4.62 kg of N. After supplementing from DAP required N to be given from Urea is: 4.0776522 kg.
+\item
+  4.0776522 kg of N can be obtained from 8.8644612 kg Urea.
+\item
+  One ha of field requires 30 kg K. 462 \(m^2\) requires 2.31 kg MoP.
+\end{itemize}
+
+\hypertarget{experiment-design}{%
+\subsection{Experiment design}\label{experiment-design}}
+
+\includegraphics[width=0.95\linewidth]{rice_genotype_trial_files/figure-latex/field-layout-1}
+
+\hypertarget{bibliography}{%
+\section*{Bibliography}\label{bibliography}}
+\addcontentsline{toc}{section}{Bibliography}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-muthayya2014overview}{}%
+Muthayya, Sumithra, Jonathan D Sugimoto, Scott Montgomery, and Glen F Maberly. 2014. ``An Overview of Global Rice Production, Supply, Trade, and Consumption.'' \emph{Annals of the New York Academy of Sciences} 1324 (1). Wiley Online Library: 7--14.
+
+\leavevmode\hypertarget{ref-seck2012crops}{}%
+Seck, Papa Abdoulaye, Aliou Diagne, Samarendu Mohanty, and Marco CS Wopereis. 2012. ``Crops That Feed the World 7: Rice.'' \emph{Food Security} 4 (1). Springer: 7--24.
+
+
+\end{document}

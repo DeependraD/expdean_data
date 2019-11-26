@@ -1,0 +1,982 @@
+---
+title: "Analysis of Wheat for breeding characters"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 3
+    keep_tex: yes
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \usepackage{rotating}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \usepackage{subfig}
+- \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(tidy = TRUE, cache = TRUE, 
+                      echo = FALSE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, warning = FALSE, message = FALSE,
+                      # fig.show = "hold", 
+                      fig.align = "center", fig.width = 5,
+                      fig.asp = 0.9, out.width = "0.7\\linewidth")
+options(knitr.kable.NA = "", digits = 3)
+# require(lmerTest)
+require(agricolae)
+```
+
+# Phenotypic traits
+
+## Phenotypic data import
+
+```{r load-data}
+normal <- readxl::read_xls("./pramoda-thaguna.xls", sheet = "normal") %>% 
+  mutate_at(vars(`Genotypes`, `Replication`), as.factor)
+
+early <- readxl::read_xls("./pramoda-thaguna.xls", sheet = "early") %>% 
+  mutate_at(vars(`treatment`, `Replication`), as.factor) %>% 
+  select(-`plot no`)
+```
+
+<!-- ## Analysis of phenotypic data -->
+
+```{r analysis-and-results}
+# rcbd model
+early_model <- map(c("DF", "DM", "pH", "PL", 
+                     "Tiller", "GY/HA", "TW", "sterility",
+                     "grain/spike", "BM", "dryM", "HI"),
+                   .f = ~ lm(get(.x) ~ treatment+Replication, 
+                             data = early))
+
+normal_model <- map(c("DF", "DM", "pH", "PL", 
+                      "Tiller", "GY/HA", "TW", "sterility", 
+                      "grain/spike", "BM", "HI"),
+                    .f = ~ lm(get(.x) ~ Genotypes+Replication, 
+                              data = normal))
+
+# mean separation
+## normal
+map_inner_normal <- function(y)map_dfr(list("Genotypes" 
+                                     # "Replication"
+                                     ), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("Treatment"))
+
+two_fac_gmeans_normal <- map(normal_model, map_inner_normal)
+two_fac_gmeans_normal <- map(.x = two_fac_gmeans_normal,
+                      .f = ~ .x %>% rename("Mean"="get(.x)"))
+
+## early
+map_inner_early <- function(y)map_dfr(list("treatment"
+                                           # "Replication"
+                                           ), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("Treatment"))
+
+two_fac_gmeans_early <- map(early_model, map_inner_early)
+two_fac_gmeans_early <- map(.x = two_fac_gmeans_early,
+                      .f = ~ .x %>% rename("Mean"="get(.x)"))
+
+numeric_names_early <- early %>% map_lgl(is.numeric) %>% which() %>% names()
+numeric_names_normal <- normal %>% map_lgl(is.numeric) %>% which() %>% names()
+
+early_gmeans_df <- two_fac_gmeans_early %>% 
+  purrr::reduce(left_join, by = "Treatment") %>% 
+  magrittr::set_colnames(c("Treatment", paste(rep(numeric_names_early, each = 2), c("", "group"))))
+
+normal_gmeans_df <- two_fac_gmeans_normal %>% 
+  purrr::reduce(left_join, by = "Treatment") %>% 
+  magrittr::set_colnames(c("Treatment", paste(rep(numeric_names_normal, each = 2), c("", "group"))))
+  
+# cvs of all traits
+early_model_cv <- data.frame(trait = numeric_names_early, 
+                          cv = early_model %>% 
+                            map_dbl(agricolae::cv.model))
+
+normal_model_cv <- data.frame(trait = numeric_names_normal, 
+                          cv = normal_model %>% 
+                            map_dbl(agricolae::cv.model))
+
+# # write model cvs to csv
+normal_model_cv %>% write_csv(path = "normal_cv_results.csv")
+early_model_cv %>% write_csv(path = "early_cv_results.csv")
+
+# write a single file to csv
+early_gmeans_df %>%
+  write_csv(path = "dmrt_means_result_early.csv",
+            na = "")
+
+normal_gmeans_df %>%
+  write_csv(path = "dmrt_means_result_normal.csv",
+            na = "")
+```
+
+
+## Table of means
+
+```{r two-fac-groups-tab1, results='asis'}
+
+walk2(.x = two_fac_gmeans_normal, 
+      .y = numeric_names_normal %>% 
+        stringr::str_replace_all("_", "\ ") %>% 
+        stringr::str_replace_all("%", "\\\\%"),
+      .f = ~ knitr::kable(.x, 
+                          caption = paste("Treatment means with groups of", .y),
+                          format = "latex", longtable = TRUE,
+                          digits = 2, booktabs = TRUE, 
+                          align = 'l', escape = TRUE) %>% 
+        kableExtra::kable_styling(latex_options = c("striped", 
+                                                    "hold_position"), 
+                                  font_size = 12, position = "center") %>% 
+        print())
+```
+
+
+```{r two-fac-groups-tab2, results='asis'}
+
+walk2(.x = two_fac_gmeans_early, 
+      .y = numeric_names_early %>% 
+        stringr::str_replace_all("_", "\ ") %>% 
+        stringr::str_replace_all("%", "\\\\%"),
+      .f = ~ knitr::kable(.x, 
+                          caption = paste("Treatment means with groups of", .y),
+                          format = "latex", longtable = TRUE,
+                          digits = 2, booktabs = TRUE, 
+                          align = 'l', escape = TRUE) %>% 
+        kableExtra::kable_styling(latex_options = c("striped", 
+                                                    "hold_position"), 
+                                  font_size = 12, position = "center") %>% 
+        print())
+```
+
+
+<!-- # Scatterplots with with regression equation -->
+<!-- ## Normal -->
+
+```{r scatterplots-with-regeq, eval=FALSE}
+
+normal <- normal %>% 
+  rename_all(function(x)str_replace_all(x, "/", "_per_"))
+numeric_names_normal <- numeric_names_normal %>% str_replace_all("/", "_per_")
+
+signif_cor <- correlation(normal[, numeric_names_normal]) %>% pluck("pvalue") %>% 
+  as.data.frame() %>% 
+  # rownames_to_column() %>% 
+  map_df(.f = ~ .x < 0.05) %>% 
+  map(which) 
+  # map_int(length) %>% 
+  # sum()
+  
+my.formula <- y ~ x
+
+# ggplot2 mapper
+library(ggpmisc)
+map(numeric_names_normal, 
+    function(x){
+      walk(numeric_names_normal[signif_cor[[x]]],
+          function(y){
+            gcor <- ggplot(data = normal, 
+                   aes(x = get(x), 
+                       y = get(y))) +
+              geom_smooth(method = "lm", 
+                          se=FALSE, color="black", 
+                          formula = my.formula) +
+              stat_poly_eq(formula = my.formula, 
+                           aes(label = paste(..eq.label.., 
+                                             ..rr.label.., sep = "~~~")), 
+                           parse = TRUE) +
+              geom_point() +
+              xlab(x) +
+              ylab(y) + 
+              theme_bw() 
+              ggsave(paste("./correlation_scatterplots_normal/", x, y, ".png", sep = ""), plot = gcor)
+          })
+    })
+```
+
+
+```{r find-combination, eval = FALSE}
+signif_combn <- data.frame(V2 = map(signif_cor, ~ numeric_names_normal[.x]) %>% 
+             unlist(use.names = FALSE), 
+           V1 = map2(.x = numeric_names_normal, 
+                     .y = map_int(signif_cor, length), 
+                     .f = ~ rep(.x, times = .y)) %>% unlist(use.names = FALSE)) %>% 
+  select(V1, V2)
+
+all_combn <- numeric_names_normal %>% 
+  combn(m = 2) %>% 
+  t() %>% 
+  as_tibble()
+
+to_retain_names <- dplyr::semi_join(signif_combn, all_combn) %>% 
+  unite(sep = "", remove = TRUE, col = "plotname") %>% 
+  pull(plotname) %>% 
+  paste(".png", sep = "")
+
+dir_loc <- "./correlation_scatterplots_normal/"
+list.files(dir_loc, full.names = TRUE)[list.files(dir_loc) %in% to_retain_names] %>% 
+  file.rename(to = paste("./correlation_scatterplots_removed/", 
+                         list.files(dir_loc, full.names = FALSE)[list.files(dir_loc) %in% to_retain_names], sep = ""))
+```
+
+<!-- ## Early -->
+
+```{r scatterplots-with-regeq2, eval=FALSE}
+
+early <- early %>% 
+  rename_all(function(x)str_replace_all(x, "/", "_per_"))
+numeric_names_early <- numeric_names_early %>% str_replace_all("/", "_per_")
+
+signif_cor <- correlation(early[, numeric_names_early]) %>% pluck("pvalue") %>% 
+  as.data.frame() %>% 
+  # rownames_to_column() %>% 
+  map_df(.f = ~ .x < 0.05) %>% 
+  map(which) 
+  # map_int(length) %>% 
+  # sum()
+  
+my.formula <- y ~ x
+
+# ggplot2 mapper
+library(ggpmisc)
+map(numeric_names_early, 
+    function(x){
+      walk(numeric_names_early[signif_cor[[x]]],
+          function(y){
+            gcor <- ggplot(data = early, 
+                   aes(x = get(x), 
+                       y = get(y))) +
+              geom_smooth(method = "lm", 
+                          se=FALSE, color="black", 
+                          formula = my.formula) +
+              stat_poly_eq(formula = my.formula, 
+                           aes(label = paste(..eq.label.., 
+                                             ..rr.label.., sep = "~~~")), 
+                           parse = TRUE) +
+              geom_point() +
+              xlab(x) +
+              ylab(y) + 
+              theme_bw() 
+              ggsave(paste("./correlation_scatterplots_early/", x, y, ".png", sep = ""), plot = gcor)
+          })
+    })
+```
+
+
+```{r find-combination2, eval = FALSE}
+signif_combn <- data.frame(V2 = map(signif_cor, ~ numeric_names_early[.x]) %>% 
+             unlist(use.names = FALSE), 
+           V1 = map2(.x = numeric_names_early, 
+                     .y = map_int(signif_cor, length), 
+                     .f = ~ rep(.x, times = .y)) %>% unlist(use.names = FALSE)) %>% 
+  select(V1, V2)
+
+all_combn <- numeric_names_early %>% 
+  combn(m = 2) %>% 
+  t() %>% 
+  as_tibble()
+
+to_retain_names <- dplyr::semi_join(signif_combn, all_combn) %>% 
+  unite(sep = "", remove = TRUE, col = "plotname") %>% 
+  pull(plotname) %>% 
+  paste(".png", sep = "")
+
+dir_loc <- "./correlation_scatterplots_early/"
+list.files(dir_loc, full.names = TRUE)[list.files(dir_loc) %in% to_retain_names] %>% 
+  file.rename(to = paste("./correlation_scatterplots_removed/", 
+                         list.files(dir_loc, full.names = FALSE)[list.files(dir_loc) %in% to_retain_names], sep = ""))
+```
+
+
+# Agroclimatic variables
+
+
+## Calculations
+
+1. Growing degree days (GDD)
+$$
+GDD = \frac{T_{max} + T_{min}}{2}-T_b
+$$
+Where,
+
+$T_b$ = Base temperature = $100^{\circ}C$ for summer crops
+
+$T_b$ = Base temperature = $80^{\circ}C$ for winter crops
+
+2. Helio-thermal unit (HTU)
+$$
+HTU = GDD \times Duration~of~sunshine~hours
+$$
+
+3. Heat use efficiency (HUE)
+$$
+HUE = \frac{Biomass~yield~(kg~ha^{-1})}{GDD}
+$$
+
+4. Helio-thermal unit use efficiency (HTUE)
+$$
+HTUE = \frac{Biomass~yield~(kg~ha^{-1})}{HTU}
+$$
+
+
+5. Radiation use efficiency (RUE)
+$$
+RUE = \frac{Biomass~yield~(kg~ha^{-1})}{Radiation~hours}
+$$
+
+Notably, GDD can be calculated at both the heading and maturity periods.
+
+### Climate data import
+
+```{r import-climate}
+require(lubridate)
+parwanipur_201518_1 <- read_csv("./climate/POWER_SinglePoint_Daily_20150101_20190305_027d07N_084d92E_855a69fa.csv", 
+                          comment = "#", na = c("-", -99), skip = 23)
+parwanipur_201518_1 <- parwanipur_201518_1 %>% 
+  mutate(date_rep = date(strptime(paste(YEAR, as.numeric(DOY), sep = " "), format = "%Y %j"))) %>% 
+  select(-YEAR, -DOY)
+
+parwanipur_201518_2 <- read_csv("./climate/POWER_SinglePoint_Daily_20150101_20190305_027d07N_084d92E_a98d45f9.csv", 
+                                comment = "#", na = c("-", -99), skip = 17)
+
+parwanipur_201518_2 <- parwanipur_201518_2 %>% 
+  mutate(date_rep = date(strptime(paste(YEAR, as.numeric(DOY), sep = " "), format = "%Y %j"))) %>% 
+  select(-YEAR, -DOY)
+
+parwanipur_201518_3 <- read_csv("./climate/POWER_SinglePoint_Daily_20150101_20190305_027d07N_084d92E_bf2f8301.csv", 
+                                commen = "#", na = c("-", -99), skip = 17)
+
+parwanipur_201518_3 <- parwanipur_201518_3 %>% 
+  mutate(date_rep = date(strptime(paste(YEAR, as.numeric(DOY), sep = " "), format = "%Y %j"))) %>% 
+  select(-YEAR, -DOY)
+
+parwanipur_201518 <- reduce_right(.x = list(parwanipur_201518_1, 
+                                            parwanipur_201518_2, parwanipur_201518_3), 
+                                  left_join)
+
+# any annoying encodings exist? if yes recode to explicit NA
+# map(parwanipur_201518, ~.x == -99) %>% map(which)
+
+parwanipur_201518 <- parwanipur_201518 %>% 
+  mutate_all(funs(na_if(., y = -99)))
+
+# # now check to see if they are explicit
+# parwanipur_201518$ALLSKY_SFC_SW_DWN %>% is.na() %>% which()
+```
+
+### Climate data filter
+
+```{r data-filter}
+# early: June 12
+# normal: June 21
+
+parwanipur_201518_normal <- parwanipur_201518 %>% 
+  filter(date_rep > ymd("2018-06-20")) %>% 
+  # ALLSKY_SFC_SW_DWN SRB/FLASHFlux 1/2x1/2 (All Sky Insolation Incident on a Horizontal Surface (MJ/m^2/day)) in solar insolation expressed as daily hours 
+  mutate_at("ALLSKY_SFC_SW_DWN", funs(scales::rescale_max(., c(0.5, 12), range(., na.rm = T))))
+
+parwanipur_201518_early <- parwanipur_201518 %>% 
+  filter(date_rep > ymd("2018-06-12")) %>% 
+  # ALLSKY_SFC_SW_DWN SRB/FLASHFlux 1/2x1/2 (All Sky Insolation Incident on a Horizontal Surface (MJ/m^2/day)) in solar insolation expressed as daily hours 
+  mutate_at("ALLSKY_SFC_SW_DWN", funs(scales::rescale_max(., c(0.5, 12), range(., na.rm = T))))
+
+```
+
+### Climatic and phenotypic indices derived
+
+```{r indices-derived}
+climatic_indices_early <- early %>% 
+  group_by(treatment, Replication) %>%
+  summarise(GDD_DF = sum((parwanipur_201518_early$`T2M_MAX`[1:DF]+parwanipur_201518_early$`T2M_MIN`)[1:DF]/2-8), # base temperature for winter and summer crops: 8 and 10
+            GDD_DM = sum((parwanipur_201518_early$`T2M_MAX`[1:DM]+parwanipur_201518_early$`T2M_MIN`)[1:DM]/2-8),
+            Sunshine_hrs_DF = mean(parwanipur_201518_early$`ALLSKY_SFC_SW_DWN`[1:DF], na.rm = TRUE),
+            Sunshine_hrs_DM = mean(parwanipur_201518_early$`ALLSKY_SFC_SW_DWN`[1:DM], na.rm = TRUE),
+            HTU_DF = GDD_DF * Sunshine_hrs_DF, 
+            HTU_DM = GDD_DM * Sunshine_hrs_DM)
+
+climatic_indices_normal <- normal %>%
+  group_by(Genotypes, Replication) %>%
+  summarise(GDD_DF = sum((parwanipur_201518_normal$`T2M_MAX`[1:DF]+parwanipur_201518_normal$`T2M_MIN`)[1:DF]/2-8), # base temperature for winter and summer crops: 8 and 10
+            GDD_DM = sum((parwanipur_201518_normal$`T2M_MAX`[1:DM]+parwanipur_201518_normal$`T2M_MIN`)[1:DM]/2-8),
+            Sunshine_hrs_DF = mean(parwanipur_201518_normal$`ALLSKY_SFC_SW_DWN`[1:DF], na.rm = TRUE),
+            Sunshine_hrs_DM = mean(parwanipur_201518_normal$`ALLSKY_SFC_SW_DWN`[1:DM], na.rm = TRUE),
+            HTU_DF = GDD_DF * Sunshine_hrs_DF, 
+            HTU_DM = GDD_DM * Sunshine_hrs_DM)
+
+# Note DM associated indices are used here
+early_indaug <- early %>% 
+  left_join(climatic_indices_early) %>% 
+  mutate(HUI = `GY/HA`/GDD_DM, 
+         HTUE = `GY/HA`/HTU_DM,
+         RUE = `GY/HA`/Sunshine_hrs_DM)
+
+normal_indaug <- normal %>% 
+  left_join(climatic_indices_normal) %>% 
+  mutate(HUI = `GY/HA`/GDD_DM, 
+         HTUE = `GY/HA`/HTU_DM,
+         RUE = `GY/HA`/Sunshine_hrs_DM)
+```
+
+
+## Table of means
+
+```{r analysis-climate-agroclimate, cache=TRUE}
+# rcbd model
+early_model_aug <- map(c("GDD_DF", "GDD_DM", "Sunshine_hrs_DF", 
+                     "Sunshine_hrs_DM", "HTU_DF", 
+                     "HTU_DM", "HUI", "HTUE", "RUE"),
+                   .f = ~ lm(get(.x) ~ treatment+Replication, 
+                             data = early_indaug))
+
+normal_model_aug <- map(c("GDD_DF", "GDD_DM", "Sunshine_hrs_DF", 
+                     "Sunshine_hrs_DM", "HTU_DF", 
+                     "HTU_DM", "HUI", "HTUE", "RUE"),
+                    .f = ~ lm(get(.x) ~ Genotypes+Replication, 
+                              data = normal_indaug))
+
+# mean separation
+## normal
+map_inner_normal <- function(y)map_dfr(list("Genotypes"), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("Treatment"))
+
+two_fac_gmeans_normal_aug <- map(normal_model_aug, map_inner_normal)
+two_fac_gmeans_normal_aug <- map(.x = two_fac_gmeans_normal_aug,
+                      .f = ~ .x %>% rename("Mean"="get(.x)"))
+
+## early
+map_inner_early <- function(y)map_dfr(list("treatment"), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("Treatment"))
+
+two_fac_gmeans_early_aug <- map(early_model_aug, map_inner_early)
+two_fac_gmeans_early_aug <- map(.x = two_fac_gmeans_early_aug,
+                      .f = ~ .x %>% rename("Mean"="get(.x)"))
+
+numeric_names_early_aug <- early_indaug %>% select(GDD_DF:RUE) %>% colnames()
+numeric_names_normal_aug <- normal_indaug %>% select(GDD_DF:RUE) %>% colnames()
+
+early_gmeans_df_aug <- two_fac_gmeans_early_aug %>% 
+  purrr::reduce(left_join, by = "Treatment") %>% 
+  magrittr::set_colnames(c("Treatment", paste(rep(numeric_names_early_aug, each = 2), c("", "group"))))
+
+normal_gmeans_df_aug <- two_fac_gmeans_normal_aug %>% 
+  purrr::reduce(left_join, by = "Treatment") %>% 
+  magrittr::set_colnames(c("Treatment", paste(rep(numeric_names_normal_aug, each = 2), c("", "group"))))
+  
+# cvs of all traits
+early_model_cv_aug <- data.frame(trait = numeric_names_early_aug, 
+                          cv = early_model_aug %>% 
+                            map_dbl(agricolae::cv.model))
+
+normal_model_cv_aug <- data.frame(trait = numeric_names_normal_aug, 
+                          cv = normal_model_aug %>% 
+                            map_dbl(agricolae::cv.model))
+
+# # # write model cvs to csv
+# normal_model_cv_aug %>% write_csv(path = "normal_cv_results_agroclimate.csv")
+# early_model_cv_aug %>% write_csv(path = "early_cv_results_agroclimate.csv")
+# 
+# # write a single file to csv
+# early_gmeans_df_aug %>%
+#   write_csv(path = "dmrt_means_result_early_agroclimate.csv",
+#             na = "")
+# 
+# normal_gmeans_df_aug %>%
+#   write_csv(path = "dmrt_means_result_normal_agroclimate.csv",
+#             na = "")
+```
+
+
+```{r two-fac-groups-tab-agroclimate-early, results='asis'}
+walk2(.x = two_fac_gmeans_early_aug, 
+      .y = numeric_names_early_aug %>% 
+        stringr::str_replace_all("_", "\ ") %>% 
+        stringr::str_replace_all("%", "\\\\%"),
+      .f = ~ knitr::kable(.x, 
+                          caption = paste("Treatment means with groups of", .y),
+                          format = "latex", longtable = TRUE,
+                          digits = 2, booktabs = TRUE, 
+                          align = 'l', escape = TRUE) %>% 
+        kableExtra::kable_styling(latex_options = c("striped", 
+                                                    "hold_position"), 
+                                  font_size = 12, position = "center") %>% 
+        print())
+```
+
+
+```{r two-fac-groups-tab-agroclimate-normal, results='asis'}
+walk2(.x = two_fac_gmeans_normal_aug, 
+      .y = numeric_names_normal_aug %>% 
+        stringr::str_replace_all("_", "\ ") %>% 
+        stringr::str_replace_all("%", "\\\\%"),
+      .f = ~ knitr::kable(.x, 
+                          caption = paste("Treatment means with groups of", .y),
+                          format = "latex", longtable = TRUE,
+                          digits = 2, booktabs = TRUE, 
+                          align = 'l', escape = TRUE) %>% 
+        kableExtra::kable_styling(latex_options = c("striped", 
+                                                    "hold_position"), 
+                                  font_size = 12, position = "center") %>% 
+        print())
+```
+
+
+## Correlation matrix of numeric variables
+
+```{r correlation-annotate}
+# This function annotates the correlation coefficients 
+# with the stars corresponding to the level of significance
+# x is a matrix containing the data
+# method : correlation method. "pearson"" or "spearman"" is supported
+# removeTriangle : remove upper or lower triangle
+# results : "html" or "latex" (default)
+# align: a vector of alignment values as is specified in xtable(x, align)
+
+large <- function(x){
+  paste0('{\\footnotesize{\\bfseries ', x, '}}')
+}
+
+corstars <-function(x, align, caption, method=c("pearson", "spearman"), removeTriangle=c("upper", "lower"),
+                    result=c("none", "html", "latex")){
+  #Compute correlation matrix
+  require(Hmisc)
+  x <- as.matrix(x)
+  correlation_matrix<-rcorr(x, type=method[1])
+  R <- correlation_matrix$r # Matrix of correlation coeficients
+  p <- correlation_matrix$P # Matrix of p-value 
+  
+  ## Define notions for significance levels; spacing is important.
+  mystars <- ifelse(p < .0001, "****", ifelse(p < .001, "*** ", ifelse(p < .01, "**  ", ifelse(p < .05, "*   ", "    "))))
+  
+  ## trunctuate the correlation matrix to two decimal
+  R <- format(round(cbind(rep(-1.11, ncol(x)), R), 2))[,-1]
+  
+  ## build a new matrix that includes the correlations with their apropriate stars
+  Rnew <- matrix(paste(R, mystars, sep=""), ncol=ncol(x))
+  diag(Rnew) <- paste(diag(R), " ", sep="")
+  rownames(Rnew) <- colnames(x)
+  colnames(Rnew) <- paste(colnames(x), "", sep="")
+  
+  ## remove upper triangle of correlation matrix
+  if(removeTriangle[1]=="upper"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  
+  ## remove lower triangle of correlation matrix
+  else if(removeTriangle[1]=="lower"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+  
+  ## remove last column and return the correlation matrix
+  Rnew <- cbind(Rnew[1:length(Rnew)-1])
+  if (result[1]=="none") return(Rnew)
+  else{
+    if(result[1]=="html") print(xtable(Rnew), type="html", comment = FALSE)
+    else print(xtable(Rnew, auto = TRUE,  align = align, caption = caption), type="latex", 
+               comment = FALSE, size = "\\footnotesize", 
+               sanitize.colnames.function = large, 
+               booktabs = TRUE, tabular.environment="longtable", 
+               floating=FALSE)
+  }
+} 
+```
+
+
+```{r correlation-normal, results='asis'}
+cortable <- corstars(normal_indaug %>% 
+                       select_at(which(map_lgl(., is.numeric))))
+# # write to csv
+# cortable %>% rownames_to_column(var = "traits") %>% write_csv("correlation_normal.csv", na = "")
+
+cortable %>%
+  rename_all(function(x)stringr::str_trunc(x, width = 4, side = "c", ellipsis = "")) %>% 
+  knitr::kable(format = "latex",
+               caption = "Pearson correlation coefficients of normal season phenotypic and agroclimatic traits",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, latex_options = c("striped", "scale_down")) %>%
+  # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE) %>% 
+  kableExtra::landscape()
+
+```
+
+
+```{r correlation-early, results='asis'}
+cortable <- corstars(early_indaug %>% 
+                       select_at(which(map_lgl(., is.numeric))))
+# # write to csv
+# cortable %>% rownames_to_column(var = "traits") %>% write_csv("correlation_early.csv", na = "")
+
+cortable %>%
+  rename_all(function(x)stringr::str_trunc(x, width = 4, side = "c", ellipsis = "")) %>% 
+  knitr::kable(format = "latex",
+               caption = "Pearson correlation coefficients of early season phenotypic and agroclimatic traits",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, latex_options = c("striped", "scale_down")) %>%
+  # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE) %>% 
+  kableExtra::landscape()
+```
+
+## Principal component analysis
+
+### PAM clustering with PCA
+
+```{r pam-pca-clust}
+# pam: partitioning around medoids
+suppressPackageStartupMessages(require(ggfortify))
+ggplot2::autoplot(cluster::pam(normal_indaug %>%
+                                 rename_all(function(x)str_replace_all(x, "/", "_per_")) %>% 
+                                 group_by(Genotypes) %>%
+                                 summarise_if(is.numeric, funs(mean(., na.rm = TRUE))) %>%
+                                 select_at(which(map_lgl(., is.numeric))) %>%
+                                 scale(), k = 2),
+                  frame = TRUE,
+                  frame.type = 'norm', # plots ellipse
+                  loadings = TRUE, loadings.label = TRUE,
+                  loadings.label.size = 5) +
+  theme_bw()
+```
+
+
+### PCA biplot
+
+```{r pca-biplot}
+# custom created ggplot2 function
+# pca biplot (custom created ggplot2 function)
+PCbiplot <- function(PC, x="PC1", y="PC2") {
+  # PC being a prcomp object
+  data <- data.frame(PC$x)
+  plot <- ggplot(data, aes(x=get(x), y=get(y))) +
+    geom_point() +
+    xlab("PC1") +
+    ylab("PC2")
+  plot <- plot + geom_hline(yintercept = 0, size=.2) + geom_vline(xintercept = 0, size=.2)
+  datapc <- data.frame(varnames=rownames(PC$rotation), PC$rotation)
+  mult <- min(
+    (max(data[,y]) - min(data[,y])/(max(datapc[,y])-min(datapc[,y]))),
+    (max(data[,x]) - min(data[,x])/(max(datapc[,x])-min(datapc[,x])))
+  )
+  datapc <- transform(datapc,
+                      v1 = .7 * mult * (get(x)),
+                      v2 = .7 * mult * (get(y))
+  )
+  plot <- plot + coord_equal() +
+    geom_text(data=datapc, aes(x=v1, y=v2, label=varnames), size = 5, vjust=1, color="red")
+  plot <- plot +
+    geom_segment(data=datapc, aes(x=0, y=0, xend=v1, yend=v2),
+                 arrow=arrow(length=unit(0.2,"cm")), alpha=0.75, color="red")
+  plot
+}
+
+normal_bipcagg <- PCbiplot(prcomp(normal_indaug %>% 
+                  rename_all(function(x)str_replace_all(x, "/", "_per_")) %>% 
+                  group_by(Genotypes) %>%
+                  summarise_if(is.numeric, funs(mean(., na.rm = TRUE))) %>%
+                  select_at(which(map_lgl(., is.numeric))) %>%
+                  scale())) +
+  theme_bw() +
+  theme(text = element_text(size = 15))
+
+early_bipcagg <- PCbiplot(prcomp(early_indaug %>% 
+                  rename_all(function(x)str_replace_all(x, "/", "_per_")) %>% 
+                  group_by(treatment) %>%
+                  summarise_if(is.numeric, funs(mean(., na.rm = TRUE))) %>%
+                  select_at(which(map_lgl(., is.numeric))) %>%
+                  scale())) +
+  theme_bw() +
+  theme(text = element_text(size = 15))
+
+# ggsave("normal_bipca.png", normal_bipcagg, width = 6, height = 8)
+# ggsave("early_bipca.png", early_bipcagg, width = 6, height = 8)
+```
+
+
+## Cluster dendrogram
+
+A cluster dendrogram using average linkage (Unweighted Pair Group Method with Arithmetic Mean; UPGMA) method for proximity calculation showing three discrete clusters (cluster number determined using GAM) is presented in Figure \@ref(fig:dendrogram-viz).
+
+```{r dendrogram-viz, fig.cap="Dendrogram clustering using UPGMA method", fig.keep='all', fig.width=6, out.width='.95\\linewidth', cache=TRUE, eval=TRUE, echo=FALSE, fig.ncol = 2, fig.show="hold", warning=FALSE, message=FALSE}
+
+## for early trial
+# crop yield and agro-morphology
+hierarchial_clusters <- early_indaug %>% 
+  rename_all(function(x)str_replace_all(x, "/", "_per_")) %>% 
+  group_by(treatment) %>%
+  summarise_if(is.numeric, funs(mean(., na.rm = TRUE))) %>%
+  select_at(which(map_lgl(., is.numeric))) %>%
+  scale() %>%
+  dist() %>%
+  hclust("ave")
+
+k <- 3
+
+ggdendro_plants <- hierarchial_clusters %>%
+  as.dendrogram() %>%
+  dendextend::set("labels_cex", 1.2) %>%
+  dendextend::set("labels_col", value = c(3,4,5),
+                  k=k) %>%
+  dendextend::set("branches_k_color", k = k) %>%
+  dendextend::set("branches_lwd", 0.8) %>%
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=k)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants),
+                   enframe(clust, value = "cluster"),
+                   by.x = "label", by.y = "name") %>%
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(xy){c(min(xy), (min(xy)+max(xy))/2, max(xy))}
+
+early_dendrogg <- ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), 
+            aes(x=x, y=y, 
+                label=paste(" ", unique(early_indaug %>% 
+                                          pull("treatment")), 
+                            sep = ""), 
+                colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax),
+            color="red", fill=1:k, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"),
+                     values = seq_along(1:3)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 14))
+
+# ggsave("early_dendrogram_rice.png", early_dendrogg, width = 7, height = 9, units = "in")
+
+## for normal trial
+# crop yield and agro-morphology
+hierarchial_clusters <- normal_indaug %>% 
+  rename_all(function(x)str_replace_all(x, "/", "_per_")) %>% 
+  group_by(Genotypes) %>%
+  summarise_if(is.numeric, funs(mean(., na.rm = TRUE))) %>%
+  select_at(which(map_lgl(., is.numeric))) %>%
+  scale() %>%
+  dist() %>%
+  hclust("ave")
+
+k <- 3
+
+ggdendro_plants <- hierarchial_clusters %>%
+  as.dendrogram() %>%
+  dendextend::set("labels_cex", 1.2) %>%
+  dendextend::set("labels_col", value = c(3,4,5),
+                  k=k) %>%
+  dendextend::set("branches_k_color", k = k) %>%
+  dendextend::set("branches_lwd", 0.8) %>%
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=k)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants),
+                   enframe(clust, value = "cluster"),
+                   by.x = "label", by.y = "name") %>%
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(xy){c(min(xy), (min(xy)+max(xy))/2, max(xy))}
+
+normal_dendrogg <- ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), 
+            aes(x=x, y=y, 
+                label=paste(" ", unique(normal_indaug %>%
+                                          pull("Genotypes")), 
+                            sep = ""), 
+                colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax),
+            color="red", fill=1:k, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"),
+                     values = seq_along(1:3)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 14))
+# ggsave("normal_dendrogram_rice.png", normal_dendrogg, width = 7, height = 9, units = "in")
+```
+
+
+## Model summaries
+
+```{r writing-model-summary}
+# write model summaries to csvs
+normal_model %>% 
+  map(~(summary(.x))$"coefficients" %>% 
+        as_tibble(rownames = NA) %>% 
+        rownames_to_column("Term") %>% 
+        add_case(.after = nrow(.))) %>% 
+  purrr::walk2(.y = numeric_names_normal %>% str_replace_all("/", "_per_"), 
+               .f = ~write_csv(.x, paste0("./normal_model/", .y, ".csv", collapse = ""), na = "", col_names = TRUE))
+
+early_model %>% 
+  map(~(summary(.x))$"coefficients" %>% 
+        as_tibble(rownames = NA) %>% 
+        rownames_to_column("Term") %>% 
+        add_case(.after = nrow(.))) %>% 
+  purrr::walk2(.y = numeric_names_early %>% str_replace_all("/", "_per_"), 
+               .f = ~write_csv(.x, paste0("./early_model/", .y, ".csv", collapse = ""), na = "", col_names = TRUE))
+
+normal_model_aug %>% 
+  map(~(summary(.x))$"coefficients" %>% 
+        as_tibble(rownames = NA) %>% 
+        rownames_to_column("Term") %>% 
+        add_case(.after = nrow(.))) %>% 
+  purrr::walk2(.y = numeric_names_normal_aug %>% str_replace_all("/", "_per_"), 
+               .f = ~write_csv(.x, paste0("./normal_model/", .y, ".csv", collapse = ""), na = "", col_names = TRUE))
+
+early_model_aug %>% 
+  map(~(summary(.x))$"coefficients" %>% 
+        as_tibble(rownames = NA) %>% 
+        rownames_to_column("Term") %>% 
+        add_case(.after = nrow(.))) %>% 
+  purrr::walk2(.y = numeric_names_early_aug %>% str_replace_all("/", "_per_"), 
+               .f = ~write_csv(.x, paste0("./early_model/", .y, ".csv", collapse = ""), na = "", col_names = TRUE))
+```
+
+
+## Heritability estimates
+
+```{r heritability}
+early_model %>%
+  map(~anova(.x) %>% broom::tidy()) %>% 
+  map_dfr(~.x %>% summarise_at("sumsq", function(x)x[1]/sum(x) * 100)) %>% 
+  rename(heritability = sumsq) %>% 
+  add_column(.before = 1, trait = numeric_names_early) %>% 
+  write_csv("./heritability/early_heritability.csv", na = "")
+
+early_model_aug %>%
+  map(~anova(.x) %>% broom::tidy()) %>% 
+  map_dfr(~.x %>% summarise_at("sumsq", function(x)x[1]/sum(x) * 100)) %>% 
+  rename(heritability = sumsq) %>% 
+  add_column(.before = 1, trait = numeric_names_early_aug) %>% 
+  write_csv("./heritability/early_agroclimate_heritability.csv", na = "")
+
+normal_model %>%
+  map(~anova(.x) %>% broom::tidy()) %>% 
+  map_dfr(~.x %>% summarise_at("sumsq", function(x)x[1]/sum(x) * 100)) %>% 
+  rename(heritability = sumsq) %>% 
+  add_column(.before = 1, trait = numeric_names_normal) %>% 
+  write_csv("./heritability/normal_heritability.csv", na = "")
+
+normal_model_aug %>%
+  map(~anova(.x) %>% broom::tidy()) %>% 
+  map_dfr(~.x %>% summarise_at("sumsq", function(x)x[1]/sum(x) * 100)) %>% 
+  rename(heritability = sumsq) %>% 
+  add_column(.before = 1, trait = numeric_names_normal_aug) %>% 
+  write_csv("./heritability/normal_agroclimate_heritability.csv", na = "")
+
+```
+
+## Yield prediction model
+
+```{r yield-prediction}
+require(lme4)
+early_indaug <- early_indaug %>% 
+  rename_all(funs(str_replace_all(., "/", "_per_")))
+
+normal_indaug <- normal_indaug %>% 
+  rename_all(funs(str_replace_all(., "/", "_per_")))
+  
+early_pred_model <- lmer(GY_per_HA ~ TW + (1 | Replication) + treatment + grain_per_spike + Tiller + PL, data = early_indaug)
+
+normal_pred_model <- lmer(GY_per_HA ~ TW + (1 | Replication) + Genotypes + grain_per_spike + Tiller + PL, data = normal_indaug)
+
+anova(early_pred_model)
+anova(normal_pred_model)
+
+early_pred_model %>% emmeans::emmeans("treatment") %>% plot()
+normal_pred_model %>% emmeans::emmeans("Genotypes") %>% plot()
+
+```
+
+# Write anovas of models
+```{r anova-write, eval = FALSE}
+walk2(.x = early_model, 
+      .y = c("DF", "DM", "pH", "PL", 
+             "Tiller", "GY/HA", "TW", "sterility",
+             "grain/spike", "BM", "dryM", "HI"),
+      ~ write_csv(anova(.x), paste0("./anovas/anova_early_", .y, ".csv", collapse = "")))
+
+walk(.x = normal_model,
+     .y = c("DF", "DM", "pH", "PL", 
+            "Tiller", "GY/HA", "TW", "sterility", 
+            "grain/spike", "BM", "HI"),
+     ~ write_csv(anova(.x), paste0("./anovas/anova_normal", .y, ".csv", collapse = "")))
+
+walk2(.x = early_model_aug, 
+      .y = c("GDD_DF", "GDD_DM", "Sunshine_hrs_DF", 
+             "Sunshine_hrs_DM", "HTU_DF", 
+             "HTU_DM", "HUI", "HTUE", "RUE"),
+      ~ write_csv(anova(.x), paste0("./anovas/anova_early_aug", .y, ".csv", collapse = "")))
+
+walk2(.x = normal_model_aug, 
+      .y = c("GDD_DF", "GDD_DM", "Sunshine_hrs_DF", 
+             "Sunshine_hrs_DM", "HTU_DF", 
+             "HTU_DM", "HUI", "HTUE", "RUE"),
+      ~ write_csv(anova(.x), paste0("./anovas/anova_normal_aug", .y, ".csv", collapse = "")))
+
+```

@@ -1,0 +1,319 @@
+---
+title: "Intermediate maturing maize pre-release and commercial hybrid trial (IHYB17), 2075"
+author: "Deependra Dhakal"
+date: "May 27, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# load libraries
+## data preprocessing and keying ##
+
+require(lme4)
+library(tidyverse)
+require(desplot)
+knitr::opts_chunk$set(tidy = TRUE, cache = TRUE, 
+                      echo = TRUE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, 
+                      fig.show = "hold", fig.pos = "H",
+                      fig.align = "center", 
+                      fig.asp = 0.6, message = FALSE, warning = FALSE)
+options(knitr.kable.NA = "", digits = 3)
+theme_set(theme_bw())
+```
+
+Height preprocessing
+
+```{r}
+
+height <- readxl::read_xlsx("./height_temp.xlsx", skip = 1)
+h51_85 <- height %>% 
+  slice(51:85) %>% 
+  select(SN, H1, H2)
+  
+data.frame(plyr::rbind.fill(lapply(str_split(h51_85$H1, ","), function(y){as.data.frame(t(y), stringsAsFactors=FALSE)})),
+  plyr::rbind.fill(lapply(str_split(h51_85$H2, ","), function(y){as.data.frame(t(y), stringsAsFactors=FALSE)}))) %>% 
+  write_csv(path = "h51_85.csv", na = "")
+
+h2 <- height %>% 
+  mutate(H1=ifelse(str_detect(H1, ","), str_split(H1, ","), H1))
+
+h2 %>% 
+  unnest(H1)
+
+# # fill unequal length list vectors with NAs
+# h2$H1 <- lapply(h2$H1, `length<-`, max(lengths(h2$H1))) # this to equate the list length
+
+# or use plyr's binder to avoid recycling
+h2$H1 <- plyr::rbind.fill(lapply(h2$H1,function(y){as.data.frame(t(y),stringsAsFactors=FALSE)}))
+
+# now spread H1 to columns
+h2 <- h2 %>% 
+  select(-H1) %>% 
+  cbind(do.call(cbind, h2$H1))
+
+# now manually wrangle the columns to get plant height and ear height 
+
+# then import height data with manually marked unit of measurement as column ("cm" or "in")
+height <- read_csv("./height_full.csv")
+height <- height %>% 
+  mutate_at(vars(H1:H10), function(x)ifelse(.$Unit == "Inch", x*2.42, x))
+
+height %>% 
+  select_at(vars(SN:H10)) %>% 
+  write_csv("height_full_cm.csv", na = "")
+```
+
+
+# Design and layout plan
+
+Quoting the trial protocol received from CIMMYT
+
+> This trial consists of 50 intermediate maturing, elite, pre-release and commercial hybrids, 39 from CIMMYT, two from Klein Karoo Seed Marketing, one from SEEDCO, two from Syngenta, four widely grown commercial checks (from SEEDCO and PIONEER) and two local checks. IHYB17 is intended to test the yielding potential and stress resilience of elite early and extra-early maize hybrids from CIMMYT and partners under optimal (unstressed) and randomly stressed conditions by partners in southern and eastern Africa. Collaborators that have established drought, low N, low pH or any other types of stress screening platform are encouraged to grow the trials under such stress conditions.
+
+
+```{r import-plan}
+data_plan <- readxl::read_xlsx("./data/Intermediate maturing maize varieties.xlsx", 
+                               sheet = "tiller_stand_harvest", na = "", skip = 1) %>% 
+  mutate(row_block = rep(1:5, each = 30)) %>% 
+  mutate_at(c("Rep", "Block", "Plot", "Entry", "row", "col", "row_block"), as.factor) %>% 
+  mutate(row_new = if_else(col == 2, rev(row), row))
+```
+
+
+```{r plot-design}
+# with block outline
+desplot(Rep ~ row*col, data = data_plan, text = Entry, out1 = Block, out2 = row, show.key = FALSE, main="Block outlines", shorten = FALSE)
+
+# with rep outline
+desplot(Rep ~ row*col, data = data_plan, text = Entry, out1 = col, out2 = row, show.key = FALSE, main="Replication outline", shorten = FALSE)
+
+# # with horizontal blocks
+# pdf("horizontal_rows.pdf", width = 10)
+# desplot(Entry ~ col*row|Rep, data = data_plan, text = Entry, out1 = Block, out2 = row, show.key = FALSE, main = "Horizontal arrangement of rows by Replication", cex = 0.5, shorten = FALSE)
+# dev.off()
+# 
+# # with vertical rows
+# pdf("vertical_rows.pdf", width = 10)
+# desplot(Entry ~ row*col|Rep, data = data_plan, text = Entry, out1 = Block, out2 = row, show.key = FALSE, main = "Vertical arrangement of rows by Replication", cex = 0.5, shorten = FALSE)
+# dev.off()
+
+```
+
+
+# Generate serpentine design
+
+```{r plot-design-serpentine}
+serpentine_data_plan <- data_plan %>% 
+  mutate(row_new = if_else(col == 2, rev(row), row))
+
+pdf("horizontal_rows_serpentine.pdf", width = 10)
+desplot(Entry ~ col*row_new|Rep, 
+        data = serpentine_data_plan, 
+        text = Entry, out1 = Block, 
+        out2 = row_new, show.key = FALSE, 
+        main = "Intermediate maturing hybrid varieties (Trial, 2018)\n Design: Alpha lattice (Block size: 5)\n Number of genotypes: 48+2 (Replicated 3 times)\n Trial area: 1148.16 msq\n Managed by: Unique Seed Company, Dhangadhi-13, Kailali\n Trial location: Dhangadhi-6, Kailali", 
+        cex = 0.5, shorten = FALSE)
+dev.off()
+```
+
+
+## Soil moisture map
+
+```{r soil-moisture-map}
+desplot(moisture_map ~ col*row_new|Rep, 
+        data = tiller_moisture, 
+        # text = Entry, 
+        # out1 = Block, 
+        out2 = row_new, show.key = FALSE, 
+        main = "Tiller appearance data 2018/07/01", 
+        cex = 0.5, shorten = FALSE)
+
+desplot(tillering ~ col*row_new|Rep, 
+        data = tiller_moisture, 
+        # text = Entry, 
+        # out1 = Block, 
+        out2 = row_new, show.key = FALSE, 
+        main = "Moisture map 2018/07/01", 
+        cex = 0.5, shorten = FALSE)
+
+# is there a correlation?
+cor(tiller_moisture$tillering, tiller_moisture$moisture_map, use = "pairwise.complete.obs")
+# no
+```
+
+Overall correlation summary among numeric variables
+
+```{r correlation-numeric}
+corr_numeric <- data_plan %>% 
+  select_if(is.numeric) %>% 
+  agricolae::correlation()
+
+corr_numeric$correlation %>% 
+  magrittr::set_rownames(colnames(.)) %>% 
+  View()
+```
+
+```{r}
+
+# read datasets
+intermediate_hybrid_veg_preharvest <- readxl::read_xlsx("./data/Intermediate maturing maize varieties.xlsx", 
+                                         "tiller_stand_harvest", skip = 1)
+
+intermediate_hybrid_yield <- readxl::read_xlsx("./data/Intermediate maturing maize varieties.xlsx", 
+                                               "harvest_data")
+
+intermediate_hybrid_entries <- readxl::read_xlsx("./data/Intermediate maturing maize varieties.xlsx", "entry_details")
+
+# merged datasets
+intermediate_hybrids <- left_join(intermediate_hybrid_veg_preharvest, intermediate_hybrid_yield) %>% 
+  left_join(intermediate_hybrid_entries[, c("Entry", "Name", "Stock_id")], by = "Entry")
+
+# remove partial datasets
+rm(intermediate_hybrid_veg_preharvest, intermediate_hybrid_yield)
+
+# date conversion
+require(lubridate)
+days(as_date(strptime("07/22/2018", format = "%m/%d/%Y")) - intermediate_hybrids$`male flowering_date`[1])
+intermediate_hybrids <- intermediate_hybrids %>% 
+  mutate_at(c("male flowering_date", "female flowering_date"), function(x){as_date(x-25569)})
+
+# type check
+intermediate_hybrids %>% purrr::map_chr(class)
+
+# mutate to suitable type
+intermediate_hybrids <- intermediate_hybrids %>% 
+  mutate_at(c("Rep", "Block", "Plot", "Entry", "col", "row"), as.factor) %>% 
+  mutate(`plot yield` = `plot yield`/(4*0.75*2)*10000/1000)
+
+intermediate_hybrids$`plot yield`
+# # exploratory plot
+# pdf("correlation_plot.pdf", width = 25, height = 20)
+# intermediate_hybrids %>% 
+#   select_if(is.numeric) %>% 
+#   plot()
+# dev.off()
+
+# correlation test
+intermediate_hybrids %>% 
+  select_if(is.numeric) %>% 
+  agricolae::correlation()
+
+# correlation coefficients
+intermediate_hybrids %>% 
+  select_if(is.numeric) %>% 
+  cor(use = "pairwise.complete.obs") %>% 
+  corrplot::corrplot()
+
+# plot histograms
+walk(intermediate_hybrids %>% 
+       select_if(is.numeric) %>% 
+       colnames(), 
+     ~ hist(intermediate_hybrids[, .x, drop = TRUE], 
+            main = paste0("Histogram of ", .x), xlab = .x))
+
+## modeling of yield and relevant traits ##
+
+# fixed effects of entry, replication and nested block terms
+model_intermediate_yield <-lm(data = intermediate_hybrids, 
+           formula = `plot yield` ~ Entry + Rep/Block)
+model_intermediate_yield %>% anova()
+
+# fixed effects of entry and random effects of replication and nested block
+model_intermediate_yield1 <-lme4::lmer(data = intermediate_hybrids, 
+           formula = `plot yield` ~ Entry  + (1|Rep/Block))
+anova(model_intermediate_yield1)
+
+# fixed effects of entry and plant population count and random effects of replication and nested block components
+model_intermediate_yield2 <- lme4::lmer(data = intermediate_hybrids, 
+           formula = `plot yield` ~ Entry + `Plant count` + (1|Rep/Block)) # (1|Rep/Block) is equivalent to (1|Rep) + (1|Rep:Block)
+anova(model_intermediate_yield2)
+
+# model comparision of all three models
+anova(model_intermediate_yield1, model_intermediate_yield2, model_intermediate_yield)
+
+# model with plant population count is significantly better
+model_intermediate_yield2 %>% 
+  plot()
+
+model_intermediate_yield2 %>% 
+  broom::augment()
+
+# fixed effects of the best model
+lme4::fixef(model_intermediate_yield2) %>% plot()
+
+# model confidence intervals
+# model2_confint_stats <- confint(model_intermediate_yield2) # takes much time
+# model2_confint_lmefour <- confint.merMod(model_intermediate_yield2) # takes much time
+model1_confint_lsmeans <- emmeans::lsmeans(model_intermediate_yield1, "Entry")
+model2_confint_lsmeans <- emmeans::lsmeans(model_intermediate_yield2, "Entry")
+
+# # convert to suitable data type
+# model2_confint_stats <- model2_confint_stats %>% 
+#   as.data.frame() %>% 
+#   rownames_to_column(var = "Entry") %>% 
+#   filter(str_detect(Entry, "Entry")|str_detect(Entry, "(Intercept)"))
+# 
+# model2_confint_lmefour <- model2_confint_lmefour %>% 
+#   as.data.frame() %>% 
+#   rownames_to_column(var = "Entry") %>% 
+#   filter(str_detect(Entry, "Entry")|str_detect(Entry, "(Intercept)"))
+
+# # visualizing model confidence intervals
+
+# ggconfint_stats <- ggplot(model2_confint_stats, aes(Entry,ymin=`2.5 %`, ymax=`97.5 %`))+
+#   geom_linerange(position=position_dodge(width=0.8)) +
+#   theme_bw() +
+#   theme(axis.text.x = element_text(angle = 50, vjust = .3)) +
+#   coord_flip()
+# 
+# ggconfint_lmefour <- ggplot(model2_confint_lmefour, aes(Entry,ymin=`2.5 %`, ymax=`97.5 %`))+
+#   geom_linerange(position=position_dodge(width=0.8)) +
+#   theme_bw() +
+#   theme(axis.text.x = element_text(angle = 50, vjust = .3)) +
+#   coord_flip()
+
+ggconfint_lsmeans1 <- plot(model1_confint_lsmeans) +
+  theme_bw()
+ggconfint_lsmeans2 <- plot(model2_confint_lsmeans) +
+  theme_bw()
+
+# # export confint graphs as png
+# walk2(.x = paste0("confint_", c("stats", "lme4", "lsmeans"), ".png"), 
+#       .y = list(ggconfint_stats, ggconfint_lmefour, ggconfint_lsmeans), 
+#       .f = ~ ggsave(.x, .y, width = 10, height = 7, units = "in"))
+
+model_column_pltdata <- map(c(model1_confint_lsmeans, model2_confint_lsmeans), 
+                             ~.x %>% 
+                               as_data_frame() %>% 
+                               mutate(Entry = as.character(Entry)) %>% 
+                               left_join((intermediate_hybrid_entries %>% 
+                                            select("Entry", "Stock_id", "Name") %>% 
+                                            mutate(Entry = as.character(Entry))), 
+                                         by = "Entry"))
+
+# obtain column plots with means and confidence intervals
+column_confint <- map(model_column_pltdata, 
+                      ~ggplot(data = .x, 
+                             aes(x = Name, y = lsmean, ymin=lower.CL, ymax=upper.CL)) +
+                        geom_col(fill = "turquoise", color = "black", alpha = 0.4) +
+                        geom_errorbar(width = 0.4, color = "blue", size = 1.2) +
+                        geom_point() +
+                        scale_x_discrete(limits = .x %>%
+                                           arrange(-`lsmean`) %>% pull("Name")) +
+                        scale_y_continuous(breaks = seq.int(0, 12, 1)) +
+                        theme_bw() +
+                        theme(axis.text.x = element_text(angle = 50, vjust = .3)) +
+                        ylab(expression(Yield~(tons~ha^{-1}))))
+walk(column_confint, print)
+
+walk2(.x = paste0("confint_columns_yield_", c("unadj", "adj"), ".png"),
+      .y = column_confint,
+      .f = ~ggsave(.x, .y, width = 10, height = 7, units = "in"))
+
+# adjusted variance covariance matrix
+model2_adjvcov <- pbkrtest::vcovAdj.lmerMod(model_intermediate_yield2)
+
+```
+

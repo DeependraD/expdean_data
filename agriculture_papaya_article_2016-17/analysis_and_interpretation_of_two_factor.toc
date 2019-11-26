@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Abstract}{2}{section.1}% 
+\contentsline {section}{\numberline {2}Introduction}{2}{section.2}% 
+\contentsline {section}{\numberline {3}Materials and methods}{3}{section.3}% 
+\contentsline {subsection}{\numberline {3.1}Site of study}{3}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {3.2}Selection of the cultivar}{3}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {3.3}Experimental design}{4}{subsection.3.3}% 
+\contentsline {subsubsection}{\numberline {3.3.1}Treatment combinations}{4}{subsubsection.3.3.1}% 
+\contentsline {subsubsection}{\numberline {3.3.2}Layout of field experiment}{4}{subsubsection.3.3.2}% 
+\contentsline {subsection}{\numberline {3.4}Treatment formulation}{4}{subsection.3.4}% 
+\contentsline {subsubsection}{\numberline {3.4.1}Timing}{4}{subsubsection.3.4.1}% 
+\contentsline {subsubsection}{\numberline {3.4.2}Preparation and application}{4}{subsubsection.3.4.2}% 
+\contentsline {subsection}{\numberline {3.5}Physical and physiological properties associated with flowering and fruiting}{6}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {3.6}Chemical properties associated with fruiting}{7}{subsection.3.6}% 
+\contentsline {subsection}{\numberline {3.7}Statistical method}{8}{subsection.3.7}% 
+\contentsline {section}{\numberline {4}Results and discussion}{8}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Model summary of fruit retention and fruit yield traits}{8}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}ANOVA of fruit retention and fruit yield traits}{9}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {4.3}Treatment mean comparison}{10}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {4.4}Effect of fruit thinning and defoliation on fruit retention}{11}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {4.5}Effect of fruit thinning and defoliation on fruit yield}{11}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {4.6}Effect of fruit thinning and defoliation on physical characteristics of papaya}{11}{subsection.4.6}% 
+\contentsline {subsection}{\numberline {4.7}Growth phenology of papaya}{14}{subsection.4.7}% 
+\contentsline {subsubsection}{\numberline {4.7.1}Plant height (Ht)}{14}{subsubsection.4.7.1}% 
+\contentsline {subsubsection}{\numberline {4.7.2}Number of leaves (NoL)}{14}{subsubsection.4.7.2}% 
+\contentsline {subsubsection}{\numberline {4.7.3}Stem diameter (SD)}{14}{subsubsection.4.7.3}% 
+\contentsline {subsubsection}{\numberline {4.7.4}??? (PL)}{14}{subsubsection.4.7.4}% 
+\contentsline {subsubsection}{\numberline {4.7.5}Number of flowers ()}{14}{subsubsection.4.7.5}% 
+\contentsline {subsubsection}{\numberline {4.7.6}Number of fruits set ()}{14}{subsubsection.4.7.6}% 
+\contentsline {subsubsection}{\numberline {4.7.7}Other features \ldots {}}{14}{subsubsection.4.7.7}% 
+\contentsline {section}{\numberline {5}Conclusion}{14}{section.5}% 
+\contentsline {section}{\numberline {6}Acknowledgement}{14}{section.6}% 

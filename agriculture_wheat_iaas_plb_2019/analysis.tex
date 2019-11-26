@@ -1,0 +1,2289 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Analysis of Maize, Nitrogen and Tillage experiment},
+            pdfauthor={Deependra Dhakal},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Analysis of Maize, Nitrogen and Tillage experiment}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Deependra Dhakal}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-03-21}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{rotating}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage{subfig}
+\usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\section{Phenotypic traits}\label{phenotypic-traits}
+
+\subsection{Phenotypic data import}\label{phenotypic-data-import}
+
+\subsection{Table of means}\label{table-of-means}
+
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 133.0 & a\\
+IR12F578 & 127.0 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 127.0 & ab\\
+NR2170-150-5-3-2-1-1-1 & 126.0 & ab\\
+\rowcolor{gray!6}  IR13F115 & 125.5 & abc\\
+\addlinespace
+NR2169-10-4-1-2-1-1-1-1 & 123.0 & abcd\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 121.0 & bcde\\
+NR2170-5-5-1-6-1-1-3-1 & 120.0 & bcdef\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 120.0 & bcdef\\
+Sabitri & 119.5 & bcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 118.5 & bcdefg\\
+IR15L1745 & 118.0 & bcdefgh\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 118.0 & bcdefgh\\
+NR2181-160-4-1-2-1-1-1-1 & 118.0 & bcdefgh\\
+\rowcolor{gray!6}  Radha-13 & 118.0 & bcdefgh\\
+\addlinespace
+NR2158-13-1-2-4-5 & 117.5 & bcdefgh\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 117.5 & bcdefgh\\
+IR102774-31-21-2-4-7 & 117.0 & bcdefgh\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 117.0 & bcdefghi\\
+NR2182-22-1-3-1-1-1 & 117.0 & bcdefghi\\
+\addlinespace
+\rowcolor{gray!6}  Mansuli & 116.0 & bcdefghi\\
+NR2169-10-1-1-6-2-1-3-1 & 116.0 & bcdefghij\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 116.0 & bcdefghijk\\
+NR2170-82-2-4-1-1-1-1 & 115.5 & cdefghijk\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 115.0 & cdefghijk\\
+\addlinespace
+IR15D1031 & 115.0 & defghijk\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 114.5 & defghijk\\
+Pant-1 & 111.5 & efghijk\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 111.0 & efghijkl\\
+IR15L1735 & 109.0 & fghijklm\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 108.5 & ghijklmn\\
+NR2168-44-2-1-1-1-2-1-1 & 108.3 & hijklmn\\
+\rowcolor{gray!6}  Anmol Mansuli & 107.0 & hijklmn\\
+IR10281-10-227-1-2-9 & 106.0 & ijklmn\\
+\rowcolor{gray!6}  IR16D1058 & 105.0 & jklmn\\
+\addlinespace
+NR2157-144-1-3-1-1 & 105.0 & klmn\\
+\rowcolor{gray!6}  Pant-2 & 100.5 & lmno\\
+IR102885-31-11-4-11 & 99.0 & mno\\
+\rowcolor{gray!6}  IR13F402 & 99.0 & no\\
+IR102885-2-74-17-2-3 & 98.5 & no\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 98.0 & no\\
+HHZ3-SAL13-4-SAL1 & 92.0 & o\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 92.0 & o\\
+\bottomrule
+\end{longtable}
+
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 160 & a\\
+IR12F578 & 158 & ab\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 158 & ab\\
+IR98785-10-1-1-3 & 157 & ab\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 156 & ab\\
+\addlinespace
+IR13F115 & 156 & abc\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 154 & abcd\\
+IR15L1745 & 154 & abcde\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 153 & abcdef\\
+Sabitri & 152 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 152 & abcdef\\
+NR2158-13-1-2-4-5 & 152 & abcdef\\
+\rowcolor{gray!6}  IR15D1031 & 151 & abcdef\\
+IR98853-3-6-1-3-2 & 151 & abcdef\\
+\rowcolor{gray!6}  Radha-13 & 151 & abcdef\\
+\addlinespace
+IR99739:2-1-1-2-1 & 150 & abcdefg\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 150 & abcdefg\\
+NR2170-5-5-1-6-1-1-3-1 & 150 & abcdefg\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 150 & abcdefg\\
+NR2179-82-2-4-1-1-1-1 & 150 & abcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 149 & abcdefg\\
+IR102774-31-21-2-4-7 & 149 & abcdefg\\
+\rowcolor{gray!6}  Mansuli & 149 & abcdefgh\\
+NR2169-10-1-1-6-2-1-3-1 & 149 & abcdefgh\\
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 149 & abcdefgh\\
+\addlinespace
+NR2182-58-1-3-1-1-1 & 149 & abcdefgh\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 148 & abcdefghi\\
+NR2181-139-1-3-1-1-1-1 & 148 & abcdefghi\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 147 & abcdefghi\\
+Pant-1 & 146 & abcdefghij\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1735 & 145 & bcdefghij\\
+NR2168-44-2-1-1-1-2-1-1 & 141 & cdefghij\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 141 & cdefghij\\
+Anmol Mansuli & 140 & defghijk\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 139 & efghijk\\
+\addlinespace
+IR16D1058 & 138 & fghijkl\\
+\rowcolor{gray!6}  Pant-2 & 136 & ghijkl\\
+IR102885-31-11-4-11 & 134 & hijkl\\
+\rowcolor{gray!6}  IR13F402 & 134 & hijkl\\
+IR102885-2-74-17-2-3 & 133 & ijkl\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 132 & jkl\\
+IR95784-21-1-1-2 & 125 & kl\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 124 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of pH}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  Mansuli & 130.2 & a\\
+IR15D1031 & 125.6 & ab\\
+\rowcolor{gray!6}  IR16D1058 & 123.6 & abc\\
+NR2182-33-3-2-1-1-1 & 122.0 & abcd\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 121.6 & abcde\\
+\addlinespace
+NR2182-22-1-3-1-1-1 & 110.2 & abcdef\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 108.6 & bcdefg\\
+IR99739:2-1-1-2-1 & 107.4 & bcdefgh\\
+\rowcolor{gray!6}  Pant-2 & 107.2 & bcdefghi\\
+IR15L1745 & 106.8 & cdefghi\\
+\addlinespace
+\rowcolor{gray!6}  Sabitri & 106.6 & cdefghi\\
+Radha-13 & 105.2 & cdefghi\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 104.8 & cdefghi\\
+IR12F578 & 104.6 & cdefghi\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 104.4 & defghi\\
+\addlinespace
+NR2181-465-1-1-1-1-1-1-1 & 104.2 & defghi\\
+\rowcolor{gray!6}  Pant-1 & 103.8 & defghi\\
+IR13F115 & 103.5 & defghi\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 103.5 & defghi\\
+NR2182-58-1-3-1-1-1 & 103.2 & efghi\\
+\addlinespace
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 103.1 & efghi\\
+IR102774-31-21-2-4-7 & 103.0 & fghi\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 102.8 & fghi\\
+NR2181-139-1-3-1-1-1-1 & 102.2 & fghi\\
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 101.2 & fghi\\
+\addlinespace
+NR2179-82-2-4-1-1-1-1 & 100.6 & fghi\\
+\rowcolor{gray!6}  IR13F402 & 99.4 & fghi\\
+NR2170-150-5-3-2-1-1-1 & 99.3 & fghi\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 98.8 & fghi\\
+IR98853-3-6-1-3-2 & 98.2 & fghi\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 98.2 & fghi\\
+IR102885-31-11-4-11 & 95.5 & fghi\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 95.4 & fghi\\
+NR2168-44-2-1-1-1-2-1-1 & 95.3 & fghi\\
+\rowcolor{gray!6}  IR102885-2-74-17-2-3 & 94.8 & fghi\\
+\addlinespace
+NR2158-13-1-2-4-5 & 94.5 & fghi\\
+\rowcolor{gray!6}  Anmol Mansuli & 93.6 & fghi\\
+IR13F228 & 93.4 & fghi\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 92.3 & fghi\\
+IR95784-21-1-1-2 & 92.0 & fghi\\
+\addlinespace
+\rowcolor{gray!6}  NR2170-5-5-1-6-1-1-3-1 & 89.4 & ghi\\
+HHZ3-SAL13-4-SAL1 & 88.3 & hi\\
+\rowcolor{gray!6}  IR15L1735 & 86.8 & i\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of PL}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 32.0 & a\\
+IR15L1745 & 31.4 & a\\
+\rowcolor{gray!6}  Radha-13 & 30.6 & ab\\
+IR16D1058 & 30.2 & abc\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 29.6 & abcd\\
+\addlinespace
+Pant-1 & 29.2 & abcde\\
+\rowcolor{gray!6}  Sabitri & 29.0 & abcde\\
+NR2168-44-2-1-1-1-2-1-1 & 28.1 & abcde\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 28.1 & abcdef\\
+Anmol Mansuli & 27.8 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 27.4 & abcdef\\
+IR10281-10-227-1-2-9 & 27.2 & abcdef\\
+\rowcolor{gray!6}  IR13F402 & 27.2 & abcdef\\
+Pant-2 & 27.1 & abcdef\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 27.0 & abcdef\\
+\addlinespace
+NR2170-150-5-3-2-1-1-1 & 26.9 & abcdef\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 26.8 & abcdef\\
+IR99784-255-78-2-3-1-2 & 26.6 & abcdef\\
+\rowcolor{gray!6}  IR13F228 & 26.4 & abcdef\\
+NR2181-139-1-3-1-1-1-1 & 25.8 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 25.7 & abcdef\\
+NR2170-5-5-1-6-1-1-3-1 & 25.6 & abcdef\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 25.6 & abcdef\\
+IR 106529-20-40-3-2-B & 25.4 & abcdef\\
+\rowcolor{gray!6}  IR102885-2-74-17-2-3 & 25.4 & abcdef\\
+\addlinespace
+IR15L1735 & 25.4 & bcdef\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 25.3 & bcdef\\
+IR15D1031 & 25.2 & bcdef\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 25.1 & bcdef\\
+HHZ3-SAL13-4-SAL1 & 25.0 & bcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 25.0 & bcdef\\
+NR2168-65-1-1-1-1-1-1-1 & 24.9 & bcdef\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 24.6 & bcdef\\
+NR2182-33-3-2-1-1-1 & 24.4 & bcdef\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 24.2 & bcdef\\
+\addlinespace
+Mansuli & 24.0 & bcdef\\
+\rowcolor{gray!6}  IR12F578 & 23.9 & bcdef\\
+NR2158-13-1-2-4-5 & 23.7 & cdef\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 23.6 & def\\
+IR95784-21-1-1-2 & 23.4 & def\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 23.2 & ef\\
+IR13F115 & 22.8 & ef\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 21.6 & f\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of Tiller}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  Radha-13 & 395 & a\\
+NR2182-58-1-3-1-1-1 & 347 & ab\\
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 332 & ab\\
+IR12F578 & 326 & ab\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 324 & ab\\
+\addlinespace
+NR2179-82-2-4-1-1-1-1 & 324 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 320 & ab\\
+IR99784-255-78-2-3-1-2 & 317 & ab\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 316 & ab\\
+NR2181-465-1-1-1-1-1-1-1 & 307 & ab\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 306 & ab\\
+IR102885-2-74-17-2-3 & 301 & ab\\
+\rowcolor{gray!6}  Pant-1 & 298 & ab\\
+NR2170-5-5-1-6-1-1-3-1 & 292 & ab\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 286 & ab\\
+\addlinespace
+NR2181-139-1-3-1-1-1-1 & 285 & ab\\
+\rowcolor{gray!6}  IR13F228 & 282 & ab\\
+NR2170-150-5-3-2-1-1-1 & 278 & ab\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 268 & ab\\
+Mansuli & 267 & ab\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 267 & ab\\
+NR2175-66-2-3-1-1 & 260 & ab\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 254 & ab\\
+IR102885-31-11-4-11 & 249 & ab\\
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 246 & ab\\
+\addlinespace
+IR 106529-20-40-3-2-B & 245 & ab\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 245 & ab\\
+NR2169-10-1-1-6-2-1-3-1 & 243 & ab\\
+\rowcolor{gray!6}  Sabitri & 242 & ab\\
+NR2157-144-1-3-1-1 & 234 & ab\\
+\addlinespace
+\rowcolor{gray!6}  IR103587-23-2-1-B & 229 & ab\\
+Anmol Mansuli & 224 & ab\\
+\rowcolor{gray!6}  IR15L1745 & 220 & ab\\
+IR98853-3-6-1-3-2 & 220 & ab\\
+\rowcolor{gray!6}  IR13F115 & 216 & ab\\
+\addlinespace
+IR16D1058 & 214 & ab\\
+\rowcolor{gray!6}  Pant-2 & 212 & b\\
+IR15D1031 & 211 & b\\
+\rowcolor{gray!6}  IR13F402 & 207 & b\\
+IR99739:2-1-1-2-1 & 203 & b\\
+\addlinespace
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 197 & b\\
+IR15L1735 & 187 & b\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 180 & b\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of GY/HA}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 6.09 & a\\
+NR2182-58-1-3-1-1-1 & 5.68 & ab\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 5.39 & abc\\
+NR2181-160-4-1-2-1-1-1-1 & 5.35 & abc\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 5.32 & abc\\
+\addlinespace
+HHZ3-SAL13-4-SAL1 & 5.32 & abc\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 5.29 & abcd\\
+IR13F115 & 5.26 & abcde\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 5.10 & abcdef\\
+NR2175-66-2-3-1-1 & 4.89 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 4.89 & abcdefg\\
+IR102885-31-11-4-11 & 4.82 & abcdefg\\
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 4.76 & abcdefg\\
+NR2182-33-3-2-1-1-1 & 4.71 & abcdefgh\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 4.61 & abcdefgh\\
+\addlinespace
+Pant-1 & 4.43 & abcdefghi\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 4.35 & abcdefghi\\
+IR15L1745 & 4.31 & bcdefghi\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 4.26 & bcdefghi\\
+NR2170-150-5-3-2-1-1-1 & 4.13 & bcdefghi\\
+\addlinespace
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 4.12 & bcdefghi\\
+IR13F228 & 4.03 & bcdefghij\\
+\rowcolor{gray!6}  Mansuli & 3.87 & cdefghij\\
+NR2169-10-4-1-2-1-1-1-1 & 3.85 & cdefghij\\
+\rowcolor{gray!6}  Sabitri & 3.83 & cdefghij\\
+\addlinespace
+IR102885-2-74-17-2-3 & 3.78 & cdefghij\\
+\rowcolor{gray!6}  Anmol Mansuli & 3.76 & cdefghij\\
+IR 106529-20-40-3-2-B & 3.53 & dfghij\\
+\rowcolor{gray!6}  Pant-2 & 3.52 & efghij\\
+IR95784-21-1-1-2 & 3.51 & fghij\\
+\addlinespace
+\rowcolor{gray!6}  Radha-13 & 3.47 & fghij\\
+IR99739:2-1-1-2-1 & 3.43 & fghij\\
+\rowcolor{gray!6}  IR15L1735 & 3.38 & fghijk\\
+IR13F402 & 3.34 & fghijk\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 3.24 & ghijk\\
+\addlinespace
+IR12F578 & 3.22 & ghijk\\
+\rowcolor{gray!6}  IR15D1031 & 3.14 & ghijk\\
+NR2170-5-5-1-6-1-1-3-1 & 2.97 & hijk\\
+\rowcolor{gray!6}  IR16D1058 & 2.73 & ijk\\
+NR2169-10-1-1-6-2-1-3-1 & 2.28 & jkl\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 1.67 & kl\\
+IR98785-10-1-1-3 & 1.12 & l\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 0.96 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of TW}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR16D1058 & 27.5 & a\\
+Pant-2 & 26.8 & ab\\
+\rowcolor{gray!6}  IR13F228 & 25.5 & abc\\
+NR2170-150-5-3-2-1-1-1 & 25.0 & abcd\\
+\rowcolor{gray!6}  IR13F402 & 24.6 & abcde\\
+\addlinespace
+NR2168-44-2-1-1-1-2-1-1 & 24.1 & abcdef\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 24.1 & abcdef\\
+Pant-1 & 23.8 & abcdef\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 23.8 & abcdef\\
+IR103587-23-2-1-B & 23.5 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 23.5 & abcdef\\
+NR2158-13-1-2-4-5 & 23.0 & abcdefg\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 22.9 & abcdefg\\
+Anmol Mansuli & 22.8 & abcdefg\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 22.1 & abcdefgh\\
+\addlinespace
+IR102885-2-74-17-2-3 & 21.9 & abcdefgh\\
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 21.9 & abcdefgh\\
+NR2170-5-5-1-6-1-1-3-1 & 21.9 & abcdefgh\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 21.9 & abcdefgh\\
+NR2181-139-1-3-1-1-1-1 & 21.2 & abcdefgh\\
+\addlinespace
+\rowcolor{gray!6}  Mansuli & 21.1 & abcdefgh\\
+Sabitri & 21.1 & abcdefgh\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 21.1 & abcdefgh\\
+IR13F115 & 21.0 & abcdefgh\\
+\rowcolor{gray!6}  IR15D1031 & 20.5 & bcdefgh\\
+\addlinespace
+NR2157-144-1-3-1-1 & 20.4 & bcdefgh\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 20.2 & bcdefgh\\
+NR2169-10-1-1-6-2-1-3-1 & 19.9 & bcdefgh\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 19.8 & cdefgh\\
+NR2181-465-1-1-1-1-1-1-1 & 19.5 & cdefgh\\
+\addlinespace
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 19.4 & cdefgh\\
+IR12F578 & 18.9 & defgh\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 18.7 & defgh\\
+NR2169-10-4-1-2-1-1-1-1 & 18.6 & efgh\\
+\rowcolor{gray!6}  Radha-13 & 18.6 & efgh\\
+\addlinespace
+NR2182-22-1-3-1-1-1 & 18.4 & efgh\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 17.7 & fgh\\
+IR15L1745 & 17.7 & fgh\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 17.4 & fgh\\
+IR 106529-20-40-3-2-B & 17.2 & fgh\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1735 & 16.4 & gh\\
+NR2175-66-2-3-1-1 & 15.6 & h\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 15.6 & h\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of sterility}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 94.70 & a\\
+IR98785-10-1-1-3 & 63.16 & b\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 39.42 & c\\
+IR99784-255-78-2-3-1-2 & 38.66 & cd\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 35.46 & cde\\
+\addlinespace
+IR102885-2-74-17-2-3 & 27.57 & cdef\\
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 27.22 & cdefg\\
+IR12F578 & 26.92 & cdefgh\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 26.39 & cdefghi\\
+IR13F115 & 25.89 & cdefghij\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 25.00 & cdefghijk\\
+NR2170-5-5-1-6-1-1-3-1 & 25.00 & defghijk\\
+\rowcolor{gray!6}  Radha-13 & 22.31 & defghijkl\\
+NR2168-65-1-1-1-1-1-1-1 & 21.10 & efghijkl\\
+\rowcolor{gray!6}  Pant-2 & 20.78 & efghijkl\\
+\addlinespace
+NR2179-82-2-4-1-1-1-1 & 20.72 & efghijkl\\
+\rowcolor{gray!6}  IR13F402 & 20.00 & efghijkl\\
+IR15L1745 & 18.75 & fghijkl\\
+\rowcolor{gray!6}  Pant-1 & 18.08 & fghijkl\\
+Anmol Mansuli & 17.94 & fghijkl\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 17.17 & fghijkl\\
+NR2169-10-4-1-2-1-1-1-1 & 17.13 & fghijkl\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 17.13 & fghijkl\\
+NR2181-465-1-1-1-1-1-1-1 & 16.50 & fghijkl\\
+\rowcolor{gray!6}  Sabitri & 16.30 & fghijkl\\
+\addlinespace
+IR13F228 & 15.12 & fghijkl\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 14.68 & fghijkl\\
+HHZ3-SAL13-4-SAL1 & 14.59 & fghijkl\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 14.51 & fghijkl\\
+NR2181-160-4-1-2-1-1-1-1 & 14.43 & fghijkl\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 13.78 & fghijkl\\
+IR102885-31-11-4-11 & 13.08 & ghijkl\\
+\rowcolor{gray!6}  IR15D1031 & 13.02 & ghijkl\\
+IR16D1058 & 12.84 & ghijkl\\
+\rowcolor{gray!6}  Mansuli & 12.74 & ghijkl\\
+\addlinespace
+IR98853-3-6-1-3-2 & 12.69 & ghijkl\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 11.52 & hijkl\\
+IR10281-10-227-1-2-9 & 11.28 & ijkl\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 10.62 & ijkl\\
+NR2157-144-1-3-1-1 & 10.60 & jkl\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1735 & 9.09 & kl\\
+NR2182-33-3-2-1-1-1 & 8.90 & kl\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 8.19 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of grain/spike}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR15L1735 & 220.0 & a\\
+NR2157-144-1-3-1-1 & 191.4 & ab\\
+\rowcolor{gray!6}  IR13F115 & 171.2 & abc\\
+Mansuli & 167.8 & abc\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 160.0 & bcd\\
+\addlinespace
+Radha-13 & 158.4 & bcd\\
+\rowcolor{gray!6}  IR15D1031 & 158.3 & bcd\\
+IR95784-21-1-1-2 & 154.8 & bcd\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 153.2 & bcde\\
+Pant-1 & 152.1 & bcde\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 150.0 & bcde\\
+IR102774-31-21-2-4-7 & 150.0 & bcde\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 148.6 & bcde\\
+NR2181-465-1-1-1-1-1-1-1 & 148.2 & bcdef\\
+\rowcolor{gray!6}  IR12F578 & 148.1 & bcdef\\
+\addlinespace
+NR2182-22-1-3-1-1-1 & 147.5 & bcdefg\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 141.4 & bcdefgh\\
+NR2179-82-2-4-1-1-1-1 & 140.0 & bcdefgh\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 136.1 & bcdefghi\\
+Sabitri & 134.2 & cdefghi\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 131.9 & cdefghi\\
+IR15L1745 & 130.0 & cdefghi\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 129.3 & cdefghi\\
+NR2170-82-2-4-1-1-1-1 & 128.4 & cdefghi\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 125.5 & cdefghi\\
+\addlinespace
+IR103587-23-2-1-B & 125.0 & cdefghi\\
+\rowcolor{gray!6}  IR16D1058 & 124.2 & cdefghi\\
+Pant-2 & 123.8 & cdefghi\\
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 121.7 & cdefghij\\
+NR2169-10-4-1-2-1-1-1-1 & 119.2 & cdefghij\\
+\addlinespace
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 118.0 & cdefghij\\
+NR2168-65-1-1-1-1-1-1-1 & 117.5 & cdefghij\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 116.5 & cdefghij\\
+Anmol Mansuli & 109.8 & defghij\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 97.6 & efghij\\
+\addlinespace
+IR13F228 & 93.2 & fghij\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 91.0 & ghij\\
+NR2170-5-5-1-6-1-1-3-1 & 90.0 & hij\\
+\rowcolor{gray!6}  IR102885-2-74-17-2-3 & 87.5 & hij\\
+NR2170-150-5-3-2-1-1-1 & 87.0 & hij\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 82.5 & ij\\
+IR13F402 & 66.0 & j\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 8.4 & k\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of BM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR15L1745 & 22.3 & a\\
+NR2182-33-3-2-1-1-1 & 20.6 & ab\\
+\rowcolor{gray!6}  IR13F115 & 20.1 & abc\\
+NR2175-66-2-3-1-1 & 19.6 & abc\\
+\rowcolor{gray!6}  Anmol Mansuli & 19.5 & abc\\
+\addlinespace
+Pant-1 & 18.9 & abc\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 18.6 & abc\\
+IR 106529-20-40-3-2-B & 18.6 & abcd\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 18.5 & abcd\\
+NR2181-465-1-1-1-1-1-1-1 & 18.3 & abcd\\
+\addlinespace
+\rowcolor{gray!6}  Radha-13 & 18.2 & abcd\\
+NR2168-44-2-1-1-1-2-1-1 & 18.2 & abcd\\
+\rowcolor{gray!6}  IR12F578 & 18.1 & abcd\\
+Mansuli & 18.0 & abcd\\
+\rowcolor{gray!6}  IR102885-2-74-17-2-3 & 17.9 & abcde\\
+\addlinespace
+NR2181-160-4-1-2-1-1-1-1 & 17.9 & abcdef\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 17.9 & abcdef\\
+Sabitri & 17.7 & abcdef\\
+\rowcolor{gray!6}  IR16D1058 & 17.6 & abcdef\\
+NR2181-139-1-3-1-1-1-1 & 17.6 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 17.4 & abcdef\\
+NR2170-150-5-3-2-1-1-1 & 17.2 & abcdef\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 17.1 & abcdef\\
+NR2170-5-5-1-6-1-1-3-1 & 16.9 & abcdef\\
+\rowcolor{gray!6}  IR15D1031 & 16.8 & bcdefg\\
+\addlinespace
+IR102885-31-11-4-11 & 16.8 & bcdefg\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 16.4 & bcdefg\\
+IR98785-10-1-1-3 & 16.2 & bcdefg\\
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 16.2 & bcdefg\\
+IR13F228 & 16.0 & bcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 15.9 & bcdefg\\
+NR2168-65-1-1-1-1-1-1-1 & 15.7 & bcdefg\\
+\rowcolor{gray!6}  IR15L1735 & 15.5 & bcdefg\\
+NR2170-82-2-4-1-1-1-1 & 15.0 & bcdefg\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 15.0 & cdefg\\
+\addlinespace
+NR2157-144-1-3-1-1 & 14.9 & cdefg\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 14.3 & cdefg\\
+NR2182-22-1-3-1-1-1 & 14.2 & cdefg\\
+\rowcolor{gray!6}  IR13F402 & 12.9 & defg\\
+NR2179-82-2-4-1-1-1-1 & 12.9 & defg\\
+\addlinespace
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 12.2 & efg\\
+HHZ3-SAL13-4-SAL1 & 12.2 & fg\\
+\rowcolor{gray!6}  Pant-2 & 11.0 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab1}Treatment means with groups of HI}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 44.16 & a\\
+NR2170-82-2-4-1-1-1-1 & 40.50 & ab\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 38.46 & abc\\
+NR2157-144-1-3-1-1 & 35.82 & abcd\\
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 34.12 & bcde\\
+\addlinespace
+NR2168-65-1-1-1-1-1-1-1 & 32.51 & bcdef\\
+\rowcolor{gray!6}  Pant-2 & 32.15 & bcdef\\
+NR2158-13-1-2-4-5 & 31.29 & bcdefg\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 29.69 & cdefgh\\
+NR2181-465-1-1-1-1-1-1-1 & 28.90 & defghi\\
+\addlinespace
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 28.77 & defghij\\
+IR95784-21-1-1-2 & 28.74 & defghijk\\
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 27.53 & defghijkl\\
+IR102774-31-21-2-4-7 & 26.78 & defghijklm\\
+\rowcolor{gray!6}  IR13F115 & 26.11 & defghijklm\\
+\addlinespace
+IR13F402 & 25.98 & efghijklm\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 25.42 & efghijklm\\
+NR2179-82-2-4-1-1-1-1 & 25.17 & efghijklmn\\
+\rowcolor{gray!6}  IR13F228 & 25.14 & efghijklmn\\
+IR98853-3-6-1-3-2 & 24.74 & efghijklmn\\
+\addlinespace
+\rowcolor{gray!6}  Pant-1 & 24.40 & fghijklmn\\
+NR2170-150-5-3-2-1-1-1 & 23.76 & fghijklmn\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 23.54 & fghijklmn\\
+IR10281-10-227-1-2-9 & 23.07 & fghijklmn\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 22.89 & fghijklmn\\
+\addlinespace
+NR2169-10-4-1-2-1-1-1-1 & 22.02 & ghijklmn\\
+\rowcolor{gray!6}  IR15L1735 & 21.76 & ghijklmn\\
+Sabitri & 21.67 & ghijklmn\\
+\rowcolor{gray!6}  Mansuli & 21.43 & hijklmn\\
+IR102885-2-74-17-2-3 & 21.12 & hijklmn\\
+\addlinespace
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 20.96 & hijklmn\\
+IR15L1745 & 19.32 & ijlmno\\
+\rowcolor{gray!6}  Anmol Mansuli & 19.28 & ijlmno\\
+Radha-13 & 19.09 & jlmno\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 18.98 & klmno\\
+\addlinespace
+IR15D1031 & 18.63 & lmno\\
+\rowcolor{gray!6}  IR12F578 & 17.75 & lmno\\
+NR2170-5-5-1-6-1-1-3-1 & 17.55 & mno\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 15.96 & nop\\
+IR16D1058 & 15.44 & nop\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 10.29 & opq\\
+IR98785-10-1-1-3 & 6.91 & pq\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 5.45 & q\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 95.7 & a\\
+GSR 310 & 92.0 & b\\
+\rowcolor{gray!6}  Radha-4 & 90.7 & bc\\
+IR 14L 363 & 89.7 & bcd\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 89.3 & cde\\
+\addlinespace
+IR08L181 & 89.0 & cde\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 88.7 & cde\\
+HHZ6-DT1-L11-L11 & 88.3 & cdef\\
+\rowcolor{gray!6}  IR 14L 145 & 88.3 & cdef\\
+IR 14L 160 & 87.7 & defg\\
+\addlinespace
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 87.7 & defgh\\
+HHZ25-DT9-Y1-Y1 & 87.3 & defgh\\
+\rowcolor{gray!6}  IR 14L 572 & 87.0 & efgh\\
+IR 96279-33-3-1-2 & 87.0 & efgh\\
+\rowcolor{gray!6}  IR 14L 576 & 86.7 & efgh\\
+\addlinespace
+IR86515-19-1-2-1-1-1-1 & 85.7 & fghi\\
+\rowcolor{gray!6}  Hardinath-3 & 85.3 & ghi\\
+IR 14L 158 & 85.3 & hi\\
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 83.3 & ij\\
+IR 98846-2-1-4-3 & 83.3 & ij\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 82.3 & j\\
+IR 15L 1717 & 82.0 & j\\
+\bottomrule
+\end{longtable}
+
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 125 & a\\
+IR 14L 363 & 124 & ab\\
+\rowcolor{gray!6}  GSR 310 & 122 & abc\\
+Radha-4 & 122 & abc\\
+\rowcolor{gray!6}  IR 14L 160 & 122 & bcd\\
+\addlinespace
+1R 93810-2-1-1-1 & 121 & bcd\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 120 & cd\\
+IR 14L 145 & 120 & cde\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 120 & cde\\
+IR08L181 & 120 & cde\\
+\addlinespace
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 120 & cde\\
+IR 14L 572 & 119 & cde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 119 & cde\\
+HHZ25-DT9-Y1-Y1 & 119 & de\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 117 & ef\\
+\addlinespace
+IR 103575-76-1-1-B & 116 & fg\\
+\rowcolor{gray!6}  IR 14L 576 & 115 & fg\\
+Hardinath-3 & 115 & fg\\
+\rowcolor{gray!6}  IR 14L 158 & 114 & fg\\
+IR 103575-76-1-2-B & 114 & fg\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 113 & g\\
+IR 98846-2-1-4-3 & 113 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of pH}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  Hardinath-3 & 124 & a\\
+IR 14L 363 & 122 & ab\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 118 & abc\\
+IR08L181 & 117 & bcd\\
+\rowcolor{gray!6}  IR 14L 158 & 116 & cde\\
+\addlinespace
+IR 14L 160 & 116 & cde\\
+\rowcolor{gray!6}  IR 14D 198 & 114 & cdef\\
+IR 14L 572 & 114 & cdefg\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 113 & cdefg\\
+IR 96279-33-3-1-2 & 113 & cdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 113 & cdefgh\\
+Radha-4 & 112 & defghi\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 111 & efghij\\
+HHZ25-DT9-Y1-Y1 & 110 & fghij\\
+\rowcolor{gray!6}  IR 15L 1717 & 110 & fghij\\
+\addlinespace
+IR 103575-76-1-2-B & 109 & fghij\\
+\rowcolor{gray!6}  IR 14L 145 & 109 & ghijk\\
+IR 14L 576 & 107 & hijkl\\
+\rowcolor{gray!6}  GSR 310 & 106 & ijkl\\
+IR86515-19-1-2-1-1-1-1 & 106 & jkl\\
+\addlinespace
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 103 & kl\\
+IR 98846-2-1-4-3 & 102 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of PL}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14L 572 & 36.5 & a\\
+IR95809-25-1-1-1 & 28.9 & b\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 28.3 & b\\
+IR 103575-76-1-2-B & 28.1 & b\\
+\rowcolor{gray!6}  IR 14L 160 & 28.1 & b\\
+\addlinespace
+Hardinath-3 & 27.4 & b\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 27.0 & b\\
+IR 14L 363 & 26.9 & b\\
+\rowcolor{gray!6}  IR 14L 158 & 26.8 & b\\
+IR 98846-2-1-4-3 & 26.8 & b\\
+\addlinespace
+\rowcolor{gray!6}  IR 14L 576 & 26.5 & b\\
+IR 103587-22-2-3-B & 26.4 & b\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 26.3 & b\\
+IR 14L 145 & 26.2 & b\\
+\rowcolor{gray!6}  IR 14D 198 & 26.1 & b\\
+\addlinespace
+1R 93810-2-1-1-1 & 25.8 & b\\
+\rowcolor{gray!6}  IR08L181 & 25.5 & b\\
+HHZ25-DT9-Y1-Y1 & 25.3 & b\\
+\rowcolor{gray!6}  GSR 310 & 25.0 & b\\
+HHZ6-DT1-L11-L11 & 24.8 & b\\
+\addlinespace
+\rowcolor{gray!6}  Radha-4 & 24.4 & b\\
+IR 15L 1717 & 24.4 & b\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of Tiller}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 315 & a\\
+IR 96279-33-3-1-2 & 269 & ab\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 266 & ab\\
+Radha-4 & 265 & abc\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 263 & bc\\
+\addlinespace
+IR 98846-2-1-4-3 & 262 & bc\\
+\rowcolor{gray!6}  IR 14L 572 & 260 & bc\\
+GSR 310 & 249 & bcd\\
+\rowcolor{gray!6}  IR 14L 158 & 246 & bcd\\
+IR 14L 160 & 246 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 233 & bcd\\
+1R 93810-2-1-1-1 & 232 & bcd\\
+\rowcolor{gray!6}  Hardinath-3 & 232 & bcd\\
+IR 14L 145 & 231 & bcd\\
+\rowcolor{gray!6}  IR 14L 363 & 227 & bcd\\
+\addlinespace
+IR95809-25-1-1-1 & 227 & bcd\\
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 224 & bcd\\
+IR86515-19-1-2-1-1-1-1 & 222 & bcd\\
+\rowcolor{gray!6}  IR 14L 576 & 222 & bcd\\
+IR08L181 & 221 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 211 & cd\\
+IR 103587-22-2-3-B & 204 & d\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of GY/HA}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 6.79 & a\\
+Radha-4 & 6.50 & ab\\
+\rowcolor{gray!6}  Hardinath-3 & 6.36 & abc\\
+IR95809-25-1-1-1 & 6.27 & abc\\
+\rowcolor{gray!6}  IR 14L 572 & 6.20 & abc\\
+\addlinespace
+IR 15L 1717 & 6.17 & abc\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 6.05 & abcd\\
+IR08L181 & 6.05 & abcd\\
+\rowcolor{gray!6}  IR 14L 160 & 5.98 & bcd\\
+HHZ25-DT9-Y1-Y1 & 5.97 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  GSR 310 & 5.95 & bcd\\
+IR 103587-22-2-3-B & 5.88 & bcde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 5.71 & cdef\\
+IR 14L 363 & 5.67 & cdef\\
+\rowcolor{gray!6}  IR 14L 576 & 5.65 & cdef\\
+\addlinespace
+IR 14L 145 & 5.58 & cdef\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 5.42 & def\\
+IR 14L 158 & 5.41 & def\\
+\rowcolor{gray!6}  IR 14D 198 & 5.33 & def\\
+IR 103575-76-1-1-B & 5.17 & ef\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 5.17 & f\\
+1R 93810-2-1-1-1 & 5.03 & f\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of TW}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 15L 1717 & 24.3 & a\\
+IR 96279-33-3-1-2 & 24.1 & a\\
+\rowcolor{gray!6}  IR 14L 363 & 23.9 & ab\\
+IR 14L 572 & 23.9 & ab\\
+\rowcolor{gray!6}  Radha-4 & 23.5 & ab\\
+\addlinespace
+1R 93810-2-1-1-1 & 23.2 & abc\\
+\rowcolor{gray!6}  Hardinath-3 & 23.0 & abc\\
+IR 14L 145 & 22.5 & abcd\\
+\rowcolor{gray!6}  IR 14L 158 & 22.2 & abcde\\
+IR08L181 & 21.9 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  IR 14L 576 & 21.6 & abcdefg\\
+IR 14D 198 & 21.1 & abcdefg\\
+\rowcolor{gray!6}  IR 14L 160 & 21.1 & abcdefg\\
+IR 103587-22-2-3-B & 20.8 & abcdefg\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 19.8 & bcdefg\\
+\addlinespace
+IR 103575-76-1-2-B & 19.7 & bcdefg\\
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 18.9 & cdefg\\
+IR 103575-76-1-1-B & 18.9 & cdefg\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 18.2 & defg\\
+HHZ6-DT1-L11-L11 & 18.0 & efg\\
+\addlinespace
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 17.3 & fg\\
+GSR 310 & 17.0 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of sterility}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  Hardinath-3 & 26.67 & a\\
+IR 103587-22-2-3-B & 20.49 & ab\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 20.45 & abc\\
+IR 14L 158 & 20.32 & abc\\
+\rowcolor{gray!6}  IR 14L 145 & 19.76 & abcd\\
+\addlinespace
+IR95809-25-1-1-1 & 19.09 & abcd\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 18.86 & abcd\\
+IR 14L 572 & 18.62 & abcd\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 18.16 & abcd\\
+IR 14L 363 & 17.36 & abcd\\
+\addlinespace
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 16.59 & abcd\\
+IR 14L 576 & 15.83 & abcd\\
+\rowcolor{gray!6}  IR 14L 160 & 15.56 & abcd\\
+IR 103575-76-1-2-B & 14.70 & bcd\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 14.04 & bcd\\
+\addlinespace
+IR 98846-2-1-4-3 & 13.41 & bcd\\
+\rowcolor{gray!6}  Radha-4 & 13.07 & bcd\\
+HHZ6-DT1-L11-L11 & 12.94 & bcd\\
+\rowcolor{gray!6}  IR 15L 1717 & 11.34 & bcd\\
+GSR 310 & 10.69 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  IR 14D 198 & 10.55 & cd\\
+IR08L181 & 8.87 & d\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of grain/spike}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 181.7 & a\\
+GSR 310 & 179.1 & ab\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 175.5 & ab\\
+HHZ25-DT9-Y1-Y1 & 167.4 & abc\\
+\rowcolor{gray!6}  IR 14L 363 & 166.9 & abc\\
+\addlinespace
+IR 103587-22-2-3-B & 160.1 & abcd\\
+\rowcolor{gray!6}  IR08L181 & 154.9 & abcde\\
+IR95809-25-1-1-1 & 154.7 & abcdef\\
+\rowcolor{gray!6}  IR 15L 1717 & 142.1 & bcdefg\\
+IR 14L 158 & 141.1 & bcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 138.9 & cdefgh\\
+Hardinath-3 & 138.7 & cdefgh\\
+\rowcolor{gray!6}  IR 14L 572 & 135.6 & cdefgh\\
+IR 14L 576 & 130.2 & cdefghi\\
+\rowcolor{gray!6}  IR 14L 160 & 128.9 & cdefghi\\
+\addlinespace
+IR 98846-2-1-4-3 & 120.4 & dfghi\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 120.1 & efghi\\
+IR 14L 145 & 115.7 & fghi\\
+\rowcolor{gray!6}  Radha-4 & 108.2 & ghi\\
+IR 14D 198 & 105.6 & ghi\\
+\addlinespace
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 100.0 & hi\\
+1R 93810-2-1-1-1 & 94.2 & i\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of BM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14L 145 & 24.3 & a\\
+IR 14L 160 & 23.5 & ab\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 23.1 & abc\\
+HHZ25-DT9-Y1-Y1 & 23.1 & abc\\
+\rowcolor{gray!6}  IR 14L 158 & 23.1 & abc\\
+\addlinespace
+Hardinath-3 & 22.8 & abc\\
+\rowcolor{gray!6}  GSR 310 & 22.5 & abc\\
+IR08L181 & 22.5 & abcd\\
+\rowcolor{gray!6}  IR 14L 576 & 22.4 & abcd\\
+IR95809-25-1-1-1 & 22.4 & abcd\\
+\addlinespace
+\rowcolor{gray!6}  Radha-4 & 22.3 & abcd\\
+IR 103575-76-1-2-B & 21.8 & abcd\\
+\rowcolor{gray!6}  IR 14L 572 & 21.7 & abcd\\
+IR 14D 198 & 21.7 & abcd\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 21.6 & abcd\\
+\addlinespace
+IR 15L 1717 & 21.5 & abcd\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 21.5 & abcd\\
+HHZ6-DT1-L11-L11 & 21.2 & abcd\\
+\rowcolor{gray!6}  IR 14L 363 & 20.8 & bcd\\
+IR 96279-33-3-1-2 & 20.6 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 19.9 & cd\\
+IR 103587-22-2-3-B & 18.9 & d\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of dryM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14L 145 & 12.15 & a\\
+IR 14L 160 & 11.75 & ab\\
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 11.55 & abc\\
+HHZ25-DT9-Y1-Y1 & 11.55 & abc\\
+\rowcolor{gray!6}  IR 14L 158 & 11.54 & abc\\
+\addlinespace
+Hardinath-3 & 11.42 & abc\\
+\rowcolor{gray!6}  GSR 310 & 11.26 & abc\\
+IR08L181 & 11.24 & abcd\\
+\rowcolor{gray!6}  IR 14L 576 & 11.21 & abcd\\
+IR95809-25-1-1-1 & 11.21 & abcd\\
+\addlinespace
+\rowcolor{gray!6}  Radha-4 & 11.17 & abcd\\
+IR 103575-76-1-2-B & 10.91 & abcd\\
+\rowcolor{gray!6}  IR 14L 572 & 10.87 & abcd\\
+IR 14D 198 & 10.86 & abcd\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 10.82 & abcd\\
+\addlinespace
+IR 15L 1717 & 10.76 & abcd\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 10.73 & abcd\\
+HHZ6-DT1-L11-L11 & 10.62 & abcd\\
+\rowcolor{gray!6}  IR 14L 363 & 10.39 & bcd\\
+IR 96279-33-3-1-2 & 10.28 & bcd\\
+\addlinespace
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 9.93 & cd\\
+IR 103587-22-2-3-B & 9.45 & d\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab2}Treatment means with groups of HI}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 64.1 & a\\
+IR 103587-22-2-3-B & 62.5 & ab\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 61.1 & abc\\
+Radha-4 & 58.2 & abcd\\
+\rowcolor{gray!6}  IR 14L 572 & 57.7 & abcd\\
+\addlinespace
+IR 15L 1717 & 57.2 & abcd\\
+\rowcolor{gray!6}  Hardinath-3 & 56.5 & abcd\\
+IR95809-25-1-1-1 & 56.0 & abcde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 55.8 & abcde\\
+IR 14L 363 & 55.1 & bcde\\
+\addlinespace
+\rowcolor{gray!6}  IR08L181 & 54.4 & bcdef\\
+GSR 310 & 53.0 & cdefg\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 51.7 & defg\\
+IR 14L 160 & 51.1 & defg\\
+\rowcolor{gray!6}  IR 14L 576 & 50.4 & defg\\
+\addlinespace
+IR 98846-2-1-4-3 & 50.1 & defg\\
+\rowcolor{gray!6}  IR 14D 198 & 49.3 & defg\\
+IR 103575-76-1-2-B & 47.4 & efg\\
+\rowcolor{gray!6}  IR 14L 158 & 47.0 & fg\\
+1R 93810-2-1-1-1 & 46.8 & fg\\
+\addlinespace
+\rowcolor{gray!6}  IR 14L 145 & 46.1 & fg\\
+IR 103575-76-1-1-B & 45.2 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+\section{Agroclimatic variables}\label{agroclimatic-variables}
+
+\subsection{Calculations}\label{calculations}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Growing degree days (GDD)
+\end{enumerate}
+
+\[
+GDD = \frac{T_{max} + T_{min}}{2}-T_b
+\] Where,
+
+\(T_b\) = Base temperature = \(100^{\circ}C\) for summer crops \(T_b\) =
+Base temperature = \(80^{\circ}C\) for winter crops
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  Helio-thermal unit (HTU)
+\end{enumerate}
+
+\[
+HTU = GDD \times Duration~of~sunshine~hours
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Heat use efficiency (HUE)
+\end{enumerate}
+
+\[
+HUE = \frac{Biomass~yield~(kg~ha^{-1})}{GDD}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Helio-thermal unit use efficiency (HTUE)
+\end{enumerate}
+
+\[
+HTUE = \frac{Biomass~yield~(kg~ha^{-1})}{HTU}
+\]
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\tightlist
+\item
+  Radiation use efficiency (RUE)
+\end{enumerate}
+
+\[
+RUE = \frac{Biomass~yield~(kg~ha^{-1})}{Radiation~hours}
+\]
+
+Notably, GDD can be calculated at both the heading and maturity periods.
+
+\subsubsection{Climate data import}\label{climate-data-import}
+
+\subsubsection{Climate data filter}\label{climate-data-filter}
+
+\subsubsection{Climatic and phenotypic indices
+derived}\label{climatic-and-phenotypic-indices-derived}
+
+\subsection{Table of means}\label{table-of-means-1}
+
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of GDD DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 2013 & a\\
+GSR 310 & 1943 & b\\
+\rowcolor{gray!6}  Radha-4 & 1918 & bc\\
+IR 14L 363 & 1899 & bcd\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 1893 & cde\\
+\addlinespace
+IR08L181 & 1886 & cde\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 1880 & cde\\
+HHZ6-DT1-L11-L11 & 1874 & cdef\\
+\rowcolor{gray!6}  IR 14L 145 & 1873 & cdef\\
+IR 14L 160 & 1860 & def\\
+\addlinespace
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 1860 & defg\\
+HHZ25-DT9-Y1-Y1 & 1854 & defg\\
+\rowcolor{gray!6}  IR 14L 572 & 1847 & efg\\
+IR 96279-33-3-1-2 & 1847 & efg\\
+\rowcolor{gray!6}  IR 14L 576 & 1841 & efg\\
+\addlinespace
+IR86515-19-1-2-1-1-1-1 & 1821 & fgh\\
+\rowcolor{gray!6}  IR 14L 158 & 1814 & gh\\
+Hardinath-3 & 1814 & gh\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 1776 & hi\\
+IR 103575-76-1-2-B & 1775 & hi\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 1756 & i\\
+IR 15L 1717 & 1749 & i\\
+\bottomrule
+\end{longtable}
+
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of GDD DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 2540 & a\\
+IR 14L 363 & 2518 & ab\\
+\rowcolor{gray!6}  GSR 310 & 2491 & abc\\
+Radha-4 & 2491 & abc\\
+\rowcolor{gray!6}  IR 14L 160 & 2486 & bcd\\
+\addlinespace
+1R 93810-2-1-1-1 & 2475 & bcd\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 2463 & cd\\
+IR 14L 145 & 2458 & cde\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 2452 & cde\\
+IR95809-25-1-1-1 & 2452 & cde\\
+\addlinespace
+\rowcolor{gray!6}  IR08L181 & 2452 & cde\\
+IR 14L 572 & 2440 & cde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 2440 & cde\\
+HHZ25-DT9-Y1-Y1 & 2435 & de\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 2406 & ef\\
+\addlinespace
+IR 103575-76-1-1-B & 2383 & fg\\
+\rowcolor{gray!6}  IR 14L 576 & 2377 & fg\\
+Hardinath-3 & 2371 & fg\\
+\rowcolor{gray!6}  IR 14L 158 & 2359 & fg\\
+IR 103575-76-1-2-B & 2353 & fg\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 2341 & g\\
+IR 98846-2-1-4-3 & 2335 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of Sunshine hrs DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 7.64 & a\\
+IR 103587-22-2-3-B & 7.63 & ab\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 7.63 & ab\\
+Radha-4 & 7.62 & abc\\
+\rowcolor{gray!6}  IR 14L 160 & 7.62 & abcd\\
+\addlinespace
+IR95809-25-1-1-1 & 7.62 & abcd\\
+\rowcolor{gray!6}  IR 14L 363 & 7.62 & abcde\\
+HHZ25-DT9-Y1-Y1 & 7.62 & abcdef\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 7.61 & abcdef\\
+GSR 310 & 7.61 & bcdef\\
+\addlinespace
+\rowcolor{gray!6}  IR 14L 572 & 7.61 & bcdef\\
+IR 14L 145 & 7.61 & bcdef\\
+\rowcolor{gray!6}  IR 14L 576 & 7.60 & bcdefg\\
+IR08L181 & 7.60 & bcdefgh\\
+\rowcolor{gray!6}  Hardinath-3 & 7.60 & cdefgh\\
+\addlinespace
+IR 14D 198 & 7.59 & cdefgh\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 7.59 & defgh\\
+IR 98846-2-1-4-3 & 7.59 & efgh\\
+\rowcolor{gray!6}  IR 14L 158 & 7.59 & fgh\\
+IR 103575-76-1-1-B & 7.58 & gh\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 7.57 & h\\
+IR 103575-76-1-2-B & 7.57 & h\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of Sunshine hrs DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 7.84 & a\\
+IR 14L 363 & 7.83 & ab\\
+\rowcolor{gray!6}  GSR 310 & 7.82 & abc\\
+Radha-4 & 7.82 & abc\\
+\rowcolor{gray!6}  IR 14L 160 & 7.81 & bcd\\
+\addlinespace
+1R 93810-2-1-1-1 & 7.81 & bcd\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 7.81 & bcd\\
+IR 14L 145 & 7.80 & cd\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 7.80 & cde\\
+IR95809-25-1-1-1 & 7.80 & cde\\
+\addlinespace
+\rowcolor{gray!6}  IR08L181 & 7.80 & cde\\
+IR 14L 572 & 7.79 & cde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 7.79 & cde\\
+HHZ25-DT9-Y1-Y1 & 7.79 & de\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 7.78 & ef\\
+\addlinespace
+IR 103575-76-1-1-B & 7.77 & fg\\
+\rowcolor{gray!6}  IR 14L 576 & 7.76 & fg\\
+Hardinath-3 & 7.76 & fg\\
+\rowcolor{gray!6}  IR 14L 158 & 7.76 & fg\\
+IR 103575-76-1-2-B & 7.75 & g\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 7.75 & g\\
+IR 98846-2-1-4-3 & 7.75 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of HTU DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 15284 & a\\
+GSR 310 & 14793 & b\\
+\rowcolor{gray!6}  Radha-4 & 14627 & bc\\
+IR 14L 363 & 14465 & bcd\\
+\rowcolor{gray!6}  1R 93810-2-1-1-1 & 14464 & bcde\\
+\addlinespace
+IR 103587-22-2-3-B & 14347 & cdef\\
+\rowcolor{gray!6}  IR08L181 & 14335 & cdef\\
+HHZ6-DT1-L11-L11 & 14295 & cdef\\
+\rowcolor{gray!6}  IR 14L 145 & 14251 & cdef\\
+IR 14L 160 & 14178 & defg\\
+\addlinespace
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 14178 & defgh\\
+HHZ25-DT9-Y1-Y1 & 14120 & defghi\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 14066 & efghij\\
+IR 14L 572 & 14061 & fghij\\
+\rowcolor{gray!6}  IR 14L 576 & 13999 & fghij\\
+\addlinespace
+IR86515-19-1-2-1-1-1-1 & 13828 & gij\\
+\rowcolor{gray!6}  Hardinath-3 & 13784 & hjk\\
+IR 14L 158 & 13766 & jk\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 13475 & kl\\
+IR 103575-76-1-2-B & 13443 & kl\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 13302 & l\\
+IR 15L 1717 & 13251 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of HTU DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR 14D 198 & 19904 & a\\
+IR 14L 363 & 19708 & ab\\
+\rowcolor{gray!6}  GSR 310 & 19475 & abc\\
+Radha-4 & 19470 & abc\\
+\rowcolor{gray!6}  IR 14L 160 & 19423 & bcd\\
+\addlinespace
+1R 93810-2-1-1-1 & 19331 & bcd\\
+\rowcolor{gray!6}  IR 103587-22-2-3-B & 19230 & cd\\
+IR 14L 145 & 19177 & cde\\
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 19125 & cde\\
+IR95809-25-1-1-1 & 19125 & cde\\
+\addlinespace
+\rowcolor{gray!6}  IR08L181 & 19116 & cde\\
+IR 14L 572 & 19022 & cde\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 19021 & cde\\
+HHZ25-DT9-Y1-Y1 & 18969 & de\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 18712 & ef\\
+\addlinespace
+IR 103575-76-1-1-B & 18503 & fg\\
+\rowcolor{gray!6}  IR 14L 576 & 18451 & fg\\
+Hardinath-3 & 18399 & fg\\
+\rowcolor{gray!6}  IR 14L 158 & 18298 & fg\\
+IR 103575-76-1-2-B & 18245 & fg\\
+\addlinespace
+\rowcolor{gray!6}  IR 15L 1717 & 18143 & g\\
+IR 98846-2-1-4-3 & 18085 & g\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of HUI}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 0 & a\\
+Hardinath-3 & 0 & ab\\
+\rowcolor{gray!6}  IR 15L 1717 & 0 & abc\\
+Radha-4 & 0 & abcd\\
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 0 & abcde\\
+\addlinespace
+IR 14L 572 & 0 & abcde\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 0 & abcdef\\
+IR08L181 & 0 & abcdef\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 0 & bcdef\\
+IR 14L 160 & 0 & bcdefg\\
+\addlinespace
+\rowcolor{gray!6}  GSR 310 & 0 & cdefg\\
+IR 103587-22-2-3-B & 0 & cdefg\\
+\rowcolor{gray!6}  IR 14L 576 & 0 & cdefgh\\
+IR 96279-33-3-1-2 & 0 & defgh\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 0 & defgh\\
+\addlinespace
+IR 14L 158 & 0 & defgh\\
+\rowcolor{gray!6}  IR 14L 145 & 0 & defgh\\
+IR 14L 363 & 0 & efgh\\
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 0 & fgh\\
+IR 103575-76-1-1-B & 0 & fgh\\
+\addlinespace
+\rowcolor{gray!6}  IR 14D 198 & 0 & gh\\
+1R 93810-2-1-1-1 & 0 & h\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of HTUE}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 0 & a\\
+Hardinath-3 & 0 & ab\\
+\rowcolor{gray!6}  IR 15L 1717 & 0 & abc\\
+Radha-4 & 0 & abcd\\
+\rowcolor{gray!6}  IR95809-25-1-1-1 & 0 & abcde\\
+\addlinespace
+IR 14L 572 & 0 & abcde\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 0 & abcdef\\
+IR08L181 & 0 & abcdef\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 0 & bcdef\\
+IR 14L 160 & 0 & bcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR 14L 576 & 0 & bcdefg\\
+IR 103587-22-2-3-B & 0 & bcdefg\\
+\rowcolor{gray!6}  GSR 310 & 0 & cdefg\\
+IR 96279-33-3-1-2 & 0 & defgh\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 0 & defgh\\
+\addlinespace
+IR 14L 158 & 0 & defgh\\
+\rowcolor{gray!6}  IR 14L 145 & 0 & defgh\\
+IR 14L 363 & 0 & efgh\\
+\rowcolor{gray!6}  IR 103575-76-1-2-B & 0 & efgh\\
+IR 103575-76-1-1-B & 0 & fgh\\
+\addlinespace
+\rowcolor{gray!6}  IR 14D 198 & 0 & gh\\
+1R 93810-2-1-1-1 & 0 & h\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-early}Treatment means with groups of RUE}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ6-DT1-L11-L11 & 0.87 & a\\
+Radha-4 & 0.83 & ab\\
+\rowcolor{gray!6}  Hardinath-3 & 0.82 & abc\\
+IR95809-25-1-1-1 & 0.80 & abcd\\
+\rowcolor{gray!6}  IR 15L 1717 & 0.80 & abcd\\
+\addlinespace
+IR 14L 572 & 0.80 & abcde\\
+\rowcolor{gray!6}  IR86515-19-1-2-1-1-1-1 & 0.78 & abcdef\\
+IR08L181 & 0.78 & abcdef\\
+\rowcolor{gray!6}  HHZ25-DT9-Y1-Y1 & 0.77 & bcdef\\
+IR 14L 160 & 0.77 & bcdefg\\
+\addlinespace
+\rowcolor{gray!6}  GSR 310 & 0.76 & bcdefg\\
+IR 103587-22-2-3-B & 0.75 & bcdefg\\
+\rowcolor{gray!6}  IR 96279-33-3-1-2 & 0.73 & bcdefgh\\
+IR 14L 576 & 0.73 & cdefgh\\
+\rowcolor{gray!6}  IR 14L 363 & 0.72 & cdefgh\\
+\addlinespace
+IR 14L 145 & 0.72 & defgh\\
+\rowcolor{gray!6}  IR 98846-2-1-4-3 & 0.70 & efgh\\
+IR 14L 158 & 0.70 & fgh\\
+\rowcolor{gray!6}  IR 14D 198 & 0.68 & fgh\\
+IR 103575-76-1-2-B & 0.67 & gh\\
+\addlinespace
+\rowcolor{gray!6}  IR 103575-76-1-1-B & 0.67 & gh\\
+1R 93810-2-1-1-1 & 0.64 & h\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of GDD DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 2612 & a\\
+IR12F578 & 2515 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 2514 & ab\\
+NR2170-150-5-3-2-1-1-1 & 2498 & ab\\
+\rowcolor{gray!6}  IR13F115 & 2490 & abc\\
+\addlinespace
+NR2169-10-4-1-2-1-1-1-1 & 2450 & abc\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 2417 & bcd\\
+NR2170-5-5-1-6-1-1-3-1 & 2401 & bcde\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 2401 & bcde\\
+Sabitri & 2392 & bcde\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 2377 & bcdef\\
+IR15L1745 & 2368 & bcdefg\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 2368 & bcdefg\\
+NR2181-160-4-1-2-1-1-1-1 & 2368 & bcdefg\\
+\rowcolor{gray!6}  Radha-13 & 2368 & bcdefg\\
+\addlinespace
+NR2158-13-1-2-4-5 & 2360 & bcdefgh\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 2360 & bcdefgh\\
+NR2182-22-1-3-1-1-1 & 2352 & bcdefgh\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 2352 & bcdefgh\\
+IR98853-3-6-1-3-2 & 2352 & bcdefgh\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 2336 & bcdefghi\\
+Mansuli & 2336 & bcdefghi\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 2336 & bcdefghi\\
+NR2170-82-2-4-1-1-1-1 & 2328 & cdefghij\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 2320 & cdefghij\\
+\addlinespace
+IR15D1031 & 2320 & cdefghij\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 2312 & cdefghij\\
+Pant-1 & 2260 & defghij\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 2253 & defghij\\
+IR15L1735 & 2218 & efghijk\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 2209 & fghijkl\\
+NR2168-44-2-1-1-1-2-1-1 & 2204 & ghijkl\\
+\rowcolor{gray!6}  Anmol Mansuli & 2183 & hijklm\\
+IR10281-10-227-1-2-9 & 2165 & ijklm\\
+\rowcolor{gray!6}  IR16D1058 & 2147 & jklm\\
+\addlinespace
+NR2157-144-1-3-1-1 & 2147 & jklm\\
+\rowcolor{gray!6}  Pant-2 & 2064 & klmn\\
+IR102885-31-11-4-11 & 2036 & lmn\\
+\rowcolor{gray!6}  IR13F402 & 2036 & lmn\\
+IR102885-2-74-17-2-3 & 2027 & lmn\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 2018 & mn\\
+HHZ3-SAL13-4-SAL1 & 1908 & n\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 1908 & n\\
+\bottomrule
+\end{longtable}
+
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of GDD DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 2990 & a\\
+IR12F578 & 2956 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 2950 & ab\\
+NR2157-144-1-3-1-1 & 2947 & ab\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 2937 & ab\\
+\addlinespace
+IR13F115 & 2932 & abc\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 2917 & abcd\\
+IR15L1745 & 2911 & abcde\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 2899 & abcdef\\
+Sabitri & 2893 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 2887 & abcdefg\\
+NR2158-13-1-2-4-5 & 2882 & abcdefg\\
+\rowcolor{gray!6}  IR15D1031 & 2875 & abcdefg\\
+IR98853-3-6-1-3-2 & 2875 & abcdefg\\
+\rowcolor{gray!6}  Radha-13 & 2875 & abcdefg\\
+\addlinespace
+IR99739:2-1-1-2-1 & 2864 & abcdefg\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 2864 & abcdefg\\
+NR2170-5-5-1-6-1-1-3-1 & 2864 & abcdefg\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 2864 & abcdefg\\
+NR2175-66-2-3-1-1 & 2863 & abcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 2851 & abcdefg\\
+IR102774-31-21-2-4-7 & 2851 & abcdefg\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 2851 & abcdefg\\
+NR2182-58-1-3-1-1-1 & 2851 & abcdefg\\
+\rowcolor{gray!6}  Mansuli & 2851 & abcdefgh\\
+\addlinespace
+NR2182-22-1-3-1-1-1 & 2849 & abcdefgh\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 2838 & abcdefgh\\
+NR2170-82-2-4-1-1-1-1 & 2837 & abcdefgh\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 2823 & abcdefgh\\
+Pant-1 & 2809 & abcdefghi\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1735 & 2794 & bcdefghij\\
+NR2168-44-2-1-1-1-2-1-1 & 2742 & cdefghijk\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 2737 & cefghijk\\
+Anmol Mansuli & 2723 & defghijk\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 2710 & fghijk\\
+\addlinespace
+IR16D1058 & 2695 & ghijk\\
+\rowcolor{gray!6}  Pant-2 & 2655 & hijkl\\
+IR102885-31-11-4-11 & 2639 & ijkl\\
+\rowcolor{gray!6}  IR13F402 & 2630 & ijkl\\
+IR102885-2-74-17-2-3 & 2612 & jkl\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 2595 & kl\\
+IR95784-21-1-1-2 & 2484 & l\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 2475 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of Sunshine hrs DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 7.79 & a\\
+IR98785-10-1-1-3 & 7.76 & ab\\
+\rowcolor{gray!6}  IR12F578 & 7.76 & ab\\
+NR2170-150-5-3-2-1-1-1 & 7.76 & ab\\
+\rowcolor{gray!6}  IR13F115 & 7.75 & ab\\
+\addlinespace
+NR2169-10-4-1-2-1-1-1-1 & 7.74 & abc\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 7.73 & abc\\
+NR2170-5-5-1-6-1-1-3-1 & 7.72 & abc\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 7.72 & abc\\
+Sabitri & 7.72 & abc\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 7.71 & abcd\\
+IR15L1745 & 7.71 & abcde\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 7.71 & abcdef\\
+NR2181-160-4-1-2-1-1-1-1 & 7.71 & abcdef\\
+\rowcolor{gray!6}  Radha-13 & 7.71 & abcdef\\
+\addlinespace
+NR2158-13-1-2-4-5 & 7.71 & bcdefg\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 7.71 & bcdefgh\\
+IR102774-31-21-2-4-7 & 7.70 & bcdefgh\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 7.70 & bcdefgh\\
+NR2182-22-1-3-1-1-1 & 7.70 & bcdefgh\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 7.69 & bcdefghi\\
+Mansuli & 7.69 & bcdefghi\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 7.69 & bcdefghi\\
+NR2170-82-2-4-1-1-1-1 & 7.69 & bcdefghi\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 7.68 & bcdefghi\\
+\addlinespace
+IR15D1031 & 7.68 & bcdefghij\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 7.68 & bcdefghijk\\
+IR103587-23-2-1-B & 7.65 & cdefghijk\\
+\rowcolor{gray!6}  Pant-1 & 7.65 & cdefghijk\\
+IR15L1735 & 7.63 & dfghijk\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 7.63 & dghijk\\
+NR2168-44-2-1-1-1-2-1-1 & 7.63 & ehijk\\
+\rowcolor{gray!6}  Anmol Mansuli & 7.61 & ijkl\\
+IR10281-10-227-1-2-9 & 7.60 & jklm\\
+\rowcolor{gray!6}  IR16D1058 & 7.60 & klmn\\
+\addlinespace
+NR2157-144-1-3-1-1 & 7.60 & klmno\\
+\rowcolor{gray!6}  Pant-2 & 7.54 & lmnop\\
+IR13F402 & 7.52 & mop\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 7.52 & nop\\
+IR102885-2-74-17-2-3 & 7.51 & p\\
+\addlinespace
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 7.51 & p\\
+IR95784-21-1-1-2 & 7.51 & p\\
+\rowcolor{gray!6}  IR13F228 & 7.50 & p\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of Sunshine hrs DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 7.81 & a\\
+Anmol Mansuli & 7.80 & ab\\
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 7.80 & ab\\
+IR10281-10-227-1-2-9 & 7.80 & ab\\
+\rowcolor{gray!6}  IR15L1735 & 7.80 & ab\\
+\addlinespace
+IR16D1058 & 7.80 & ab\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 7.80 & ab\\
+Pant-1 & 7.80 & ab\\
+\rowcolor{gray!6}  Pant-2 & 7.80 & ab\\
+IR13F402 & 7.79 & ab\\
+\addlinespace
+\rowcolor{gray!6}  IR103587-23-2-1-B & 7.79 & ab\\
+IR102885-2-74-17-2-3 & 7.79 & ab\\
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 7.79 & ab\\
+NR2181-139-1-3-1-1-1-1 & 7.79 & ab\\
+\rowcolor{gray!6}  IR13F228 & 7.79 & ab\\
+\addlinespace
+IR 106529-20-40-3-2-B & 7.79 & ab\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 7.79 & ab\\
+NR2169-10-1-1-6-2-1-3-1 & 7.79 & ab\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 7.79 & ab\\
+NR2182-22-1-3-1-1-1 & 7.79 & ab\\
+\addlinespace
+\rowcolor{gray!6}  Mansuli & 7.79 & ab\\
+IR99739:2-1-1-2-1 & 7.78 & ab\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 7.78 & ab\\
+NR2170-5-5-1-6-1-1-3-1 & 7.78 & ab\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 7.78 & ab\\
+\addlinespace
+NR2175-66-2-3-1-1 & 7.78 & ab\\
+\rowcolor{gray!6}  IR15D1031 & 7.78 & ab\\
+IR98853-3-6-1-3-2 & 7.78 & ab\\
+\rowcolor{gray!6}  Radha-13 & 7.78 & ab\\
+NR2158-13-1-2-4-5 & 7.78 & ab\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 7.77 & ab\\
+Sabitri & 7.77 & ab\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 7.77 & ab\\
+IR15L1745 & 7.76 & ab\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 7.76 & ab\\
+\addlinespace
+IR13F115 & 7.76 & ab\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 7.75 & ab\\
+IR95784-21-1-1-2 & 7.75 & ab\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 7.75 & ab\\
+IR98785-10-1-1-3 & 7.75 & ab\\
+\addlinespace
+\rowcolor{gray!6}  IR12F578 & 7.74 & ab\\
+IR99784-255-78-2-3-1-2 & 7.73 & ab\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 7.73 & b\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of HTU DF}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 20353 & a\\
+IR12F578 & 19519 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 19513 & ab\\
+NR2170-150-5-3-2-1-1-1 & 19380 & abc\\
+\rowcolor{gray!6}  IR13F115 & 19305 & abcd\\
+\addlinespace
+NR2169-10-4-1-2-1-1-1-1 & 18965 & abcd\\
+\rowcolor{gray!6}  IR99739:2-1-1-2-1 & 18687 & bcde\\
+NR2170-5-5-1-6-1-1-3-1 & 18543 & bcde\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 18543 & bcde\\
+Sabitri & 18471 & bcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 18332 & bcdefg\\
+IR15L1745 & 18262 & bcdefgh\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 18262 & bcdefgh\\
+NR2181-160-4-1-2-1-1-1-1 & 18262 & bcdefgh\\
+\rowcolor{gray!6}  Radha-13 & 18262 & bcdefgh\\
+\addlinespace
+NR2158-13-1-2-4-5 & 18188 & bcdefghi\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 18188 & bcdefghij\\
+IR102774-31-21-2-4-7 & 18122 & bcdefghij\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 18122 & bcdefghij\\
+NR2182-22-1-3-1-1-1 & 18120 & bcdefghij\\
+\addlinespace
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 17978 & bcdefghijk\\
+Mansuli & 17974 & bcdefghijk\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 17974 & bcdefghijk\\
+NR2170-82-2-4-1-1-1-1 & 17904 & bdefghijkl\\
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 17825 & cdefghijklm\\
+\addlinespace
+IR15D1031 & 17825 & defghijklm\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 17754 & defghijklm\\
+Pant-1 & 17297 & efghijklm\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 17243 & efghijklm\\
+IR15L1735 & 16920 & fghijklmn\\
+\addlinespace
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 16851 & ghijklmno\\
+NR2168-44-2-1-1-1-2-1-1 & 16816 & hjklmnop\\
+\rowcolor{gray!6}  Anmol Mansuli & 16617 & ijklmnopq\\
+IR10281-10-227-1-2-9 & 16458 & klmnopq\\
+\rowcolor{gray!6}  IR16D1058 & 16317 & lmnopq\\
+\addlinespace
+NR2157-144-1-3-1-1 & 16317 & mnopq\\
+\rowcolor{gray!6}  Pant-2 & 15561 & nopqr\\
+IR13F402 & 15307 & opqr\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 15305 & opqr\\
+IR102885-2-74-17-2-3 & 15220 & pqr\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 15133 & qr\\
+HHZ3-SAL13-4-SAL1 & 14321 & r\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 14321 & r\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of HTU DM}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 23118 & a\\
+IR12F578 & 22894 & ab\\
+\rowcolor{gray!6}  IR98785-10-1-1-3 & 22850 & ab\\
+NR2169-10-4-1-2-1-1-1-1 & 22761 & ab\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 22753 & ab\\
+\addlinespace
+IR13F115 & 22743 & ab\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 22634 & abc\\
+IR15L1745 & 22595 & abcd\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 22520 & abcde\\
+Sabitri & 22482 & abcde\\
+\addlinespace
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 22446 & abcde\\
+NR2158-13-1-2-4-5 & 22408 & abcdef\\
+\rowcolor{gray!6}  IR15D1031 & 22368 & abcdef\\
+IR98853-3-6-1-3-2 & 22368 & abcdef\\
+\rowcolor{gray!6}  Radha-13 & 22368 & abcdef\\
+\addlinespace
+IR99739:2-1-1-2-1 & 22292 & abcdef\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 22292 & abcdefg\\
+NR2170-5-5-1-6-1-1-3-1 & 22292 & abcdefg\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 22292 & abcdefg\\
+NR2175-66-2-3-1-1 & 22286 & abcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 22203 & abcdefg\\
+IR102774-31-21-2-4-7 & 22203 & abcdefg\\
+\rowcolor{gray!6}  NR2169-10-1-1-6-2-1-3-1 & 22203 & abcdefg\\
+NR2182-58-1-3-1-1-1 & 22203 & abcdefg\\
+\rowcolor{gray!6}  Mansuli & 22197 & abcdefg\\
+\addlinespace
+NR2182-22-1-3-1-1-1 & 22183 & abcdefg\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 22103 & abcdefg\\
+NR2170-82-2-4-1-1-1-1 & 22101 & abcdefg\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 21998 & abcdefg\\
+Pant-1 & 21896 & abcdefg\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1735 & 21797 & bcdefgh\\
+NR2168-44-2-1-1-1-2-1-1 & 21397 & cdefghi\\
+\rowcolor{gray!6}  NR2182-33-3-2-1-1-1 & 21362 & defghi\\
+Anmol Mansuli & 21251 & efghi\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 21143 & fghi\\
+\addlinespace
+IR16D1058 & 21022 & ghi\\
+\rowcolor{gray!6}  Pant-2 & 20695 & hi\\
+IR102885-31-11-4-11 & 20571 & hi\\
+\rowcolor{gray!6}  IR13F402 & 20500 & i\\
+IR102885-2-74-17-2-3 & 20353 & ij\\
+\addlinespace
+\rowcolor{gray!6}  IR13F228 & 20211 & ij\\
+IR95784-21-1-1-2 & 19243 & j\\
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 19174 & j\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of HUI}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 0 & a\\
+HHZ3-SAL13-4-SAL1 & 0 & a\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 0 & ab\\
+NR2158-13-1-2-4-5 & 0 & abc\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 0 & abcd\\
+\addlinespace
+NR2181-160-4-1-2-1-1-1-1 & 0 & abcd\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 0 & abcde\\
+IR13F115 & 0 & abcde\\
+\rowcolor{gray!6}  NR2157-144-1-3-1-1 & 0 & abcdef\\
+NR2168-44-2-1-1-1-2-1-1 & 0 & abcdefg\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 0 & abcdefg\\
+NR2182-33-3-2-1-1-1 & 0 & abcdefgh\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 0 & abcdefghi\\
+NR2182-22-1-3-1-1-1 & 0 & abcdefghij\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 0 & abcdefghijk\\
+\addlinespace
+Pant-1 & 0 & abcdefghijkl\\
+\rowcolor{gray!6}  IR13F228 & 0 & abcdefghijkl\\
+IR103587-23-2-1-B & 0 & abcdefghijkl\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 0 & abcdefghijkl\\
+IR102774-31-21-2-4-7 & 0 & bcdefghijkl\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1745 & 0 & bcdefghijkl\\
+IR102885-2-74-17-2-3 & 0 & bcdefghijkl\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 0 & bcdefghijkl\\
+IR95784-21-1-1-2 & 0 & bcdefghijklm\\
+\rowcolor{gray!6}  Anmol Mansuli & 0 & bcdefghijklm\\
+\addlinespace
+Mansuli & 0 & cdefghijklm\\
+\rowcolor{gray!6}  Pant-2 & 0 & cdefghijklm\\
+Sabitri & 0 & cdefghijklm\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 0 & cdefghijklm\\
+IR13F402 & 0 & cdefghijklm\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 0 & defghijklm\\
+IR15L1735 & 0 & dfghijklm\\
+\rowcolor{gray!6}  Radha-13 & 0 & efghijklm\\
+IR99739:2-1-1-2-1 & 0 & ghijklm\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 0 & hjklmn\\
+\addlinespace
+IR15D1031 & 0 & hjklmn\\
+\rowcolor{gray!6}  IR12F578 & 0 & ijklmn\\
+NR2170-5-5-1-6-1-1-3-1 & 0 & klmn\\
+\rowcolor{gray!6}  IR16D1058 & 0 & lmn\\
+NR2169-10-1-1-6-2-1-3-1 & 0 & mno\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 0 & no\\
+IR98785-10-1-1-3 & 0 & o\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 0 & o\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of HTUE}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  HHZ3-SAL13-4-SAL1 & 0 & a\\
+NR2170-82-2-4-1-1-1-1 & 0 & ab\\
+\rowcolor{gray!6}  NR2182-58-1-3-1-1-1 & 0 & abc\\
+NR2158-13-1-2-4-5 & 0 & abcd\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 0 & abcde\\
+\addlinespace
+NR2181-465-1-1-1-1-1-1-1 & 0 & abcde\\
+\rowcolor{gray!6}  IR102885-31-11-4-11 & 0 & abcdef\\
+NR2157-144-1-3-1-1 & 0 & abcdefg\\
+\rowcolor{gray!6}  IR13F115 & 0 & abcdefgh\\
+NR2168-65-1-1-1-1-1-1-1 & 0 & abcdefghi\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 0 & abcdefghi\\
+NR2182-33-3-2-1-1-1 & 0 & abcdefghij\\
+\rowcolor{gray!6}  NR2175-66-2-3-1-1 & 0 & abcdefghij\\
+NR2182-22-1-3-1-1-1 & 0 & abcdefghij\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 0 & abcdefghijk\\
+\addlinespace
+Pant-1 & 0 & abcdefghijkl\\
+\rowcolor{gray!6}  IR13F228 & 0 & abcdefghijkl\\
+IR103587-23-2-1-B & 0 & bcdefghijkl\\
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 0 & cdefghijkl\\
+IR102774-31-21-2-4-7 & 0 & cdefghijkl\\
+\addlinespace
+\rowcolor{gray!6}  IR15L1745 & 0 & cdefghijkl\\
+IR102885-2-74-17-2-3 & 0 & cdefghijkl\\
+\rowcolor{gray!6}  NR2170-150-5-3-2-1-1-1 & 0 & cdefghijkl\\
+IR95784-21-1-1-2 & 0 & cdefghijkl\\
+\rowcolor{gray!6}  Anmol Mansuli & 0 & cdefghijklm\\
+\addlinespace
+Mansuli & 0 & defghijklm\\
+\rowcolor{gray!6}  Sabitri & 0 & defghijklm\\
+Pant-2 & 0 & defghijklm\\
+\rowcolor{gray!6}  NR2169-10-4-1-2-1-1-1-1 & 0 & defghijklm\\
+IR13F402 & 0 & defghijklm\\
+\addlinespace
+\rowcolor{gray!6}  IR 106529-20-40-3-2-B & 0 & efghijklm\\
+Radha-13 & 0 & fghijklm\\
+\rowcolor{gray!6}  IR15L1735 & 0 & gijklm\\
+IR99739:2-1-1-2-1 & 0 & hijklm\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 0 & jklmn\\
+\addlinespace
+IR12F578 & 0 & jklmn\\
+\rowcolor{gray!6}  IR15D1031 & 0 & jklmn\\
+NR2170-5-5-1-6-1-1-3-1 & 0 & klmn\\
+\rowcolor{gray!6}  IR16D1058 & 0 & lmn\\
+NR2169-10-1-1-6-2-1-3-1 & 0 & mno\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 0 & no\\
+IR98785-10-1-1-3 & 0 & o\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 0 & o\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+\begingroup\fontsize{12}{14}\selectfont
+
+\begin{longtable}{lll}
+\caption{\label{tab:two-fac-groups-tab-agroclimate-normal}Treatment means with groups of RUE}\\
+\toprule
+Treatment & Mean & groups\\
+\midrule
+\rowcolor{gray!6}  NR2170-82-2-4-1-1-1-1 & 0.78 & a\\
+NR2182-58-1-3-1-1-1 & 0.73 & ab\\
+\rowcolor{gray!6}  NR2158-13-1-2-4-5 & 0.69 & abc\\
+NR2157-144-1-3-1-1 & 0.69 & abc\\
+\rowcolor{gray!6}  NR2181-160-4-1-2-1-1-1-1 & 0.69 & abc\\
+\addlinespace
+HHZ3-SAL13-4-SAL1 & 0.69 & abc\\
+\rowcolor{gray!6}  NR2181-465-1-1-1-1-1-1-1 & 0.68 & abcd\\
+IR13F115 & 0.68 & abcde\\
+\rowcolor{gray!6}  NR2168-65-1-1-1-1-1-1-1 & 0.66 & abcdef\\
+NR2175-66-2-3-1-1 & 0.63 & abcdef\\
+\addlinespace
+\rowcolor{gray!6}  NR2168-44-2-1-1-1-2-1-1 & 0.63 & abcdefg\\
+IR102885-31-11-4-11 & 0.62 & abcdefg\\
+\rowcolor{gray!6}  NR2182-22-1-3-1-1-1 & 0.61 & abcdefg\\
+NR2182-33-3-2-1-1-1 & 0.60 & abcdefgh\\
+\rowcolor{gray!6}  IR98853-3-6-1-3-2 & 0.59 & abcdefgh\\
+\addlinespace
+Pant-1 & 0.57 & abcdefghi\\
+\rowcolor{gray!6}  IR103587-23-2-1-B & 0.56 & abcdefghi\\
+IR15L1745 & 0.55 & abcdefghi\\
+\rowcolor{gray!6}  IR102774-31-21-2-4-7 & 0.55 & bcdefghi\\
+NR2170-150-5-3-2-1-1-1 & 0.53 & bcdefghi\\
+\addlinespace
+\rowcolor{gray!6}  IR10281-10-227-1-2-9 & 0.53 & bcdefghi\\
+IR13F228 & 0.52 & bcdefghij\\
+\rowcolor{gray!6}  Mansuli & 0.50 & cdefghij\\
+NR2169-10-4-1-2-1-1-1-1 & 0.50 & cdefghij\\
+\rowcolor{gray!6}  Sabitri & 0.49 & cdefghij\\
+\addlinespace
+IR102885-2-74-17-2-3 & 0.49 & cdefghij\\
+\rowcolor{gray!6}  Anmol Mansuli & 0.48 & cdefghij\\
+IR 106529-20-40-3-2-B & 0.45 & dfghij\\
+\rowcolor{gray!6}  IR95784-21-1-1-2 & 0.45 & dfghij\\
+Pant-2 & 0.45 & efghij\\
+\addlinespace
+\rowcolor{gray!6}  Radha-13 & 0.45 & fghij\\
+IR99739:2-1-1-2-1 & 0.44 & fghij\\
+\rowcolor{gray!6}  IR15L1735 & 0.43 & fghijk\\
+IR13F402 & 0.43 & fghijk\\
+\rowcolor{gray!6}  NR2179-82-2-4-1-1-1-1 & 0.42 & ghijk\\
+\addlinespace
+IR12F578 & 0.42 & ghijk\\
+\rowcolor{gray!6}  IR15D1031 & 0.40 & ghijk\\
+NR2170-5-5-1-6-1-1-3-1 & 0.38 & hijk\\
+\rowcolor{gray!6}  IR16D1058 & 0.35 & ijk\\
+NR2169-10-1-1-6-2-1-3-1 & 0.29 & jkl\\
+\addlinespace
+\rowcolor{gray!6}  IR99784-255-78-2-3-1-2 & 0.22 & kl\\
+IR98785-10-1-1-3 & 0.14 & l\\
+\rowcolor{gray!6}  NR2181-139-1-3-1-1-1-1 & 0.12 & l\\
+\bottomrule
+\end{longtable}
+\endgroup{}
+
+\subsection{Correlation matrix of numeric
+variables}\label{correlation-matrix-of-numeric-variables}
+
+\begin{landscape}\begin{table}[t]
+
+\caption{\label{tab:correlation-normal}Pearson correlation coefficients of normal season phenotypic and agroclimatic traits}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{14}{16}\selectfont
+\begin{threeparttable}
+\begin{tabular}{>{\bfseries}llllllllllllllllllll}
+\toprule
+\textbf{ } & \textbf{DF} & \textbf{DM} & \textbf{pH} & \textbf{PL} & \textbf{Tier} & \textbf{GYHA} & \textbf{TW} & \textbf{stty} & \textbf{grke} & \textbf{BM} & \textbf{HI} & \textbf{GDDF} & \textbf{GDDM} & \textbf{SuDF} & \textbf{SuDM} & \textbf{HTDF} & \textbf{HTDM} & \textbf{HUI} & \textbf{HTUE}\\
+\midrule
+\rowcolor{gray!6}  DF &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+DM & 0.85**** &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  pH & 0.20 & 0.17 &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+PL & 0.00 & -0.09 & 0.12 &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  Tiller & 0.26* & 0.19 & 0.05 & 0.14 &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\addlinespace
+GY/HA & -0.21 & -0.03 & -0.08 & -0.03 & 0.03 &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  TW & -0.32** & -0.40*** & -0.18 & 0.06 & -0.04 & 0.01 &  &  &  &  &  &  &  &  &  &  &  &  & \\
+sterility & 0.38** & 0.19 & -0.13 & -0.04 & 0.11 & -0.58**** & 0.06 &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  grain/spike & -0.03 & 0.22 & 0.17 & -0.10 & -0.11 & 0.49**** & -0.30* & -0.64**** &  &  &  &  &  &  &  &  &  &  & \\
+BM & 0.33** & 0.35** & 0.20 & 0.08 & 0.07 & 0.10 & -0.33** & 0.06 & 0.01 &  &  &  &  &  &  &  &  &  & \\
+\addlinespace
+\rowcolor{gray!6}  HI & -0.40*** & -0.27* & -0.19 & -0.09 & -0.04 & 0.83**** & 0.20 & -0.54**** & 0.42*** & -0.46*** &  &  &  &  &  &  &  &  & \\
+GDD\_DF & 1.00**** & 0.86**** & 0.21 & 0.01 & 0.27* & -0.20 & -0.33** & 0.37** & -0.02 & 0.34** & -0.39** &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  GDD\_DM & 0.87**** & 1.00**** & 0.19 & -0.07 & 0.21 & -0.03 & -0.40*** & 0.19 & 0.22 & 0.36** & -0.27* & 0.87**** &  &  &  &  &  &  & \\
+Sunshine\_hrs\_DF & 0.98**** & 0.85**** & 0.23 & 0.02 & 0.26* & -0.14 & -0.36** & 0.33** & 0.05 & 0.33** & -0.34** & 0.98**** & 0.87**** &  &  &  &  &  & \\
+\rowcolor{gray!6}  Sunshine\_hrs\_DM & -0.26* & -0.51**** & 0.17 & 0.29* & 0.15 & 0.02 & 0.17 & -0.09 & -0.18 & 0.02 & 0.01 & -0.25* & -0.45*** & -0.25* &  &  &  &  & \\
+\addlinespace
+HTU\_DF & 1.00**** & 0.86**** & 0.21 & 0.01 & 0.27* & -0.19 & -0.33** & 0.37** & -0.01 & 0.33** & -0.39** & 1.00**** & 0.87**** & 0.99**** & -0.25* &  &  &  & \\
+\rowcolor{gray!6}  HTU\_DM & 0.88**** & 0.99**** & 0.21 & -0.05 & 0.23 & -0.03 & -0.40*** & 0.19 & 0.21 & 0.38** & -0.28* & 0.88**** & 1.00**** & 0.88**** & -0.39** & 0.88**** &  &  & \\
+HUI & -0.34** & -0.20 & -0.12 & -0.02 & -0.01 & 0.98**** & 0.08 & -0.59**** & 0.44*** & 0.03 & 0.86**** & -0.33** & -0.20 & -0.28* & 0.08 & -0.33** & -0.20 &  & \\
+\rowcolor{gray!6}  HTUE & -0.34** & -0.20 & -0.12 & -0.03 & -0.01 & 0.98**** & 0.08 & -0.59**** & 0.44*** & 0.03 & 0.86**** & -0.33** & -0.20 & -0.28* & 0.07 & -0.33** & -0.20 & 1.00**** & \\
+RUE & -0.20 & -0.03 & -0.08 & -0.04 & 0.02 & 1.00**** & 0.01 & -0.58**** & 0.49**** & 0.10 & 0.83**** & -0.19 & -0.03 & -0.14 & 0.01 & -0.19 & -0.03 & 0.98**** & 0.98****\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+\end{landscape}
+
+\begin{landscape}\begin{table}[t]
+
+\caption{\label{tab:correlation-early}Pearson correlation coefficients of early season phenotypic and agroclimatic traits}
+\centering
+\resizebox{\linewidth}{!}{
+\fontsize{14}{16}\selectfont
+\begin{threeparttable}
+\begin{tabular}{>{\bfseries}lllllllllllllllllllll}
+\toprule
+\textbf{ } & \textbf{DF} & \textbf{DM} & \textbf{pH} & \textbf{PL} & \textbf{Tier} & \textbf{GYHA} & \textbf{TW} & \textbf{stty} & \textbf{grke} & \textbf{BM} & \textbf{dryM} & \textbf{HI} & \textbf{GDDF} & \textbf{GDDM} & \textbf{SuDF} & \textbf{SuDM} & \textbf{HTDF} & \textbf{HTDM} & \textbf{HUI} & \textbf{HTUE}\\
+\midrule
+\rowcolor{gray!6}  DF &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+DM & 0.87**** &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  pH & 0.08 & 0.17 &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+PL & -0.19 & -0.10 & 0.16 &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  Tiller & 0.23 & 0.16 & 0.07 & -0.08 &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\addlinespace
+GY/HA & 0.12 & 0.11 & -0.03 & -0.02 & -0.02 &  &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  TW & 0.08 & 0.06 & 0.32** & 0.08 & -0.04 & -0.06 &  &  &  &  &  &  &  &  &  &  &  &  &  & \\
+sterility & -0.32** & -0.19 & 0.25* & 0.42*** & -0.21 & -0.10 & 0.07 &  &  &  &  &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  grain/spike & -0.06 & -0.04 & -0.13 & -0.16 & -0.20 & 0.33** & -0.30* & -0.24* &  &  &  &  &  &  &  &  &  &  &  & \\
+BM & 0.09 & 0.01 & 0.13 & -0.14 & 0.28* & 0.21 & 0.06 & -0.06 & 0.01 &  &  &  &  &  &  &  &  &  &  & \\
+\addlinespace
+\rowcolor{gray!6}  dryM & 0.09 & 0.01 & 0.13 & -0.14 & 0.28* & 0.21 & 0.06 & -0.06 & 0.01 & 1.00**** &  &  &  &  &  &  &  &  &  & \\
+HI & 0.02 & 0.09 & -0.10 & 0.12 & -0.26* & 0.64**** & -0.09 & -0.02 & 0.28* & -0.61**** & -0.61**** &  &  &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  GDD\_DF & 1.00**** & 0.87**** & 0.08 & -0.19 & 0.23 & 0.12 & 0.08 & -0.32** & -0.06 & 0.09 & 0.09 & 0.02 &  &  &  &  &  &  &  & \\
+GDD\_DM & 0.87**** & 1.00**** & 0.16 & -0.10 & 0.15 & 0.12 & 0.06 & -0.18 & -0.03 & 0.01 & 0.01 & 0.09 & 0.87**** &  &  &  &  &  &  & \\
+\rowcolor{gray!6}  Sunshine\_hrs\_DF & 0.44*** & 0.50**** & -0.02 & -0.05 & 0.00 & 0.36** & 0.00 & -0.03 & 0.07 & -0.02 & -0.02 & 0.30* & 0.45*** & 0.51**** &  &  &  &  &  & \\
+\addlinespace
+Sunshine\_hrs\_DM & 0.86**** & 1.00**** & 0.14 & -0.11 & 0.14 & 0.13 & 0.05 & -0.18 & -0.03 & 0.01 & 0.01 & 0.10 & 0.86**** & 1.00**** & 0.54**** &  &  &  &  & \\
+\rowcolor{gray!6}  HTU\_DF & 1.00**** & 0.88**** & 0.08 & -0.19 & 0.22 & 0.15 & 0.07 & -0.31* & -0.05 & 0.09 & 0.09 & 0.05 & 1.00**** & 0.88**** & 0.51**** & 0.87**** &  &  &  & \\
+HTU\_DM & 0.87**** & 1.00**** & 0.16 & -0.10 & 0.15 & 0.12 & 0.06 & -0.18 & -0.04 & 0.01 & 0.01 & 0.09 & 0.87**** & 1.00**** & 0.51**** & 1.00**** & 0.88**** &  &  & \\
+\rowcolor{gray!6}  HUI & -0.10 & -0.14 & -0.07 & 0.01 & -0.05 & 0.97**** & -0.07 & -0.05 & 0.33** & 0.21 & 0.21 & 0.61**** & -0.09 & -0.13 & 0.22 & -0.12 & -0.07 & -0.13 &  & \\
+HTUE & -0.13 & -0.17 & -0.07 & 0.01 & -0.06 & 0.96**** & -0.07 & -0.05 & 0.33** & 0.21 & 0.21 & 0.61**** & -0.12 & -0.17 & 0.20 & -0.16 & -0.10 & -0.17 & 1.00**** & \\
+\addlinespace
+\rowcolor{gray!6}  RUE & 0.09 & 0.08 & -0.04 & -0.02 & -0.02 & 1.00**** & -0.06 & -0.09 & 0.33** & 0.22 & 0.22 & 0.64**** & 0.09 & 0.08 & 0.34** & 0.09 & 0.12 & 0.08 & 0.98**** & 0.97****\\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+\item \textit{Note: } 
+\item p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *
+\end{tablenotes}
+\end{threeparttable}}
+\end{table}
+\end{landscape}
+
+
+\end{document}

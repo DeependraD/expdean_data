@@ -1,0 +1,310 @@
+---
+title: "Rice genotype trial: A set-up manual"
+author: "Deependra Dhakal"
+date: "6/28/2019"
+output: 
+  bookdown::pdf_document2:
+    keep_tex: true
+    toc: false
+fontsize: 12pt
+geometry: margin=1in
+citecolor: DodgerBlue4
+header-includes:
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhead[L]{Deependra Dhakal}
+  - \fancyhead[R]{Rice genotype trial ...}
+  - \usepackage{lineno}
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+linestretch: 2
+bibliography: bibliographies.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+# requirements
+library(scales)
+library(tidyverse)
+library(gridExtra)
+require(lme4)
+
+# set seed
+set.seed(1010)
+
+theme_set(theme_bw())
+```
+
+# Background
+
+Most important cereal for more than half of the world's population (Fageria et al., 2003), @muthayya2014overview
+
+Rainfed rice systems dominate in Africa[@seck2012crops]
+
+Upland rice refers to rice grown on both flat and sloping fields that are prepared and seeded under dryland conditions and depend on rainfall for moisture. This is also known as dryland, rainfed, or aerobic rice. This type of rice cultivation is most common on small- and medium-size farms in South America, Asia, and Africa. Brazil is the world’s largest producer of upland rice (Fageria et al., 1982; IRRI, 1984; Fageria, 2001a).
+
+Flooded rice is grown on flat land with controlled irrigation. It is also known as irrigated, lowland, or waterlogged rice.  Lowland rice may be planted by drilling the seed into dry soil, by broadcasting pre-germinated seed into flooded fields, or by planting seedlings into flooded fields by machine or by hand. Rice planted into dry soil is commonly flooded when seedlings are 25–30 days old.
+
+Comparison of lowland and upland rice system mentions following notable features of the two cultures:
+
+Lowland: Reduced root zone during major part of crop growth; High tillering; Thin and
+shallow root system; Stable and high yield
+Upland: Oxidized root zone during major part of crop growth; Low tillering; Relatively low tillering; Vigorous and deep root system; Unstable and low yield
+
+Semidwarf varieties are suited for lowland conditions because they lend themselves to improved cultural practices.
+
+Oryza sativa L. and Oryza glaberrima Steud. are cultivated species of rice. Oryza sativa is widely cultivated, but O. glaberrima is mainly grown in Africa where it is rapidly being replaced by O. sativa. The two species show small morphological differences, but hybrids between them are always sterile (Chang, 1976).
+
+Paddy, on milling, gives approximately 20% husk, 50% whole rice, 16% broken rice, and 14% bran and meal (Purseglove, 1985).
+
+The Agriculture Development Strategy (ADS) of Government of Nepal (GoN) has also given top priority to rice for ensuring food security and enhancing economic growth. In most of the rice growing areas fertilizer use is lower than the recommended rate by the government which partially contributes to lower yields (3.3 t ha-1 national average) than potential yields (> 5 t ha-1).
+
+Ghaiya dhan (Upland rice) has on average low productivity
+
+Khus, G.S. (1984). Terminology for Rice Growing environments. International rice Research Institute. Los Banos, Philippines
+
+Importance of rice in achiving nutritional security. Major source of calorie for Nepalese. On average, samples of rice grain contain 80% starch, 12% percent water, 7.5% protein, and 0.5% ash (Chandler 1979). Rice grain is also a good source of vitamins B and E, riboflavin, thiamine and niacin but has little or no vitamin A, C or D (Grist 1986; Juliano 1993)
+
+# Cultivation practices
+
+## Land preparation
+
+- Plough the field when dry
+- Create small bunds for initial wetting of transplanting bed (~100 $m^2$)
+- Allow water to infiltrate and form saturated layer
+- Puddle and level the field
+- If compost/FYM is applied, spread the compost/FYM one month prior to seedling transplanting and mix it thoroughly through tilling.
+
+## Seed rate
+
+- Seed rate: 50 kg/ha for OPV and 20 kg/ha for hybrid
+- Adjusted seed rate for young seedling transplanting in seedling limited situation: 40 kg/ha for OPV
+
+## Seed bed preparation
+
+- Wet nursery beds will be used to grow the rice seedling. 
+- A requirement of 700 m2 area for transplanting of one hectare is set as reference.
+- The bed will have fine tilth by 2-3 ploughing and levelled. 
+- In each bed, a basal dose of 8 g P2O5/ m2 area will be applied. 
+- Rice seeds will be soaked in water (room temperature) for 8 hr inside jute sacks. 
+- After 8 hr, the seeds will be cleaned with fresh water and will keep in shade with spraying with water and stirring for air circulation until sprouting. 
+- The sprouted seed will be broadcasted or line sowed in wet-bed. 
+- First few days (5 d) keep the field saturated and then increase water level to 5 cm. - A drainage channel of 30 cm will be constructed between nursery beds (bed width= 1.25 m) if area is getting excess rainfall. 
+- After 10 days of seed sowing 10 g /m2 urea will be broadcasted. 
+- Within 20-25 days the seedling will be transplanted in main field.
+
+## Transplanting time
+
+Transplanting time: June-July
+
+## Planting distance
+
+- OPV 20 x 20 cm with 2-3 seedlings/ hill
+- Hybrid 25 x 20 cm with 1 seedling/hill
+
+## Water management
+
+- Water will be maintained at a depth of 2 cm up to panicle initiation and 5 cm thereafter up to one week before harvest.
+
+## Fertilizer recommendation
+
+- 100:30:30 kg NP2O5K2O/ha (GoN) 
+- 20 kg ZnSO4 + Borax 5 kg/ha (As per necessity)
+
+## Weed control
+
+- Weeds were controlled by two-hand weeding at 20 and 40 d after transplanting.
+
+# Methodology
+
+## Quantity of rice seed available for transplanting
+
+- 100 gm of each of 14 pipeline entries
+- 50 gm of Ghaiya-1
+
+## Seedling and field plot requirement calculation
+
+- With the given recommendation of 40 kg/ha, 100 gm of seed suffices `r 1/40000*100*10000` $m^2$ and 50 gm of seed suffices `r 1/40000*50*10000` $m^2$.
+- Since the limitting amount of seed is that for check variety Ghaiya-1, each Replication will have to include `r 12.5/5` $m^2$ strip of the check variety, ideally. The strip will ideally contain eight 20 cm spaced rows of rice seedlings (if there is limitation to constructing elongated rows; _Case I_) or six 20 cm spaced rows of rice seedlings (if there is ample space to accomodate longer rows; _Case II_). Thus for each case, there shall be following Net plot area specification:
+
+For Ghaiya-1:
+
+- Case I: 
+  - Length: 1.6
+  - Width: 1.6
+  
+- Case II:
+  - Length: 2.1
+  - Width: 1.2
+
+For remaining 19 genotypes:
+
+- Case I (16 rows):
+  - Length: 1.6
+  - Width: 3.2
+  
+Case II (12 rows):
+  - Length: 2.1
+  - Width: 2.4
+  
+### Area estimates for case I
+
+- Thus, Net area estimates for a replication translates to `r 1.6*1.6+19*3.2*1.6` $m^2$, using different plot sizes for Ghaiya and rest of the other 19 genotypes.
+- If 0.6 m spacing is allowed between two consecutive plots, total coverage would be (in linear placement of the plots):
+  - Length: `r 1.6+1.6*19+0.6*18` $m$
+  - Breadth: 3.2 $m$
+- Thus, Gross area for a single replication translates to `r (1.6+1.6*19+0.6*18)*3.2` $m^2$
+
+### Area estimates for case II
+
+- Note that Case II requires a longer replication strip. This might be infeasible.
+- Note however, Gross area for a single replication translates to `r (2.1+2.1*19+0.6*18)*2.4` $m^2$ which is smaller larger than that for Case I. This could be due to rounding artifact (from earlier dimension assumption).
+
+### Being stingy
+
+- But, were we to be stingy and use only a fraction of seed (half) of the pipeline genotypes to match Ghaiya's allottment, we would require Gross area of `r (1.6+1.6*19+0.6*18)*1.6` $m^2$ for a single replication. 
+- Note that we avoid the case II because of lengthier Gross area for single replication requirement.
+
+### Being practical
+
+- The proposed layout is to be only rigidly followed when enough land is available and if we were taking utmost pain in making things look pleasent (more or less square plots).
+- However, a more practically sound approach to layout would be to use 1 m wide plots accomodating 5 rows of transplants. The Gross linear length of the replicate is:
+  - `r 1+1*19+0.6*18` $m$
+- Thus the Gross plot area (with plot spacing included) requirement reduces to:
+  - `r (1+1*19+0.6*18)*5` $m^2$
+
+### Being practical and stingy
+
+- If we were to be stingy and use only a fraction of seed (half) of the pipeline genotypes to match Ghaiya's allottment, we would require Gross area of `r (1+1*19+0.6*18)*2.5` $m^2$ for a single replication.
+
+Now suit your taste!
+
+## Total area requirement (E2)
+
+- Using "Being practical" approach, total area required for trial in experiment E2 is `r 3*(1+1*19+0.6*18)*5 + 0.8*3` (Assuming all three spacings between replications for some leeway).
+
+## Fertilizer requirement
+
+- Let us take Gross area (with plot spacing included but inter-replication space excluded) for fertilizer calculation (with recommendation 100:30:30 NPK $ha^{-1}$);
+- One ha of field requires 30 kg P. `r garea <- 3*(1+1*19+0.6*18)*5; garea` $m^2$ area requires `r 30/10000*garea/0.46` kg of DAP.
+- `r 30/10000*garea/0.46` kg DAP contains `r 30/10000*garea/0.46*0.18` kg N.
+- One ha of field requires 100 kg N. 100. `r garea` $m^2$ of field requires `r garea*100/10000` kg of N. After supplementing from DAP required N to be given from Urea is: `r garea*100/10000-30/10000*garea/0.46*0.18` kg.
+- `r garea*100/10000-30/10000*garea/0.46*0.18` kg of N can be obtained from `r (garea*100/10000-30/10000*garea/0.46*0.18)/0.46` kg Urea.
+- One ha of field requires 30 kg K. `r garea` $m^2$ requires `r garea*30/10000/0.6` kg MoP.
+
+## Experiment design
+
+```{r field-layout, out.width="95%", fig.width=8, fig.height=6}
+# generate data
+genotypes <- c(
+  "TP-29784",
+  "IR 9942-2-2-22-4-2-9-13",
+  "TP-30251",
+  "TP-30257",
+  "IR-90020-22-283-B-4",
+  "IR-103575-76-1-1-B",
+  "IR-12L-353",
+  "IR-14L-560",
+  "IR-14L-537",
+  "IR-97073-32-211-3",
+  "TP-30582",
+  "IR-98786-13-1-2-1",
+  "SIVN-255",
+  "IR-12L-335",
+  "Ghaiya-1",
+  "Kedar basmati", # borrowed from a farmer referred to by Uttam Nath, Gokuleshwor
+  "Rato basmati", # borrowed from nearby farmer
+  "Hardinath-3", # USC, Dhangadhi
+  "Sukkha-6", # USC, Dhangadhi
+  "Bimala" # borrowed from nearby farmer
+)
+
+locality <- c("Above campus", "Below campus")
+
+# locality 1: Above campus
+e1 <- crossing(locality = "Above campus", rep = 1:2, genotypes)
+
+# locality 2: Below campus
+e2 <- crossing(locality = "Below campus", rep = 1:3, genotypes)
+
+factorial_rice <- full_join(e1, e2) %>% # combine dataframes
+  group_by(locality, rep) %>% 
+  mutate_at("genotypes", list(~sample(., size = 20, replace = FALSE))) %>% 
+  mutate(row = 1:20) %>%
+  ungroup() %>%
+  # group_by(genotypes) %>% 
+  # count()
+  mutate_at(c("locality", "rep", "genotypes", "row"), as.factor)
+
+myplots <- lapply(split(factorial_rice, factorial_rice$locality), function(x){
+  p1 <- ggplot(x, aes(rep, row, fill = `genotypes`)) + 
+    geom_tile(colour="white", size=1.5, stat="identity") + 
+    scale_fill_discrete(c = 90, l = 95) +
+    geom_text(aes(rep, row, label = genotypes), 
+              color="black", size=rel(2.5)) +
+    labs(title=unique(x$locality)) +
+    theme_bw() +
+    theme(legend.position="none") + # removes all legend
+   theme(axis.title.y = element_blank(),
+         axis.text.y = element_blank(),
+         axis.ticks = element_blank())
+}
+)
+
+factorial_rice_design <- do.call(gridExtra::grid.arrange,c(myplots, ncol=2))
+
+# ggsave("./rice_genotype_trial_baitadi_2019.png", plot = factorial_rice_design, 
+#        width = 8, height = 6, units = "in", dpi = 250)
+# plot(factorial_rice_design) # this code block requires nowhere the plotting call
+```
+
+## Data exploration
+
+```{r}
+# read datasets
+entry <- paste("Entry", 1:17)
+
+# agricolae design
+env_h <- agricolae::design.rcbd(entry, 2, first = TRUE)
+env_l <- agricolae::design.rcbd(entry, 3, first = TRUE)
+
+# merged datasets
+rice_fieldbook <- env_h$book %>% 
+  mutate(env = "h") %>% 
+  full_join(env_l$book %>% mutate(env = "l"))
+
+# mutate to suitable type
+rice_fieldbook <- rice_fieldbook %>%
+  group_by(env, block) %>% 
+  mutate(row = seq_along(block), 
+         col = block) %>% 
+  ungroup() %>% 
+  mutate_at(c("block", "col", "plots", "entry", "env", "row"), as.factor) %>%  
+  mutate(row_new = if_else(block == 2, rev(row), row))
+
+# plotting the layout
+pdf("layout_rice_serpentine.pdf", width = 10)
+desplot::ggdesplot(entry ~ col*row_new|env, 
+        data = rice_fieldbook, 
+        text = entry, out1 = col, 
+        out2 = row_new, show.key = FALSE, 
+        main = "Rice pipeline varieties (Trial, 2019)\n Design: Randomized Complete Block\n Number of genotypes: 14+3 (Replicated 2 times and 3 times in different environments)\n Trial area: ?? msq\n Trial location: Gokuleshwor, Baitadi", 
+        cex = 0.5, shorten = FALSE, layout = c(3, 1))
+dev.off()
+```
+
+
+# Bibliography

@@ -1,0 +1,498 @@
+
+% pandoc template downloaded: Nov 23, 2019
+% https://raw.githubusercontent.com/jgm/pandoc-templates/master/default.latex
+
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Evaluation of agromorphology of soybean genotypes in humid upland of central Nepal},
+  pdfauthor={P. Thapa, Anup Adhikari, Shankar Neupane, Sangram Chand, Deependra Dhakal, K H. Dhakal, R. Darai},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{dcolumn}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage[normalem]{ulem}
+\usepackage{rotating}
+\newcommand{\blandscape}{\begin{landscape}}
+\newcommand{\elandscape}{\end{landscape}}
+\usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+\usepackage{subcaption}
+\newcommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
+
+\title{Evaluation of agromorphology of soybean genotypes in humid upland of central Nepal}
+\author{P. Thapa, Anup Adhikari, Shankar Neupane, Sangram Chand, Deependra Dhakal, K H. Dhakal, R. Darai}
+\date{February 1, 2018}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+1-4. M.Sc.Ag.,Scholar, Department of Genetics and Plant Breeding, Agriculture and Forestry University, Rampur, Chitwan, Nepal
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{4}
+\item
+  Crop Breeder, Unique Seed Company, Dhangadhi, Kailali, Nepal
+\item
+  Assistant Professor, Department of Genetics and Plant Breeding, Agriculture and Forestry University, Rampur, Chitwan, Nepal
+\item
+  Senior Scientist, National Grain Legumes Research Programme, Khajura, Banke, Nepal
+\end{enumerate}
+
+\hypertarget{abstract}{%
+\section{Abstract}\label{abstract}}
+
+A series of experimental trials were conducted beginning from 2015 through ??? at various sites around Rampur, Chitwan, Nepal during the months of ???July 2015 to November 2015???. The objectives of the study were to ???. In the first year, fifteen soybean accessions, that include six national released varieties, were obtained from National Grain legume Research Program (Nepal Agricultural Research Council), Nepalgunj and tested in two separate experimental blocks. In second year, ???
+
+\textbf{Key words}: Protein, fatty acid, multi-environment trial, soybean, nodule, principal component analysis, stability analysis
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+Soybean {[}\emph{Glycine max} (2n=2x=40){]} is an important member of family leguminosae and sub-family papilionaceac. It is an annual herb mainly grown for seed from which oil and protein are extracted. Domestication of the soybean is believed to have originated in the northern and central regions of China as long as 5000 years ago, with the first documented use of the plant by a Chinese emperor. Soybean cultivation spread throughout Japan, Korea, and southeast Asia, although the USA and Brazil account today for most of the soybean production of the world. Soybean primarily, an industrial crop, cultivated for oil and protein (Berk, 1992). As the world population expands, there will be a greater pressure for the consumption of plant products (Kinsella, 1979). Today, soybean is considered one of the most economical and valuable agricultural commodity because of its unique chemical composition and due to multiple uses as food, feed and industrial materials.
+
+Soybeans have the highest protein content among cereal and other legume species, and the second highest oil content among all food legumes. Soy protein contains the essential amino acids, which closely match the requirements for humans or animals. Furthermore, soybean also contains many biological active components like isoflavones, lecithin, saponins, oligosaccharides and phytosterols. Many of these components act as anti-cancer agents and antioxidants (Yao, Jiang, SHI, Tomas, Datta, Singanusong, \& Chen, 2004). Soybean is considered a miracle crop due to its multi-advantageous qualities i.e.~food, feed, oil, fodder, soil sustainability and medicinal values. It contains about 37-42\% of good quality protein, 6\% ash, 29\% carbohydrate and 17-24\% oil comprising 85\% unsaturated fatty acid with two essential fatty acids (lenoleic and linolenic acid) which are not synthesized by the human body so it is highly desirable in human diet (Aditya \& Bhartiya, 2011).
+
+Increasing nutritional interest of soybean is further backed by the health benefits that comes from soy protein consumption. It has been suggested that intakes of soy protein may lower the incidence of certain forms of cancer in Asian countries, where soy consumption is high, as compared to Europe or United State of America (Davies, Netto, Glassenap, Gallaher, Labuza, \& Gallaher, 1998). Due to its nutritional value along with affordable low cost, soy protein is the largest commercially available vegetable protein in the world, and it is a potential alternative to existing animal derived proteins. Soy proteins are also of particular interest because they impart high functionality in food systems and being used to obtain better quality products. Because of these advantages (economic, nutritive, dietetics, etc.) it is important to develop new soy protein foods or a range of new food formulations with new textures (Molina, Defaye, \& Ledward, 2002). With a dense protein constitution in it's seeds, the crop also claims a glaring title of ``the meat that grows on plant''.
+
+?? elaborate on usefulness of soybean oil/fatty acid ??
+
+With the ever increasing pressure on productiviy increment of food crops, dosage balance and responsiveness to use of Nitrogen is one of the prime issues today. Supplemental nitrogenous fertilizers impose substantial costs to growers worldwide, and potentially have adverse effects on the environment. Soybean, as a legume, fixes atmospheric nitrogen into the soil, thus making it available for subsequent crops. Mulongoy (1992) and Hungria, Franchini, Campo, Crispino, Moraes, Sibaldelli \& Arihara, (2006) reported that soybean can capture an amount of 300 kg of nitrogen per hectare from the atmosphere. The leguminous plants establish a symbiotic relationship with rhizobia (symbiotic nitrogen fixation) to directly capture N2 to support plant growth. Nitrogen conversion takes place in a unique organ (root nodule). The development of root nodules commences with a molecular dialogue between the host plant and a compatible strain of rhizobium involving a succession of complex process that lead to profound changes in both symbiosis (Oldroyd, Murray, Poole, \& Downie, 2011).
+
+???Latest statistics indicate that the area of soybean in Nepal was 23757 ha with an average productivity of 1.18 ton/ha (MOAD, 2015).??? It is clear that soybean continues to have multiple uses of commercial interest. Furthermore, in light of its booming importance, it is now used as a vital ingredient in feed industries (mostly that of poulty). Despite a growing trend of it's cultivation, Nepal continues to leap up in the import front of raw or processed soybean. Just in the last fiscal year ???, import worth ??? are directly related to the soybean or its derived products. Henceforth, to set forth on impactful development of competative and export ready soybean enterprise, improved soybean varieties need to be at disposal of modern commercial growers.
+
+The objectives of the research are
+
+\begin{itemize}
+\tightlist
+\item
+  To identify high protein content soybean accessions
+\item
+  To identify high yielding soybean accessions
+\item
+  To identify most stable soybean accession across tested locations
+\end{itemize}
+
+\hypertarget{materials-and-method}{%
+\section{Materials and method}\label{materials-and-method}}
+
+\hypertarget{site-of-study}{%
+\subsection{Site of study}\label{site-of-study}}
+
+A series of experimental trials were conducted across different locations in various years.
+
+\begin{itemize}
+\item
+  e1 (Protein, 2015): The research field of National Cattle Research Program, Rampur, Chitwan, from July, 2015 to November, 2015. The plot was 8m2 (4mx2m). The experimental materials were six released varieties and nine pipeline accession of the soybean which were obtained from the National Grain Legume Research Program (Nepal Agricultural Research Council).
+\item
+  e2 (Fat, 2015):
+\item
+  e3 (Protein, 2016):
+\item
+  e4 (Fat, 2016):
+\end{itemize}
+
+\hypertarget{experiment-overview}{%
+\subsection{Experiment overview}\label{experiment-overview}}
+
+\hypertarget{treatment-entries}{%
+\subsubsection{Treatment entries}\label{treatment-entries}}
+
+Randomized complete block design (RCBD) was used with three replications, involving 10-15 treatment entries. Among the tested genotypes, 6 are already released through national variety recommendation body. Furthermore, the other genotypes included in this study are in various stages of national testing of promising genotypes. All treatment entries tested in the study along with their release/registration status are summarized in Table \ref{tab:treat-ent}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{agromorphology_soybean_files/figure-latex/nodulation-status-1} 
+
+}
+
+\caption{Variation in number of nodules across environments of tested genotypes}\label{fig:nodulation-status}
+\end{figure}
+
+\begin{table}[!h]
+
+\caption{\label{tab:treat-ent}Treatment entries tested in the RCBD experiment}
+\centering
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{llll}
+\toprule
+genotype\_id & Recommended year & Recommended domain & Days to maturity\\
+\midrule
+\rowcolor{gray!6}  Cobb & 2046 (1990) & Terai and inner terai & 123\\
+Hardee & 2035 (1977) & Terai and inner terai & 124\\
+\rowcolor{gray!6}  AGS376 &  &  & \\
+Puja & 2063 (2006) & Terai, inner terai and Midhills & 125\\
+\rowcolor{gray!6}  LS77-16-16 &  &  & \\
+\addlinespace
+Seti & 2046 (1990) & Midhills and valley & 150\\
+\rowcolor{gray!6}  Ransom & 2044 (1987) & Midhills and valley & 145\\
+Tarkari-Bhatmas1 & 2060 (2004) & Midhills (from 800 to 1500 masl) & 120\\
+\rowcolor{gray!6}  PK7394 &  &  & \\
+PK327 &  &  & \\
+\addlinespace
+\rowcolor{gray!6}  PI94159 &  &  & \\
+F778817 &  &  & \\
+\rowcolor{gray!6}  IARS87-1 &  &  & \\
+Iang-beakong &  &  & \\
+\rowcolor{gray!6}  TGX1485-1D &  &  & \\
+\addlinespace
+TGX1990-106FN &  &  & \\
+\rowcolor{gray!6}  TGX1989-48FN &  &  & \\
+TGX1990-114FN &  &  & \\
+\rowcolor{gray!6}  TGX1989-45F &  &  & \\
+TGX1990-40F &  &  & \\
+\addlinespace
+\rowcolor{gray!6}  TGX1993-4FN &  &  & \\
+TGX1987-62F &  &  & \\
+\rowcolor{gray!6}  TGX1990-52F &  &  & \\
+TGX1990-80F &  &  & \\
+\rowcolor{gray!6}  TGX1989-68FN &  &  & \\
+\addlinespace
+TGX1987-10F &  &  & \\
+\rowcolor{gray!6}  TGX1990-95F &  &  & \\
+TGX1990-110FN &  &  & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\hypertarget{layout-of-field-experiment}{%
+\subsubsection{Layout of field experiment}\label{layout-of-field-experiment}}
+
+A layout of the experimental design, with 15 treatment entries each replicated thrice, is shown below in Figure \ref{fig:design-layout}.
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{agromorphology_soybean_files/figure-latex/design-layout-1} 
+
+}
+
+\caption{Layout of experimental design}\label{fig:design-layout}
+\end{figure}
+
+\hypertarget{method-of-protein-determination}{%
+\subsection{Method of protein determination}\label{method-of-protein-determination}}
+
+Sample of 250 gm from each plot was sent to the lab of Department of Food Technology and Quality Control Centre (DFTQC), Babarmahal, Kathmandu for the seed protein content calculation for which kjeldahl method is used. It is assumed, in general protein contains 16\% nitrogen which means that each gram of nitrogen determined reflects a protein content of 100?16 = 6.25 g. The factor 6.25 has been worked out based on a number of studies on amino acid profile. During reporting the result, it is therefore customary to mention the factor (usually 6.25) used in the calculation. The principle for determination of nitrogen and crude protein is as follows:
+
+A known weight of the sample was transferred to 250 ml Kjeldahl flask for determination of nitrogen by Micro-kjeldahl method. Into the flask, catalyst mixture (potassium sulphate + mercuric oxide) and concentrated H2SO4 were added. The mixture was boiled and digestion was continued until the colour of the digest was colourless. The volume of the digest was made upto a known volume. Similarly a blank without the sample was run. The reduced nitrogen extracted by steam distillation from a definite volume of the digest was collected in boric acid solution. The nitrogen present in the boric acid solution was estimated by titrating with 0.02 N HCl using mixed indicator (methyl red and methylene blue). The blank distillation and titration were carried out and calculation was done. In this way nitrogen (\% dry basis) is determined and finally protein content on seed is calculated by the formula
+
+\[Protein~(\%~dry~basis) =[Nitrogen~(\%~dry~basis)\times 6.25 ]\]
+
+\hypertarget{statistical-methodology}{%
+\subsection{Statistical methodology}\label{statistical-methodology}}
+
+For each response variable, mixed effects linear model was fitted with entry genotypes as fixed factor and replication and environment as random effects experimental factor. The representation of model in vector space is shown in Equation \eqref{eq:linear-model-form}.
+
+\begin{equation}
+Y_{ijkt} = \mu + A_{i} + B_{j} + C_{k} + AB_{ij} + AC_{ik} + ABC_{ijk} + \sigma_{ijkt}
+\label{eq:linear-model-form}
+\end{equation}
+
+Where, \(\mu\) is the sample mean across treatments, \(A_{i}\) is the treatment factor (genotype) main effects, \(B_{j}\) is a random effect component representing test environment, and \(C_{k}\) is yet another random effect component for replication factor. The \(\sigma_{ijkt}\) is the random error term associated with individual entries in each of the replication blocks in the given environment.
+
+Experimental data were analyzed using R-stat software, and therein, treatment means were separated using least squares means at 5\% level of significance. Analysis of variance (ANOVA) was used to detect significance of either the fixed or both of random factors, and also to determine the overall effectiveness of blocking. Only when a response showed a significant variation for the experimental factors (verified through \(\chi^2\)-statistic), mean separation was employed.
+
+Similarly, traits were checked for their associatedness using pearson correlation coefficients measure. High degree of linear correlation among variables (recorded independently) would warrant a thorough inspection for usefulness in later analysis.
+
+\hypertarget{analysis}{%
+\section{Analysis}\label{analysis}}
+
+\hypertarget{mixed-model}{%
+\subsection{Mixed model}\label{mixed-model}}
+
+\hypertarget{model-summary-of-number-of-nodules-per-plant-and-days-to-flowering}{%
+\subsection{Model summary of number of nodules per plant and days to flowering}\label{model-summary-of-number-of-nodules-per-plant-and-days-to-flowering}}
+
+\begingroup 
+\small 
+\begin{longtable}{@{\extracolsep{-10pt}}lD{.}{.}{-2} D{.}{.}{-2} } 
+\caption{\label{tab:model-summary1}Model summary of number of nodules per plant and days to flowering}\\
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{2}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-3} 
+\\[-1.8ex] & \multicolumn{2}{c}{\textit{linear}} \\ 
+ & \multicolumn{2}{c}{\textit{mixed-effects}} \\ 
+ & \multicolumn{1}{c}{\parbox[t]{3.5cm}{Number of nodules per plant}} & \multicolumn{1}{c}{\parbox[t]{3.5cm}{Days to flowering}} \\ 
+\\[-1.8ex] & \multicolumn{1}{c}{(1)} & \multicolumn{1}{c}{(2)}\\ 
+\hline \\[-1.8ex] 
+ Cobb & -1.03$ $(6.77) & 0.24$ $(1.55) \\ 
+  F778817 & -2.12$ $(6.77) & 1.24$ $(1.55) \\ 
+  Hardee & -0.46$ $(5.24) & 4.38^{***}$ $(1.20) \\ 
+  Iang-beakong & -7.20$ $(6.77) & 8.24^{***}$ $(1.55) \\ 
+  IARS87-1 & -4.69$ $(4.64) & -0.89$ $(1.06) \\ 
+  LS77-16-16 & -5.17$ $(4.64) & -3.89^{***}$ $(1.06) \\ 
+  PI94159 & -11.50^{*}$ $(6.77) & -1.76$ $(1.55) \\ 
+  PK327 & -2.95$ $(6.77) & -1.76$ $(1.55) \\ 
+  PK7394 & 7.14$ $(4.64) & 8.44^{***}$ $(1.06) \\ 
+  Puja & -5.33$ $(4.38) & 0.62$ $(1.00) \\ 
+  Ransom & 3.69$ $(5.25) & -4.09^{***}$ $(1.20) \\ 
+  Seti & -11.40^{*}$ $(6.77) & -1.76$ $(1.55) \\ 
+  Tarkari-Bhatmas1 & -7.78$ $(6.77) & -1.76$ $(1.55) \\ 
+  TGX1485-1D & 1.64$ $(4.73) & 8.09^{***}$ $(1.09) \\ 
+  TGX1987-10F & 16.80^{**}$ $(6.95) & 7.13^{***}$ $(1.59) \\ 
+  TGX1987-62F & 13.90^{**}$ $(5.41) & 16.20^{***}$ $(1.24) \\ 
+  TGX1989-45F & 1.53$ $(5.37) & 10.50^{***}$ $(1.23) \\ 
+  TGX1989-48FN & -3.98$ $(4.76) & 9.19^{***}$ $(1.09) \\ 
+  TGX1989-68FN & 39.40^{***}$ $(6.95) & 9.79^{***}$ $(1.59) \\ 
+  TGX1990-106FN & -1.87$ $(4.76) & 10.10^{***}$ $(1.09) \\ 
+  TGX1990-110FN & 4.39$ $(5.41) & 9.52^{***}$ $(1.24) \\ 
+  TGX1990-114FN & 1.20$ $(5.37) & 6.16^{***}$ $(1.23) \\ 
+  TGX1990-40F & 6.11$ $(6.95) & 9.46^{***}$ $(1.59) \\ 
+  TGX1990-52F & 8.39$ $(5.41) & 10.80^{***}$ $(1.24) \\ 
+  TGX1990-80F & 15.20^{***}$ $(5.41) & 8.85^{***}$ $(1.24) \\ 
+  TGX1990-95F & 4.22$ $(5.41) & 8.85^{***}$ $(1.24) \\ 
+  TGX1993-4FN & -3.78$ $(5.41) & 6.35^{***}$ $(1.24) \\ 
+  Constant & 43.00^{***}$ $(7.46) & 44.50^{***}$ $(1.47) \\ 
+ \hline \\[-1.8ex] 
+Observations & \multicolumn{1}{c}{165} & \multicolumn{1}{c}{165} \\ 
+Log Likelihood & \multicolumn{1}{c}{-537.00} & \multicolumn{1}{c}{-335.00} \\ 
+Akaike Inf. Crit. & \multicolumn{1}{c}{1,136.00} & \multicolumn{1}{c}{731.00} \\ 
+Bayesian Inf. Crit. & \multicolumn{1}{c}{1,232.00} & \multicolumn{1}{c}{827.00} \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{2}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{longtable} 
+\endgroup
+
+\hypertarget{model-summary-of-yield-and-yield-attributing-traits}{%
+\subsection{Model summary of yield and yield attributing traits}\label{model-summary-of-yield-and-yield-attributing-traits}}
+
+\begingroup 
+\small 
+\begin{longtable}{@{\extracolsep{-10pt}}lcccc} 
+\caption{\label{tab:model-summary2}Model summary of yield and yield attributing traits}\\
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & \multicolumn{4}{c}{\textit{linear}} \\ 
+ & \multicolumn{4}{c}{\textit{mixed-effects}} \\ 
+ & \parbox[t]{3.0cm}{Yield} & \parbox[t]{3.0cm}{Pods per plant} & \parbox[t]{3.0cm}{Seeds per pod} & \parbox[t]{3.0cm}{Test weight} \\ 
+\\[-1.8ex] & (1) & (2) & (3) & (4)\\ 
+\hline \\[-1.8ex] 
+ Cobb & $-$0.46 (0.36) & $-$25.60$^{***}$ (8.01) & $-$0.10 (0.13) & 0.76 (9.59) \\ 
+  F778817 & 0.07 (0.36) & $-$13.90$^{*}$ (8.01) & 0.09 (0.13) & 17.40$^{*}$ (9.59) \\ 
+  Hardee & $-$0.004 (0.28) & 4.28 (6.20) & $-$0.19$^{**}$ (0.10) & $-$9.49 (7.58) \\ 
+  Iang-beakong & 0.13 (0.36) & 16.40$^{**}$ (8.01) & $-$0.09 (0.13) & $-$15.90$^{*}$ (9.59) \\ 
+  IARS87-1 & 0.25 (0.25) & $-$2.16 (5.48) & 0.16$^{*}$ (0.09) & $-$1.36 (6.78) \\ 
+  LS77-16-16 & $-$0.77$^{***}$ (0.25) & $-$17.70$^{***}$ (5.48) & $-$0.03 (0.09) & $-$17.60$^{***}$ (6.78) \\ 
+  PI94159 & $-$0.40 (0.36) & $-$11.90 (8.01) & $-$0.0003 (0.13) & $-$12.60 (9.59) \\ 
+  PK327 & $-$0.14 (0.36) & $-$8.10 (8.01) & 0.25$^{**}$ (0.13) & $-$15.90$^{*}$ (9.59) \\ 
+  PK7394 & 0.42$^{*}$ (0.25) & 13.50$^{**}$ (5.48) & $-$0.09 (0.09) & $-$20.80$^{***}$ (6.78) \\ 
+  Puja & $-$0.14 (0.24) & $-$17.60$^{***}$ (5.18) & $-$0.03 (0.08) & 10.60$^{*}$ (6.34) \\ 
+  Ransom & $-$0.61$^{**}$ (0.28) & $-$24.80$^{***}$ (6.20) & $-$0.04 (0.10) & 12.30 (7.58) \\ 
+  Seti & $-$0.14 (0.36) & $-$16.60$^{**}$ (8.01) & $-$0.23$^{*}$ (0.13) & 4.09 (9.59) \\ 
+  Tarkari-Bhatmas1 & 0.14 (0.36) & $-$20.30$^{**}$ (8.01) & $-$0.06 (0.13) & $-$5.91 (9.59) \\ 
+  TGX1485-1D & 0.19 (0.25) & $-$5.87 (5.60) & 0.09 (0.09) & $-$4.70 (6.78) \\ 
+  TGX1987-10F & $-$0.42 (0.37) & 8.85 (8.22) & 0.10 (0.13) & $-$0.58 (9.59) \\ 
+  TGX1987-62F & $-$0.05 (0.29) & 0.95 (6.40) & 0.15 (0.10) & 5.39 (7.58) \\ 
+  TGX1989-45F & 0.41 (0.29) & 11.60$^{*}$ (6.35) & 0.14 (0.10) & $-$18.30$^{**}$ (7.58) \\ 
+  TGX1989-48FN & 0.27 (0.26) & 8.38 (5.63) & 0.09 (0.09) & $-$11.50$^{*}$ (6.78) \\ 
+  TGX1989-68FN & $-$0.39 (0.37) & $-$17.50$^{**}$ (8.22) & 0.0001 (0.13) & $-$12.90 (9.59) \\ 
+  TGX1990-106FN & 0.02 (0.26) & 2.89 (5.63) & 0.15$^{*}$ (0.09) & $-$2.12 (6.78) \\ 
+  TGX1990-110FN & $-$0.66$^{**}$ (0.29) & $-$10.10 (6.40) & 0.05 (0.10) & $-$1.06 (7.58) \\ 
+  TGX1990-114FN & $-$0.62$^{**}$ (0.29) & 0.89 (6.35) & 0.07 (0.10) & $-$13.90$^{*}$ (7.58) \\ 
+  TGX1990-40F & 0.45 (0.37) & $-$5.48 (8.22) & $-$0.03 (0.13) & 1.42 (9.59) \\ 
+  TGX1990-52F & 0.37 (0.29) & $-$6.59 (6.40) & 0.01 (0.10) & 22.40$^{***}$ (7.58) \\ 
+  TGX1990-80F & $-$0.64$^{**}$ (0.29) & $-$16.10$^{**}$ (6.40) & 0.11 (0.10) & $-$10.50 (7.58) \\ 
+  TGX1990-95F & $-$0.59$^{**}$ (0.29) & $-$9.35 (6.40) & 0.05 (0.10) & $-$1.94 (7.58) \\ 
+  TGX1993-4FN & $-$1.11$^{***}$ (0.29) & $-$17.20$^{***}$ (6.40) & $-$0.10 (0.10) & $-$14.60$^{*}$ (7.58) \\ 
+  Constant & 2.45$^{***}$ (0.25) & 78.00$^{***}$ (17.50) & 2.02$^{***}$ (0.07) & 136.00$^{***}$ (4.79) \\ 
+ \hline \\[-1.8ex] 
+Observations & 165 & 165 & 165 & 165 \\ 
+Log Likelihood & $-$134.00 & $-$562.00 & 7.79 & $-$583.00 \\ 
+Akaike Inf. Crit. & 330.00 & 1,186.00 & 46.40 & 1,228.00 \\ 
+Bayesian Inf. Crit. & 427.00 & 1,282.00 & 143.00 & 1,324.00 \\ 
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{longtable} 
+\endgroup
+
+\hypertarget{treatment-means-of-number-of-nodules-per-plant-and-days-to-flowering}{%
+\subsection{Treatment means of number of nodules per plant and days to flowering}\label{treatment-means-of-number-of-nodules-per-plant-and-days-to-flowering}}
+
+\begingroup\fontsize{10}{12}\selectfont
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{14em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}}
+\caption{\label{tab:met-soy-means-nodule-days}Treatment means with groups}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Number of nodules per plant} & \multicolumn{5}{c}{Days to flowering} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-11}
+Treatment & mean & err & df & low & high & mean & err & df & low & high\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:met-soy-means-nodule-days}Treatment means with groups \textit{(continued)}}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Number of nodules per plant} & \multicolumn{5}{c}{Days to flowering} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-11}
+Treatment & mean & err & df & low & high & mean & err & df & low & high\\
+\midrule
+\endhead
+\
+\endfoot
+\bottomrule
+\endlastfoot
+\rowcolor{gray!6}  AGS376 & 43.0 & 7.46 & 4.47 & 23.1 & 62.9 & 44.5 & 1.47 & 5.28 & 40.8 & 48.3\\
+Cobb & 42.0 & 8.98 & 9.19 & 21.7 & 62.2 & 44.8 & 1.86 & 13.13 & 40.8 & 48.8\\
+\rowcolor{gray!6}  F778817 & 40.9 & 8.98 & 9.19 & 20.7 & 61.1 & 45.8 & 1.86 & 13.13 & 41.8 & 49.8\\
+Hardee & 42.6 & 7.87 & 5.51 & 22.9 & 62.2 & 48.9 & 1.57 & 6.95 & 45.2 & 52.7\\
+\rowcolor{gray!6}  Iang-beakong & 35.8 & 8.98 & 9.19 & 15.6 & 56.1 & 52.8 & 1.86 & 13.13 & 48.8 & 56.8\\
+\addlinespace
+IARS87-1 & 38.3 & 7.46 & 4.47 & 18.4 & 58.2 & 43.7 & 1.47 & 5.28 & 40.0 & 47.4\\
+\rowcolor{gray!6}  LS77-16-16 & 37.9 & 7.46 & 4.47 & 18.0 & 57.7 & 40.7 & 1.47 & 5.28 & 37.0 & 44.4\\
+PI94159 & 31.5 & 8.98 & 9.19 & 11.2 & 51.7 & 42.8 & 1.86 & 13.13 & 38.8 & 46.8\\
+\rowcolor{gray!6}  PK327 & 40.1 & 8.98 & 9.19 & 19.8 & 60.3 & 42.8 & 1.86 & 13.13 & 38.8 & 46.8\\
+PK7394 & 50.1 & 7.46 & 4.47 & 30.3 & 70.0 & 53.0 & 1.47 & 5.28 & 49.3 & 56.7\\
+\addlinespace
+\rowcolor{gray!6}  Puja & 37.7 & 7.25 & 4.01 & 17.6 & 57.8 & 45.2 & 1.41 & 4.54 & 41.4 & 48.9\\
+Ransom & 46.7 & 7.85 & 5.48 & 27.0 & 66.4 & 40.5 & 1.57 & 6.90 & 36.7 & 44.2\\
+\rowcolor{gray!6}  Seti & 31.6 & 8.98 & 9.19 & 11.3 & 51.8 & 42.8 & 1.86 & 13.13 & 38.8 & 46.8\\
+Tarkari-Bhatmas1 & 35.2 & 8.98 & 9.19 & 15.0 & 55.5 & 42.8 & 1.86 & 13.13 & 38.8 & 46.8\\
+\rowcolor{gray!6}  TGX1485-1D & 44.6 & 7.46 & 4.47 & 24.8 & 64.5 & 52.6 & 1.47 & 5.28 & 48.9 & 56.4\\
+\addlinespace
+TGX1987-10F & 59.8 & 8.94 & 9.06 & 39.6 & 80.0 & 51.7 & 1.85 & 12.92 & 47.7 & 55.7\\
+\rowcolor{gray!6}  TGX1987-62F & 56.9 & 7.87 & 5.51 & 37.2 & 76.6 & 60.7 & 1.57 & 6.95 & 57.0 & 64.5\\
+TGX1989-45F & 44.5 & 7.85 & 5.48 & 24.9 & 64.2 & 55.0 & 1.57 & 6.90 & 51.3 & 58.8\\
+\rowcolor{gray!6}  TGX1989-48FN & 39.0 & 7.47 & 4.48 & 19.2 & 58.9 & 53.7 & 1.47 & 5.30 & 50.0 & 57.5\\
+TGX1989-68FN & 82.5 & 8.94 & 9.06 & 62.3 & 102.7 & 54.4 & 1.85 & 12.92 & 50.3 & 58.4\\
+\addlinespace
+\rowcolor{gray!6}  TGX1990-106FN & 41.1 & 7.47 & 4.48 & 21.3 & 61.0 & 54.6 & 1.47 & 5.30 & 50.9 & 58.3\\
+TGX1990-110FN & 47.4 & 7.87 & 5.51 & 27.7 & 67.1 & 54.1 & 1.57 & 6.95 & 50.3 & 57.8\\
+\rowcolor{gray!6}  TGX1990-114FN & 44.2 & 7.85 & 5.48 & 24.5 & 63.9 & 50.7 & 1.57 & 6.90 & 47.0 & 54.4\\
+TGX1990-40F & 49.1 & 8.94 & 9.06 & 28.9 & 69.3 & 54.0 & 1.85 & 12.92 & 50.0 & 58.0\\
+\rowcolor{gray!6}  TGX1990-52F & 51.4 & 7.87 & 5.51 & 31.7 & 71.1 & 55.4 & 1.57 & 6.95 & 51.7 & 59.1\\
+\addlinespace
+TGX1990-80F & 58.2 & 7.87 & 5.51 & 38.6 & 77.9 & 53.4 & 1.57 & 6.95 & 49.7 & 57.1\\
+\rowcolor{gray!6}  TGX1990-95F & 47.2 & 7.87 & 5.51 & 27.6 & 66.9 & 53.4 & 1.57 & 6.95 & 49.7 & 57.1\\
+TGX1993-4FN & 39.2 & 7.87 & 5.51 & 19.6 & 58.9 & 50.9 & 1.57 & 6.95 & 47.2 & 54.6\\*
+\end{longtable}
+\endgroup{}
+
+\hypertarget{treatment-means-of-yield-and-yield-attributing-traits}{%
+\subsection{Treatment means of yield and yield attributing traits}\label{treatment-means-of-yield-and-yield-attributing-traits}}
+
+\begin{landscape}
+
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{7em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}>{\raggedright\arraybackslash}p{1.8em}}
+\caption{\label{tab:met-soy-means-yield-n-attribs}Treatment means with groups}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Yield} & \multicolumn{5}{c}{Pods per plant} & \multicolumn{5}{c}{Seeds per pod} & \multicolumn{5}{c}{1000 kernel weight} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-11} \cmidrule(l{3pt}r{3pt}){12-16} \cmidrule(l{3pt}r{3pt}){17-21}
+Treatment & mean & err & df & low & high & mean & err & df & low & high & mean & err & df & low & high & mean & err & df & low & high\\
+\midrule
+\endfirsthead
+\caption[]{\label{tab:met-soy-means-yield-n-attribs}Treatment means with groups \textit{(continued)}}\\
+\toprule
+\multicolumn{1}{c}{ } & \multicolumn{5}{c}{Yield} & \multicolumn{5}{c}{Pods per plant} & \multicolumn{5}{c}{Seeds per pod} & \multicolumn{5}{c}{1000 kernel weight} \\
+\cmidrule(l{3pt}r{3pt}){2-6} \cmidrule(l{3pt}r{3pt}){7-11} \cmidrule(l{3pt}r{3pt}){12-16} \cmidrule(l{3pt}r{3pt}){17-21}
+Treatment & mean & err & df & low & high & mean & err & df & low & high & mean & err & df & low & high & mean & err & df & low & high\\
+\midrule
+\endhead
+\
+\endfoot
+\bottomrule
+\endlastfoot
+\rowcolor{gray!6}  AGS376 & 2.45 & 0.25 & 10.45 & 1.89 & 3.00 & 78.0 & 17.5 & 3.30 & 24.90 & 131 & 2.02 & 0.07 & 55.8 & 1.88 & 2.15 & 136 & 4.88 & 98.5 & 126 & 146\\
+Cobb & 1.99 & 0.37 & 38.22 & 1.25 & 2.73 & 52.4 & 18.5 & 4.08 & 1.44 & 103 & 1.92 & 0.11 & 98.1 & 1.69 & 2.14 & 137 & 8.62 & 98.5 & 120 & 154\\
+\rowcolor{gray!6}  F778817 & 2.52 & 0.37 & 38.22 & 1.78 & 3.26 & 64.1 & 18.5 & 4.08 & 13.11 & 115 & 2.11 & 0.11 & 98.1 & 1.88 & 2.34 & 153 & 8.62 & 98.5 & 136 & 170\\
+Hardee & 2.44 & 0.28 & 16.55 & 1.84 & 3.04 & 82.2 & 17.8 & 3.48 & 29.86 & 135 & 1.82 & 0.08 & 74.2 & 1.66 & 1.99 & 126 & 6.03 & 98.5 & 114 & 138\\
+\rowcolor{gray!6}  Iang-beakong & 2.58 & 0.37 & 38.22 & 1.84 & 3.32 & 94.3 & 18.5 & 4.08 & 43.37 & 145 & 1.93 & 0.11 & 98.1 & 1.70 & 2.16 & 120 & 8.62 & 98.5 & 103 & 137\\
+\addlinespace
+IARS87-1 & 2.70 & 0.25 & 10.45 & 2.15 & 3.25 & 75.8 & 17.5 & 3.30 & 22.74 & 129 & 2.17 & 0.07 & 55.8 & 2.04 & 2.31 & 135 & 4.88 & 98.5 & 125 & 144\\
+\rowcolor{gray!6}  LS77-16-16 & 1.67 & 0.25 & 10.45 & 1.12 & 2.23 & 60.3 & 17.5 & 3.30 & 7.23 & 113 & 1.98 & 0.07 & 55.8 & 1.85 & 2.12 & 118 & 4.88 & 98.5 & 109 & 128\\
+PI94159 & 2.05 & 0.37 & 38.22 & 1.31 & 2.79 & 66.1 & 18.5 & 4.08 & 15.11 & 117 & 2.02 & 0.11 & 98.1 & 1.79 & 2.24 & 123 & 8.62 & 98.5 & 106 & 140\\
+\rowcolor{gray!6}  PK327 & 2.30 & 0.37 & 38.22 & 1.56 & 3.05 & 69.9 & 18.5 & 4.08 & 18.91 & 121 & 2.27 & 0.11 & 98.1 & 2.04 & 2.50 & 120 & 8.62 & 98.5 & 103 & 137\\
+PK7394 & 2.87 & 0.25 & 10.45 & 2.32 & 3.42 & 91.4 & 17.5 & 3.30 & 38.37 & 144 & 1.93 & 0.07 & 55.8 & 1.79 & 2.06 & 115 & 4.88 & 98.5 & 105 & 125\\
+\addlinespace
+\rowcolor{gray!6}  Puja & 2.31 & 0.23 & 7.85 & 1.78 & 2.84 & 60.4 & 17.4 & 3.21 & 6.95 & 114 & 1.99 & 0.06 & 41.7 & 1.87 & 2.10 & 147 & 4.15 & 98.5 & 138 & 155\\
+Ransom & 1.83 & 0.28 & 16.44 & 1.24 & 2.43 & 53.2 & 17.8 & 3.48 & 0.77 & 106 & 1.97 & 0.08 & 76.7 & 1.81 & 2.13 & 148 & 6.07 & 98.5 & 136 & 160\\
+\rowcolor{gray!6}  Seti & 2.31 & 0.37 & 38.22 & 1.57 & 3.05 & 61.4 & 18.5 & 4.08 & 10.44 & 112 & 1.78 & 0.11 & 98.1 & 1.56 & 2.01 & 140 & 8.62 & 98.5 & 123 & 157\\
+Tarkari-Bhatmas1 & 2.59 & 0.37 & 38.22 & 1.85 & 3.33 & 57.7 & 18.5 & 4.08 & 6.71 & 109 & 1.96 & 0.11 & 98.1 & 1.73 & 2.18 & 130 & 8.62 & 98.5 & 113 & 147\\
+\rowcolor{gray!6}  TGX1485-1D & 2.64 & 0.25 & 10.45 & 2.09 & 3.19 & 72.1 & 17.5 & 3.30 & 19.03 & 125 & 2.11 & 0.07 & 55.9 & 1.97 & 2.24 & 131 & 4.87 & 98.5 & 122 & 141\\
+\addlinespace
+TGX1987-10F & 2.03 & 0.36 & 38.02 & 1.29 & 2.76 & 86.8 & 18.5 & 4.06 & 35.81 & 138 & 2.12 & 0.11 & 102.9 & 1.89 & 2.34 & 135 & 8.72 & 98.5 & 118 & 153\\
+\rowcolor{gray!6}  TGX1987-62F & 2.40 & 0.28 & 16.55 & 1.80 & 2.99 & 78.9 & 17.8 & 3.48 & 26.53 & 131 & 2.16 & 0.08 & 74.2 & 2.00 & 2.33 & 141 & 6.03 & 98.5 & 129 & 153\\
+TGX1989-45F & 2.86 & 0.28 & 16.44 & 2.26 & 3.45 & 89.5 & 17.8 & 3.48 & 37.12 & 142 & 2.16 & 0.08 & 76.7 & 2.00 & 2.32 & 118 & 6.07 & 98.5 & 106 & 130\\
+\rowcolor{gray!6}  TGX1989-48FN & 2.72 & 0.25 & 10.49 & 2.16 & 3.27 & 86.3 & 17.5 & 3.30 & 33.29 & 139 & 2.11 & 0.07 & 54.8 & 1.98 & 2.24 & 124 & 4.86 & 98.5 & 115 & 134\\
+TGX1989-68FN & 2.05 & 0.36 & 38.02 & 1.32 & 2.79 & 60.5 & 18.5 & 4.06 & 9.48 & 111 & 2.02 & 0.11 & 102.9 & 1.79 & 2.24 & 123 & 8.72 & 98.5 & 106 & 140\\
+\addlinespace
+\rowcolor{gray!6}  TGX1990-106FN & 2.47 & 0.25 & 10.49 & 1.92 & 3.02 & 80.8 & 17.5 & 3.30 & 27.80 & 134 & 2.16 & 0.07 & 54.8 & 2.03 & 2.30 & 134 & 4.86 & 98.5 & 124 & 143\\
+TGX1990-110FN & 1.78 & 0.28 & 16.55 & 1.19 & 2.38 & 67.8 & 17.8 & 3.48 & 15.46 & 120 & 2.06 & 0.08 & 74.2 & 1.90 & 2.23 & 135 & 6.03 & 98.5 & 123 & 147\\
+\rowcolor{gray!6}  TGX1990-114FN & 1.83 & 0.28 & 16.44 & 1.23 & 2.43 & 78.8 & 17.8 & 3.48 & 26.45 & 131 & 2.09 & 0.08 & 76.7 & 1.93 & 2.25 & 122 & 6.07 & 98.5 & 110 & 134\\
+TGX1990-40F & 2.90 & 0.36 & 38.02 & 2.16 & 3.64 & 72.5 & 18.5 & 4.06 & 21.48 & 123 & 1.98 & 0.11 & 102.9 & 1.76 & 2.21 & 137 & 8.72 & 98.5 & 120 & 155\\
+\rowcolor{gray!6}  TGX1990-52F & 2.82 & 0.28 & 16.55 & 2.22 & 3.41 & 71.4 & 17.8 & 3.48 & 19.00 & 124 & 2.03 & 0.08 & 74.2 & 1.87 & 2.19 & 158 & 6.03 & 98.5 & 146 & 170\\
+\addlinespace
+TGX1990-80F & 1.81 & 0.28 & 16.55 & 1.21 & 2.41 & 61.9 & 17.8 & 3.48 & 9.50 & 114 & 2.13 & 0.08 & 74.2 & 1.97 & 2.29 & 125 & 6.03 & 98.5 & 113 & 137\\
+\rowcolor{gray!6}  TGX1990-95F & 1.86 & 0.28 & 16.55 & 1.26 & 2.46 & 68.6 & 17.8 & 3.48 & 16.23 & 121 & 2.06 & 0.08 & 74.2 & 1.90 & 2.23 & 134 & 6.03 & 98.5 & 122 & 146\\
+TGX1993-4FN & 1.33 & 0.28 & 16.55 & 0.74 & 1.93 & 60.8 & 17.8 & 3.48 & 8.40 & 113 & 1.91 & 0.08 & 74.2 & 1.75 & 2.08 & 121 & 6.03 & 98.5 & 109 & 133\\*
+\end{longtable}
+\endgroup{}
+\end{landscape}
+
+\end{document}

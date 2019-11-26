@@ -1,0 +1,150 @@
+---
+title: "Analysis of two factor experiment with separation of means"
+author: "Deependra Dhakal"
+date: "`r Sys.Date()`"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 3
+    keep_tex: yes
+header-includes:
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage[table]{xcolor}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \usepackage{rotating}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \usepackage{subfig}
+- \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+---
+
+```{r setup, include=FALSE, warning=FALSE, message=FALSE}
+library(tidyverse)
+knitr::opts_chunk$set(tidy = TRUE, cache = TRUE, 
+                      echo = FALSE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, warning = FALSE, message = FALSE,
+                      # fig.show = "hold", 
+                      fig.align = "center", fig.width = 5,
+                      fig.asp = 0.9, out.width = "0.7\\linewidth")
+options(knitr.kable.NA = "", digits = 3)
+# require(lmerTest)
+require(agricolae)
+```
+
+
+```{r load-data}
+two_fac_papaya <- readxl::read_xlsx("./data/papaya_thinning_defoliation/data2.xlsx", sheet = "Sheet3")
+```
+
+# Analysis of 2 factorial RCBD
+
+Since you have 3 levels for one factor and 3 levels for the other, data from an RCBD with 3 replications would be analysed as follows:
+
+```{r design-and-book, results='asis'}
+set.seed(9845333)
+
+two_fac_papaya <- two_fac_papaya %>%
+  mutate(`Fruit thinning` = fct_recode(as_factor(`Fruit thinning`), 
+                                       Control_thinning = "1", 
+                                       Hand_thinning = "2", 
+                                       Chemical_thinning = "3"), 
+         Defoliation = fct_recode(as_factor(Defoliation), 
+                                  Control_defoliation = "1", 
+                                  Defoliation_33 = "2",
+                                  Defoliation_66 = "3")) %>% 
+  mutate(Rep = as.factor(Rep))
+
+knitr::kable(two_fac_papaya[c(1:4)], 
+             format = "latex", 
+             caption = "Design field book of a two factorial RCBD experiment", 
+             digits = 3, booktabs = TRUE,
+             col.names = c("Block", "Fruit thinning", 
+                           "Defoliation", "Days for flowering"), 
+             align = 'l') %>% 
+  kableExtra::kable_styling(latex_options = c("striped", 
+                                              "hold_position", "scale_down"), 
+                            full_width = TRUE, font_size = 11, position = "left")
+```
+
+# Analyis
+
+```{r analysis-and-results}
+# import lm_list function
+source("./scripts/lm_list.R")
+
+# it returns a list of linear model objects
+m2_list <- lm_list(df = two_fac_papaya, response = c("Pulp weight", "diameter (cm)"), 
+                   rhs_terms = c("Defoliation*Fruit thinning"))
+
+# # quickly obtain model summaries tidied
+# lm_list(df = two_fac_papaya, response = c("Fruit set %", "SD 150 DAT", "Abortion %"),
+#         rhs_terms = c("Defoliation * Fruit thinning", "Rep")) %>% 
+#   map(broom::tidy) %>% 
+#   map_dfr(bind_rows, .id = "response")
+
+# first identify what are the factor names in the model
+attr(m2_list[[1]]$terms, 'term.labels')
+
+# mean separation
+map_inner <- function(y)map_dfr(list("fruit_thinning", "defoliation", 
+                                     c("fruit_thinning", "defoliation")), 
+                  function(x)agricolae::duncan.test(y, trt = x) %>% pluck("groups") %>% 
+                    rownames_to_column("treatment"))
+
+m2_means <- map(m2_list, map_inner) %>% 
+  purrr::reduce(left_join, by = "treatment") %>% 
+  # use name of model in list to clean variables after joining 
+  magrittr::set_colnames(c("treatment", paste(rep(names(m2_list), each = 2), c("", "_group"), sep = "")))
+
+# cvs of all traits
+m2_cvs <- map_dfr(m2_list, agricolae::cv.model)
+
+# # write a single file to csv
+# m2_means %>% write_csv(path = "papaya_dmrt.csv", na = "")
+# m2_cvs %>% write_csv(path = "papaya_cv.csv", na = "")
+
+# # zip those files together
+# zip(zipfile = "papaya_traits.zip", files = dir(".", full.names = TRUE, pattern = "*.csv$"))
+```
+
+
+# Correlation matrix of numeric variables
+
+```{r correlation-postharvest, results='asis'}
+source("./scripts/corstars.R")
+
+# crop yield and agro-morphology
+cortable <- corstars(two_fac_papaya %>% 
+                       select_at(which(map_lgl(., is.numeric))) %>% 
+                       select(-contains("rep")))
+# # write to csv
+# cortable %>% rownames_to_column(var = "traits") %>% write_csv("correlation_papaya_ramesh.csv")
+
+cortable %>%
+  rename_all(function(x)stringr::str_trunc(x, width = 4, side = "c", ellipsis = "")) %>% 
+  knitr::kable(format = "latex",
+               caption = "Pearson correlation coefficients of Post harvest traits",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, latex_options = c("striped", "scale_down")) %>%
+  # kableExtra::column_spec(1:11, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE) %>% 
+  kableExtra::landscape()
+
+```
+

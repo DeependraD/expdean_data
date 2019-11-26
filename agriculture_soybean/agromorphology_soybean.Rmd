@@ -1,0 +1,844 @@
+---
+title: "Evaluation of agromorphology of soybean genotypes in humid upland of central Nepal"
+author: "P. Thapa, Anup Adhikari, Shankar Neupane, Sangram Chand, Deependra Dhakal, K H. Dhakal, R. Darai"
+date: "February 1, 2018"
+output: 
+  bookdown::pdf_document2:
+    toc: yes
+    toc_depth: 3
+    keep_tex: yes
+header-includes:
+  - \usepackage{dcolumn}
+  - \usepackage{tabularx}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage[table]{xcolor}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{rotating}
+  - \newcommand{\blandscape}{\begin{landscape}}
+  - \newcommand{\elandscape}{\end{landscape}}
+  - \usepackage[format=hang,labelfont=bf,margin=0.5cm,justification=centering]{caption}
+  - \usepackage{subcaption}
+  - \newcommand{\subfloat}[2][need a sub-caption]{\subcaptionbox{#1}{#2}}
+---
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_chunk$set(tidy = TRUE, cache = FALSE, 
+                      echo = FALSE, 
+                      tidy.opts = list(width.cutoff=50), 
+                      eval = TRUE, warning = FALSE, message = FALSE,
+                      # fig.show = "hold", 
+                      fig.align = "center", fig.width = 6,
+                      fig.asp = 0.9, out.width = "0.8\\linewidth")
+options(knitr.kable.NA = "", digits = 3, knitr.table.format = "latex")
+options(kableExtra.latex.load_packages = FALSE)
+require(agricolae)
+require(tidyverse)
+require(desplot)
+require(lme4)
+theme_set(theme_bw())
+```
+
+1-4. M.Sc.Ag.,Scholar, Department of Genetics and Plant Breeding, Agriculture and Forestry University, Rampur, Chitwan, Nepal
+
+5. Crop Breeder, Unique Seed Company, Dhangadhi, Kailali, Nepal
+
+6. Assistant Professor, Department of Genetics and Plant Breeding, Agriculture and Forestry University, Rampur, Chitwan, Nepal
+
+7. Senior Scientist, National Grain Legumes Research Programme, Khajura, Banke, Nepal
+
+# Abstract
+
+A series of experimental trials were conducted beginning from 2015 through ??? at various sites around Rampur, Chitwan, Nepal during the months of ???July 2015 to November 2015???. The objectives of the study were to ???. In the first year, fifteen soybean accessions, that include six national released varieties, were obtained from National Grain legume Research Program (Nepal Agricultural Research Council), Nepalgunj and tested in two separate experimental blocks. In second year, ???
+
+**Key words**: Protein, fatty acid, multi-environment trial, soybean, nodule, principal component analysis, stability analysis 
+
+# Introduction
+
+Soybean [*Glycine max* (2n=2x=40)] is an important member of family leguminosae and sub-family papilionaceac. It is an annual herb mainly grown for seed from which oil and protein are extracted. Domestication of the soybean is believed to have originated in the northern and central regions of China as long as 5000 years ago, with the first documented use of the plant by a Chinese emperor. Soybean cultivation spread throughout Japan, Korea, and southeast Asia, although the USA and Brazil account today for most of the soybean production of the world. Soybean primarily, an industrial crop, cultivated for oil and protein (Berk, 1992). As the world population expands, there will be a greater pressure for the consumption of plant products (Kinsella, 1979). Today, soybean is considered one of the most economical and valuable agricultural commodity because of its unique chemical composition and due to multiple uses as food, feed and industrial materials. 
+
+Soybeans have the highest protein content among cereal and other legume species, and the second highest oil content among all food legumes. Soy protein contains the essential amino acids, which closely match the requirements for humans or animals. Furthermore, soybean also contains many biological active components like isoflavones, lecithin, saponins, oligosaccharides and phytosterols. Many of these components act as anti-cancer agents and antioxidants (Yao, Jiang, SHI, Tomas, Datta, Singanusong, & Chen, 2004). Soybean is considered a miracle crop due to its multi-advantageous qualities i.e. food, feed, oil, fodder, soil sustainability and medicinal values. It contains about 37-42% of good quality protein, 6% ash, 29% carbohydrate and 17-24% oil comprising 85% unsaturated fatty acid with two essential fatty acids (lenoleic and linolenic acid) which are not synthesized by the human body so it is highly desirable in human diet (Aditya &  Bhartiya, 2011).
+
+Increasing nutritional interest of soybean is further backed by the health benefits that comes from soy protein consumption. It has been suggested that intakes of soy protein may lower the incidence of certain forms of cancer in Asian countries, where soy consumption is high, as compared to Europe or United State of America (Davies, Netto, Glassenap, Gallaher, Labuza, & Gallaher, 1998). Due to its nutritional value along with affordable low cost, soy protein is the largest commercially available vegetable protein in the world, and it is a potential alternative to existing animal derived proteins. Soy proteins are also of particular interest because they impart high functionality in food systems and being used to obtain better quality products. Because of these advantages (economic, nutritive, dietetics, etc.) it is important to develop new soy protein foods or a range of new food formulations with new textures (Molina, Defaye, & Ledward, 2002). With a dense protein constitution in it's seeds, the crop also claims a glaring title of "the meat that grows on plant".
+
+?? elaborate on usefulness of soybean oil/fatty acid ??
+
+With the ever increasing pressure on productiviy increment of food crops, dosage balance and responsiveness to use of Nitrogen is one of the prime issues today. Supplemental nitrogenous fertilizers impose substantial costs to growers worldwide, and potentially have adverse effects on the environment. Soybean, as a legume, fixes atmospheric nitrogen into the soil, thus making it available for subsequent crops. Mulongoy (1992) and Hungria, Franchini, Campo, Crispino,  Moraes, Sibaldelli & Arihara,  (2006) reported that soybean can capture an amount of 300 kg of nitrogen per hectare from the atmosphere. The leguminous plants establish a symbiotic relationship with rhizobia (symbiotic nitrogen fixation) to directly capture N2 to support plant growth. Nitrogen conversion takes place in a unique organ (root nodule). The development of root nodules commences with a molecular dialogue between the host plant and a compatible strain of rhizobium involving a succession of complex process that lead to profound changes in both symbiosis (Oldroyd, Murray, Poole, & Downie, 2011). 
+
+???Latest statistics indicate that the area of soybean in Nepal was 23757 ha with an average productivity of 1.18 ton/ha (MOAD, 2015).??? It is clear that soybean continues to have multiple uses of commercial interest. Furthermore, in light of its booming importance, it is now used as a vital ingredient in feed industries (mostly that of poulty). Despite a growing trend of it's cultivation, Nepal continues to leap up in the import front of raw or processed soybean. Just in the last fiscal year ???, import worth ??? are directly related to the soybean or its derived products. Henceforth, to set forth on impactful development of competative and export ready soybean enterprise, improved soybean varieties need to be at disposal of modern commercial growers.
+
+The objectives of the research are
+
+- To identify high protein content soybean accessions
+- To identify high yielding soybean accessions
+- To identify most stable soybean accession across tested locations 
+
+# Materials and method
+
+## Site of study 
+
+A series of experimental trials were conducted across different locations in various years.
+
+- e1 (Protein, 2015): The research field of National Cattle Research Program, Rampur, Chitwan, from July, 2015 to November, 2015. The plot was 8m2 (4mx2m). The experimental materials were six released varieties and nine pipeline accession of the soybean which were obtained from the National Grain Legume Research Program (Nepal Agricultural Research Council).
+
+- e2 (Fat, 2015): 
+
+- e3 (Protein, 2016):
+
+- e4 (Fat, 2016):
+
+## Experiment overview
+
+### Treatment entries
+
+Randomized complete block design (RCBD) was used with three replications, involving 10-15 treatment entries. Among the tested genotypes, 6 are already released through national variety recommendation body. Furthermore, the other genotypes included in this study are in various stages of national testing of promising genotypes. All treatment entries tested in the study along with their release/registration status are summarized in Table \@ref(tab:treat-ent).
+
+```{r data-import}
+# individual environments datasets
+dp1 <- readxl::read_xlsx("./data/data.xlsx", "data_protein72")
+dp2 <- readxl::read_xlsx("./data/data.xlsx", "data_protein73")
+df1 <- readxl::read_xlsx("./data/data.xlsx", "data_fat72")
+df2 <- readxl::read_xlsx("./data/data.xlsx", "data_fat73")
+
+# dp1 %>% 
+#   full_join(dp2, by = c("replication", "environment", "genotype_id"))
+
+# combined dataset
+dfp <- readxl::read_xlsx("./data/data_comb.xlsx")
+dfp_complete <- ((dfp %>% summarise_all(list(~sum(is.na(.)))) %>% unclass() %>% unlist()) == 0)
+dfp <- dfp %>% select_if(dfp_complete)
+
+dfp <- dfp %>% 
+  mutate_at(c("replication", "genotype_id"), as.factor) %>% 
+  rename_all(function(x)stringr::str_replace_all(x, 
+                                                 c("[\\s/]" = "_", 
+                                                   "\\(" = "", "\\)" = "", 
+                                                   "%" = "", 
+                                                   "_$" = "")))
+
+```
+
+
+```{r nodulation-status, fig.cap="Variation in number of nodules across environments of tested genotypes", fig.width=7, fig.height=4, cache=FALSE}
+#Construction of stacked bar charts and clustered bar charts, useful in summarizing
+#..relationship between two categorical variables
+#Firstly a contingency table for two categorical vars is required,
+
+dfp_nodulation <- dfp %>% 
+  group_by(environment, genotype_id) %>% 
+  summarise_at("nodule_num", list(~mean(., na.rm = TRUE))) %>% 
+  mutate("Nodulation category" = cut(nodule_num, breaks = 5, labels = c("Poor nodulation", "Slight nodulation", "Mild nodulation", "Good nodulation", "Excellent nodulation")))
+
+ggplot(data = dfp_nodulation, aes(x = genotype_id, y = `nodule_num`)) +
+  geom_col(na.rm = TRUE, 
+           show.legend = TRUE, aes(fill = `environment`),
+           inherit.aes = TRUE, position = position_dodge2(preserve = "single")) +
+  ylab("Number of nodules") +
+  theme(axis.text.x = element_text(angle = 50, vjust = 0.5))
+```
+
+
+```{r treat-ent, cache=FALSE, message=FALSE}
+set.seed(9845333)
+rel_reg <- readxl::read_xlsx("./data/data.xlsx", "data_rel_reg", skip = 1)
+
+treat_ent <- dfp %>%
+  select(genotype_id) %>% 
+  unique() %>% 
+  select(genotype_id) %>% 
+  left_join(rel_reg %>% 
+              select(`genotype_id`, `Recommended year`, `Recommended domain`, `Days to maturity`), 
+            by = "genotype_id")
+
+knitr::kable(treat_ent, 
+             format = "latex",
+             booktabs = TRUE,
+             caption = "Treatment entries tested in the RCBD experiment", 
+             digits = 3, 
+             align = 'l') %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "hold_position"), 
+                            full_width = FALSE, font_size = 10, position = "center")
+```
+
+
+### Layout of field experiment
+
+A layout of the experimental design, with 15 treatment entries each replicated thrice, is shown below in Figure \@ref(fig:design-layout).
+
+```{r design-layout, results='asis', fig.cap="Layout of experimental design", fig.width=8, fig.height=4, out.width="0.95\\linewidth", fig.align='center', cache=FALSE}
+entry_no <- seq_along(treat_ent$genotype_id)
+entry_analogue <- treat_ent$genotype_id
+entry_name <- map(entry_analogue, c) %>% set_names(entry_no)
+
+design_book <- agricolae::design.ab(c(length(entry_no), 4), r = 3, serie = 2, first = TRUE, randomization = TRUE)
+
+design_book$book <- design_book$book %>% 
+  mutate(genotype_id = recode(A, !!!entry_name), 
+         environment = paste0("e", B),
+         replication = block
+         ) %>% 
+  select(plots, genotype_id, entry_id = A, environment, replication)
+
+design_book$book <- design_book$book %>% 
+  # left_join(dfp, by = c("genotype_id", "replication", "environment")) %>% 
+  group_by(replication, environment) %>% 
+  mutate(row = row_number())
+
+dfp <- design_book$book %>% 
+  select(-plots) %>% 
+  left_join(dfp)
+
+suppressWarnings(desplot(entry_id ~ replication+row|environment,
+        data = design_book$book, layout = c(4, 1),
+        text = `genotype_id`, out1 = replication,
+        midpoint = "midrange",
+        out2 = row, show.key = FALSE,
+        main = "RCBD experiment layout of soybean entries\ntested in 3 replication blocks in 4 environments",
+        cex = 0.5, shorten = FALSE))
+
+dfp <- dfp %>%
+  mutate_at("row", as.factor)
+```
+
+## Method of protein determination
+
+Sample of 250 gm from each plot was sent to the lab of Department of Food Technology and Quality Control Centre (DFTQC), Babarmahal, Kathmandu for the seed protein content calculation for which kjeldahl method is used. It is assumed, in general protein contains 16% nitrogen which means that each gram of nitrogen determined reflects a protein content of 100?16 = 6.25 g. The factor 6.25 has been worked out based on a number of studies on amino acid profile. During reporting the result, it is therefore customary to mention the factor (usually 6.25) used in the calculation. The principle for determination of nitrogen and crude protein is as follows:
+
+A known weight of the sample was transferred to 250 ml Kjeldahl flask for determination of nitrogen by Micro-kjeldahl method. Into the flask, catalyst mixture (potassium sulphate + mercuric oxide) and concentrated H2SO4 were added. The mixture was boiled and digestion was continued until the colour of the digest was colourless. The volume of the digest was made upto a known volume. Similarly a blank without the sample was run. The reduced nitrogen extracted by steam distillation from a definite volume of the digest was collected in boric acid solution. The nitrogen present in the boric acid solution was estimated by titrating with 0.02 N HCl using mixed indicator (methyl red and methylene blue). The blank distillation and titration were carried out and calculation was done. In this way nitrogen (% dry basis) is determined and finally protein content on seed is calculated by the formula 
+
+$$Protein~(\%~dry~basis) =[Nitrogen~(\%~dry~basis)\times 6.25 ]$$
+
+## Statistical methodology
+
+For each response variable, mixed effects linear model was fitted with entry genotypes as fixed factor and replication and environment as random effects experimental factor. The representation of model in vector space is shown in Equation \@ref(eq:linear-model-form).
+
+\begin{equation}
+Y_{ijkt} = \mu + A_{i} + B_{j} + C_{k} + AB_{ij} + AC_{ik} + ABC_{ijk} + \sigma_{ijkt}
+(\#eq:linear-model-form)
+\end{equation}
+
+Where, $\mu$ is the sample mean across treatments, $A_{i}$ is the treatment factor (genotype) main effects, $B_{j}$ is a random effect component representing test environment, and $C_{k}$ is yet another random effect component for replication factor. The $\sigma_{ijkt}$ is the random error term associated with individual entries in each of the replication blocks in the given environment.
+
+Experimental data were analyzed using R-stat software, and therein, treatment means were separated using least squares means at 5% level of significance. Analysis of variance (ANOVA) was used to detect significance of either the fixed or both of random factors, and also to determine the overall effectiveness of blocking. Only when a response showed a significant variation for the experimental factors (verified through $\chi^2$-statistic), mean separation was employed. 
+
+Similarly, traits were checked for their associatedness using pearson correlation coefficients measure. High degree of linear correlation among variables (recorded independently) would warrant a thorough inspection for usefulness in later analysis.
+
+# Analysis
+
+```{r response-variables, cache=FALSE}
+# save name of numeric only variables
+numeric_trait_names <- dfp %>%
+  map_lgl(is.numeric) %>% 
+  which() %>% names()
+```
+
+## Mixed model
+
+```{r mixed-model, cache=FALSE}
+# rcbd model for all variables
+met_soy_model <- map(numeric_trait_names,
+                     .f = ~ lmer(get(.x) ~ genotype_id +
+                                 + (1 | environment/replication), data = dfp))
+met_soy_model <- met_soy_model %>% set_names(numeric_trait_names)
+
+# least squares means
+met_soy_means <- map(met_soy_model, ~ emmeans::lsmeans(.x, "genotype_id"))
+
+# note: significantly high number of nodules for TGX1989-68FN genotype
+
+# ensure that column to join by does not contain duplicates
+met_soy_means <- met_soy_means %>%
+  map(broom::tidy) %>% 
+  reduce(left_join, by = "genotype_id") %>%
+  magrittr::set_colnames(c("Treatment",
+                           paste(rep(numeric_trait_names, each = 5),
+                                 c("est_mean", "std_err", "df", "conf_low", "conf_high"))))
+
+# # save the image to external file
+# save(list = c("met_soy_means", "met_soy_model"),
+#      file = "./data/data_model.RData")
+```
+
+## Model summary of number of nodules per plant and days to flowering
+
+```{r model-summary1, results='asis', eval=TRUE, cache=FALSE}
+# # must use this function with float=FALSE in stargazer
+long_stargazer <- function(..., lab_caption_custom = NULL){
+  output <- capture.output(stargazer::stargazer(...))
+  # The lines 4 and second last lines are the ones we want to remove...
+  output[c(4, length(output)-1)] <- output[c(4, length(output)-1)] %>% 
+    stringr::str_replace("tabular", "longtable")
+  output <- c(output[1:4], lab_caption_custom, output[5:length(output)])
+  # cat out the results - this is essentially just what stargazer does too
+  cat(paste(output, collapse = "\n"), "\n")
+}
+
+# set column labels
+column_labels <- c("\\parbox[t]{3.5cm}{Number of nodules per plant}", 
+                   "\\parbox[t]{3.5cm}{Days to flowering}")
+
+row_labels <- c((met_soy_model$yield_ton_per_ha1 %>% 
+    fixef() %>% 
+    names())[-1] %>% 
+  str_extract("(?<=id).*"), "Constant")
+
+long_stargazer(met_soy_model[c("nodule_num", "days_to_flowering")],
+               # title = "Mean comparison of traits",
+               lab_caption_custom = "\\caption{\\label{tab:model-summary1}Model summary of number of nodules per plant and days to flowering}\\\\",
+               style = "all", digits = 2, 
+               header = FALSE, font.size = "small", 
+               column.labels = column_labels, 
+               model.names = TRUE, dep.var.labels.include = FALSE,
+               covariate.labels = row_labels,
+               digits.extra = 3, align = TRUE, single.row = TRUE, 
+               # float.env = "table*",
+               df = FALSE, omit.stat = c("adj.rsq"), report = "vc*s", # here repoting p means p-values
+               column.sep.width = "-10pt", float = FALSE, # float=TRUE enables title and labels  
+               no.space = TRUE)
+
+```
+
+## Model summary of yield and yield attributing traits
+
+```{r model-summary2, results='asis', eval=TRUE, cache=FALSE}
+# set column labels
+column_labels <- c("\\parbox[t]{3.0cm}{Yield}",
+                   "\\parbox[t]{3.0cm}{Pods per plant}",
+                   "\\parbox[t]{3.0cm}{Seeds per pod}",
+                   "\\parbox[t]{3.0cm}{Test weight}"
+                   )
+# row_labels <- c((met_soy_model$yield_ton_per_ha1 %>% 
+#     fixef() %>% 
+#     names())[-1] %>% 
+#   str_extract("(?<=id).*"), "Constant")
+long_stargazer(met_soy_model[c("yield_ton_per_ha1",
+                               "pods_per_plant",
+                               "seeds_per_pod",
+                               "test_wt_gm2")],
+               # title = "Mean comparison of traits",
+               lab_caption_custom = "\\caption{\\label{tab:model-summary2}Model summary of yield and yield attributing traits}\\\\",
+               style = "all", digits = 2,
+               header = FALSE, font.size = "small",
+               column.labels = column_labels,
+               model.names = TRUE, dep.var.labels.include = FALSE,
+               covariate.labels = row_labels,
+               digits.extra = 2,
+               # align = TRUE,
+               single.row = TRUE,
+               # float.env = "table*",
+               df = FALSE, omit.stat = c("adj.rsq"), report = "vc*s", # here repoting p means p-values
+               column.sep.width = "-10pt", float = FALSE, # float=TRUE enables title and labels
+               no.space = TRUE)
+
+```
+
+## Treatment means of number of nodules per plant and days to flowering
+
+<!-- \blandscape -->
+
+```{r met-soy-means-nodule-days, results='asis', cache=FALSE}
+met_soy_means_nodule_flower <- met_soy_means %>% 
+               rename_all(list(~str_replace_all(., "_", "\\ "))) %>% 
+               select(Treatment, matches("nodule num"), 
+                      matches("days to flowering")) %>% 
+               rename_all(list(~str_replace_all(., ".*(?=\\ \\S*$)", "") %>% str_trim()))
+             
+knitr::kable(met_soy_means_nodule_flower,
+             caption = paste("Treatment means with groups"),
+             format = "latex", longtable = TRUE,
+             digits = 2, booktabs = TRUE, 
+             align = 'l', escape = TRUE) %>% 
+  kableExtra::add_header_above(c(" " = 1, "Number of nodules per plant" = 5, 
+                                 "Days to flowering" = 5)) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "repeat_header",
+                                              "hold_position"), 
+                            font_size = 10, position = "center") %>% 
+  kableExtra::column_spec(1, width = "14em") %>% 
+  kableExtra::column_spec(2:ncol(met_soy_means_nodule_flower), width = "1.8em")
+```
+<!-- \elandscape -->
+
+## Treatment means of yield and yield attributing traits
+
+\blandscape
+
+```{r met-soy-means-yield-n-attribs, results='asis', cache=FALSE, eval=TRUE}
+met_soy_means_yield_n_attribs <- met_soy_means %>% 
+               rename_all(list(~str_replace_all(., "_", "\\ "))) %>% 
+               select(Treatment, 
+                      matches("yield"), 
+                      matches("pods per"), 
+                      matches("seeds per"), 
+                      matches("test wt")) %>% 
+               rename_all(list(~str_replace_all(., ".*(?=\\ \\S*$)", "") %>% str_trim()))
+             
+knitr::kable(met_soy_means_yield_n_attribs,
+             caption = paste("Treatment means with groups"),
+             format = "latex", longtable = TRUE,
+             digits = 2, booktabs = TRUE, 
+             align = 'l', escape = TRUE) %>% 
+  kableExtra::add_header_above(c(" " = 1, 
+                                 "Yield" = 5, 
+                                 "Pods per plant" = 5, 
+                                 "Seeds per pod" = 5, 
+                                 "1000 kernel weight" = 5)) %>% 
+  kableExtra::kable_styling(latex_options = c("striped", "repeat_header",
+                                              "hold_position"), 
+                            font_size = 9, position = "center") %>% 
+  kableExtra::column_spec(1, width = "7em") %>% 
+  kableExtra::column_spec(2:ncol(met_soy_means_yield_n_attribs), width = "1.8em")
+
+```
+\elandscape
+
+
+```{r met-soy-means-nodule-flower, fig.cap="Genotypic respose of soybean (\\textit{Glycine max}) accessions at Chitwan, Nepal, 2015-2016", fig.subcap=c("Number of nodules/plant", "Days to flowering"), fig.keep='all', fig.asp=0.8, fig.width=4, out.width='.48\\linewidth', cache=FALSE, fig.ncol = 2, fig.show="hold"}
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$nodule_num, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Mean number of nodules") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$days_to_flowering, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Mean days to flowering") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+```
+
+
+```{r met-soy-means-yield, fig.cap="Genotypic respose of soybean (\\textit{Glycine max}) accessions at Chitwan, Nepal, 2015-2016", fig.subcap=c("Yield (tons/ha)", "Number of pods per plant", "Number of seeds per pod", "1000 kernel weight"), fig.keep='all', fig.asp=0.8, fig.width=4, out.width='.48\\linewidth', cache=FALSE, fig.ncol = 2, fig.show="hold"}
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$yield_ton_per_ha1, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Yield (tons/ha)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$pods_per_plant, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Pods (per plant)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$seeds_per_pod, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("Seeds per pod (per plant)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+
+walk(.x = list("genotype_id"),
+     ~(emmeans::lsmeans(met_soy_model$test_wt_gm2, .x) %>%
+         plot() +
+         coord_flip() +
+         ylab(str_replace_all(.x, "_", "\\ ")) +
+         xlab("1000 kernel weight (gm)") +
+         theme(axis.text.x = element_text(angle = 50, vjust = .6))
+     ) %>%
+       print())
+```
+
+## Association of seed diameter with grain yield
+
+```{r grain-yield, fig.cap="Scatterplot showing association between seed diameter and soybean yield", fig.width=7, fig.height=4}
+library(ggpmisc)
+my.formula <- y ~ x
+
+ggplot(data = dfp, aes(x = seed_diameter_mm1, y = yield_ton_per_ha1)) +
+  geom_smooth(method = "lm",
+              se=FALSE, color="black",
+              formula = my.formula) +
+  stat_poly_eq(formula = my.formula,
+               aes(label = paste(..eq.label..,
+                                 ..rr.label.., sep = "~~~")),
+               parse = TRUE) +
+  geom_point() +
+  xlab("Seed Diameter (mm)") +
+  ylab(expression(paste("Grain Yield (ton ", h*a^"-1", ")"))) +
+  theme_bw()
+
+```
+
+## PAM clustering with PCA
+
+```{r pam-pca-clust}
+# pam: partitioning around medoids
+suppressPackageStartupMessages(require(ggfortify))
+ggplot2::autoplot(cluster::pam(plant_traits %>%
+                                 group_by(Treatments) %>%
+                                 summarise_if(is.numeric, mean) %>%
+                                 select_at(which(map_lgl(., is.numeric))) %>%
+                                 select(-contains("rep")) %>%
+                                 scale(), k = 2),
+                  frame = TRUE,
+                  frame.type = 'norm', # plots ellipse
+                  loadings = TRUE, loadings.label = TRUE,
+                  loadings.label.size = 5)
+
+```
+
+
+## PCA biplot
+
+```{r pca-biplot}
+# custom created ggplot2 function
+# pca biplot (custom created ggplot2 function)
+PCbiplot <- function(PC, x="PC1", y="PC2") {
+  # PC being a prcomp object
+  data <- data.frame(PC$x)
+  plot <- ggplot(data, aes(x=get(x), y=get(y))) +
+    geom_point() +
+    xlab("PC1") +
+    ylab("PC2")
+  plot <- plot + geom_hline(yintercept = 0, size=.2) + geom_vline(xintercept = 0, size=.2)
+  datapc <- data.frame(varnames=rownames(PC$rotation), PC$rotation)
+  mult <- min(
+    (max(data[,y]) - min(data[,y])/(max(datapc[,y])-min(datapc[,y]))),
+    (max(data[,x]) - min(data[,x])/(max(datapc[,x])-min(datapc[,x])))
+  )
+  datapc <- transform(datapc,
+                      v1 = .7 * mult * (get(x)),
+                      v2 = .7 * mult * (get(y))
+  )
+  plot <- plot + coord_equal() +
+    ggrepel::geom_text_repel(data=datapc, aes(x=v1, y=v2, label=varnames), size = 5, vjust=1, color="red")
+  plot <- plot +
+    geom_segment(data=datapc, aes(x=0, y=0, xend=v1, yend=v2),
+                 arrow=arrow(length=unit(0.2,"cm")), alpha=0.75, color="red")
+  plot
+}
+
+PCbiplot(prcomp(dfp %>%
+                  group_by(genotype_id) %>%
+                  summarise_if(is.numeric, mean, na.rm = T) %>%
+                  select_at(which(map_lgl(., is.numeric))) %>%
+                  select(-contains("rep")) %>%
+                  scale())) +
+  theme_bw() +
+  theme(text = element_text(size = 15))
+```
+
+
+## Cluster dendrogram
+
+A cluster dendrogram using average linkage (Unweighted Pair Group Method with Arithmetic Mean; UPGMA) method for proximity calculation showing three discrete clusters (cluster number determined using GAM) is presented in Figure \@ref(fig:dendrogram-viz).
+
+```{r dendrogram-viz, fig.cap="Dendrogram clustering using UPGMA method",  fig.keep='all', fig.width=6, out.width='.95\\linewidth', cache=FALSE, eval=TRUE, echo=FALSE, fig.ncol = 2, fig.show="hold", warning=FALSE, message=FALSE}
+
+# crop yield and agro-morphology
+hierarchial_clusters <- plant_traits %>%
+  group_by(Treatments) %>%
+  summarise_if(is.numeric, mean) %>%
+  select_at(which(map_lgl(., is.numeric))) %>%
+  select(-contains("rep")) %>%
+  scale() %>%
+  dist() %>%
+  hclust("ave")
+
+k <- 3
+
+ggdendro_plants <- hierarchial_clusters %>%
+  as.dendrogram() %>%
+  dendextend::set("labels_cex", 1.2) %>%
+  dendextend::set("labels_col", value = c(3,4,5),
+                  k=k) %>%
+  dendextend::set("branches_k_color", k = k) %>%
+  dendextend::set("branches_lwd", 0.8) %>%
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=k)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants),
+                   enframe(clust, value = "cluster"),
+                   by.x = "label", by.y = "name") %>%
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(x){c(min(x), (min(x)+max(x))/2, max(x))}
+
+ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), aes(x=x, y=y, label=paste(" ", plant_traits %>%
+                                                                                 group_by(Treatments) %>%
+                                                                                 summarise_if(is.numeric, mean) %>%
+                                                                                 pull(Treatments), sep = ""),
+                                              colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax),
+            color="red", fill=1:k, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"),
+                     values = seq_along(1:3)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 14))
+```
+
+
+## Cluster dendrogram
+
+A cluster dendrogram using average linkage (Unweighted Pair Group Method with Arithmetic Mean; UPGMA) method for proximity calculation showing three discrete clusters (cluster number determined using GAM) is presented in Figure \@ref(fig:dendrogram-viz).
+
+```{r dendrogram-viz, fig.cap="Dendrogram clustering using UPGMA method", fig.subcap=c("Crop yield and agro-morphological traits", "Seed fatty acid content traits"),  fig.keep='all', fig.width=6, out.width='.80\\linewidth', cache=FALSE, eval=TRUE, echo=FALSE, fig.ncol=1, fig.show="hold", warning=FALSE, message=FALSE}
+
+# crop yield and agro-morphology
+hierarchial_clusters <- plant_traits %>%
+  group_by(gen) %>%
+  summarise_if(is.numeric, mean) %>%
+  select_at(which(map_lgl(., is.numeric))) %>%
+  select(-contains("rep")) %>%
+  scale() %>%
+  dist() %>%
+  hclust("ave")
+
+ggdendro_plants <- hierarchial_clusters %>%
+  as.dendrogram() %>%
+  dendextend::set("labels_cex", 1.2) %>%
+  dendextend::set("labels_col", value = c(3,4),
+                  k=2) %>%
+  dendextend::set("branches_k_color", k = 2) %>%
+  dendextend::set("branches_lwd", 0.8) %>%
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=2)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants),
+                   enframe(clust, value = "cluster"),
+                   by.x = "label", by.y = "name") %>%
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(x){c(min(x), (min(x)+max(x))/2, max(x))}
+
+ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), aes(x=x, y=y, label=paste(" ", plant_traits %>%
+                                                                                 group_by(gen) %>%
+                                                                                 summarise_if(is.numeric, mean) %>%
+                                                                                 pull(gen), sep = ""),
+                                              colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax),
+            color="red", fill=1:2, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"),
+                     values = seq_along(1:2)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 14))
+
+# fatty acid content
+hierarchial_clusters <- oil_traits %>%
+  group_by(gen) %>%
+  summarise_if(is.numeric, mean) %>%
+  select_at(which(map_lgl(., is.numeric))) %>%
+  # select(-contains("rep")) %>%
+  scale() %>%
+  dist() %>%
+  hclust("ave")
+
+ggdendro_plants <- hierarchial_clusters %>%
+  as.dendrogram() %>%
+  dendextend::set("labels_cex", 1.2) %>%
+  dendextend::set("labels_col", value = c(3,4),
+                  k=2) %>%
+  dendextend::set("branches_k_color", k = 2) %>%
+  dendextend::set("branches_lwd", 0.8) %>%
+  dendextend::set("leaves_pch", 9) %>%
+  dendextend::set("leaves_cex", 0.8) %>%
+  dendextend::as.ggdend()
+
+dendr <- ggdendro::dendro_data(hierarchial_clusters, type="rectangle") # convert for ggplot
+clust <- cutree(hierarchial_clusters,k=2)  # k clusters
+clust.df <- data.frame(label=ggdendro::label(dendr)$label, cluster=as.factor(clust))
+dendr[["labels"]] <- merge(dendr[["labels"]],clust.df, by="label")
+templabel <- merge(ggdendro::label(ggdendro_plants),
+                   enframe(clust, value = "cluster"),
+                   by.x = "label", by.y = "name") %>%
+  select(-cex, col)
+rect <- aggregate(x~cluster,templabel,range)
+rect <- data.frame(rect$cluster,rect$x)
+ymax <- mean(hierarchial_clusters$height[length(hierarchial_clusters$height)-((2-2):(2-1))])
+
+threenumsum <- function(x){c(min(x), (min(x)+max(x))/2, max(x))}
+
+ggplot() +
+  geom_segment(data = ggdendro_plants$segments, aes(x=x, y=y, xend=xend, yend=yend)) +
+  geom_text(data = ggdendro::label(ggdendro_plants), aes(x=x, y=y, label=paste(" ", plant_traits %>%
+                                                                                 group_by(gen) %>%
+                                                                                 summarise_if(is.numeric, mean) %>%
+                                                                                 pull(gen), sep = ""),
+                                              colour = as.factor(col), hjust=0), size=4) +
+  coord_flip() +
+  scale_y_reverse(expand=c(0.2, 0),
+                  breaks = threenumsum(ggdendro_plants$segments$yend),
+                  label = c("100%", "50%", "0%")) +
+  geom_rect(data=rect, aes(xmin=X1-.3, xmax=X2+.3, ymin=0, ymax=ymax),
+            color="red", fill=1:2, linetype = 2, alpha = 0.2)+
+  scale_color_manual(labels = c("Cluster 1", "Cluster 2", "Cluster 3"),
+                     values = seq_along(1:2)+7) +
+  labs(color = "Cluster index\n") +
+  ggtitle("") +
+  ylab("Similarity") +
+  xlab("") +
+  theme_classic() +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        text = element_text(size = 14))
+```
+
+## Correlation analysis of traits
+
+```{r correlation-annotate}
+# This function annotates the correlation coefficients
+# with the stars corresponding to the level of significance
+# x is a matrix containing the data
+# method : correlation method. "pearson"" or "spearman"" is supported
+# removeTriangle : remove upper or lower triangle
+# results : "html" or "latex" (default)
+# align: a vector of alignment values as is specified in xtable(x, align)
+
+large <- function(x){
+  paste0('{\\footnotesize{\\bfseries ', x, '}}')
+}
+
+corstars <-function(x, align, caption, method=c("pearson", "spearman"), removeTriangle=c("upper", "lower"),
+                    result=c("none", "html", "latex")){
+  #Compute correlation matrix
+  require(Hmisc)
+  x <- as.matrix(x)
+  correlation_matrix<-rcorr(x, type=method[1])
+  R <- correlation_matrix$r # Matrix of correlation coeficients
+  p <- correlation_matrix$P # Matrix of p-value
+
+  ## Define notions for significance levels; spacing is important.
+  mystars <- ifelse(p < .0001, "****", ifelse(p < .001, "*** ", ifelse(p < .01, "**  ", ifelse(p < .05, "*   ", "    "))))
+
+  ## trunctuate the correlation matrix to two decimal
+  R <- format(round(cbind(rep(-1.11, ncol(x)), R), 2))[,-1]
+
+  ## build a new matrix that includes the correlations with their apropriate stars
+  Rnew <- matrix(paste(R, mystars, sep=""), ncol=ncol(x))
+  diag(Rnew) <- paste(diag(R), " ", sep="")
+  rownames(Rnew) <- colnames(x)
+  colnames(Rnew) <- paste(colnames(x), "", sep="")
+
+  ## remove upper triangle of correlation matrix
+  if(removeTriangle[1]=="upper"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[upper.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+
+  ## remove lower triangle of correlation matrix
+  else if(removeTriangle[1]=="lower"){
+    Rnew <- as.matrix(Rnew)
+    Rnew[lower.tri(Rnew, diag = TRUE)] <- ""
+    Rnew <- as.data.frame(Rnew)
+  }
+
+  ## remove last column and return the correlation matrix
+  Rnew <- cbind(Rnew[1:length(Rnew)-1])
+  if (result[1]=="none") return(Rnew)
+  else{
+    if(result[1]=="html") print(xtable(Rnew), type="html", comment = FALSE)
+    else print(xtable(Rnew, auto = TRUE,  align = align, caption = caption), type="latex",
+               comment = FALSE, size = "\\footnotesize",
+               sanitize.colnames.function = large,
+               booktabs = TRUE, tabular.environment="longtable",
+               floating=FALSE)
+  }
+}
+```
+
+
+```{r correlation-yield-protein, results='asis'}
+# crop yield and agro-morphology
+cortable <- corstars(plant_traits %>%
+                       select_at(which(map_lgl(., is.numeric))) %>%
+                       select(-contains("rep")) %>%
+                       rename_all(function(x)stringr::str_trunc(x,
+                                                                width = 4, "c",
+                                                                ellipsis = "")))
+
+# # html
+# cortable %>%
+#   knitr::kable(format = "html",
+#                caption = "Pearson correlation coefficients of plant traits observed in study",
+#                booktabs = TRUE, align = "l"
+#                # longtable = TRUE
+#                ) %>%
+#   kableExtra::kable_styling(font_size = 14, bootstrap_options = c("striped")) %>%
+#   # kableExtra::column_spec(1:12, width = "0.11\\\\textwidth") %>%
+#   kableExtra::row_spec(0, bold = TRUE) %>%
+#   kableExtra::column_spec(1, bold = TRUE) %>%
+#   kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+#                        threeparttable = TRUE, escape = FALSE)
+
+# latex
+cortable %>%
+  knitr::kable(format = "latex",
+               caption = "Pearson correlation coefficients of plant traits observed in study",
+               booktabs = TRUE, align = "l"
+               # longtable = TRUE
+               ) %>%
+  kableExtra::kable_styling(font_size = 14, latex_options = c("striped", "scale_down")) %>%
+  kableExtra::column_spec(1:12, width = "0.11\\\\textwidth") %>%
+  kableExtra::row_spec(0, bold = TRUE) %>%
+  kableExtra::column_spec(1, bold = TRUE) %>%
+  kableExtra::footnote(general = "p < .0001: **** ; p < .001: *** ; p < .01: ** ; p < .05: *",
+                       threeparttable = TRUE, escape = FALSE) %>%
+  kableExtra::landscape()
+```
